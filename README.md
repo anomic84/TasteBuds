@@ -1,70 +1,131 @@
-# Getting Started with Create React App
+# __TasteBuds 📚__
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## __Description 📑__
+ 
+ A fully functioning Google Books API search engine built with a RESTful API, and refactor it to be a GraphQL API built with Apollo Server. The app was built using the MERN stack with a React front end, MongoDB database, and Node.js/Express.js server and API
 
-## Available Scripts
+<br>
+<hr>
+<br> 
 
-In the project directory, you can run:
+## __Table of contents__
 
-### `npm start`
+- [Description 📝](#description-📝)
+- [Overview 📁](#overview-📁)
+  - [User experience 👤](#user-experience-👤)
+  - [Screenshot 📸](#screenshot-📸)
+  - [Links 🔗](#links-🔗)
+- [My process 💡](#my-process-💡)
+  - [Built with 🔨](#built-with-🔨)
+  - [Useful resources 📚](#useful-resources-📚)
+- [Author](#author-✏️)
+    - [Grade 🗄️](#grade-)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br>
+<hr>
+<br>
 
-### `npm test`
+# __Overview 📁__
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## User Story
 
-### `npm run build`
+ <!-- TODO: Update -->
+```md
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+As A foodie
+I WANT to be able to find others to go out to eat with
+SO THAT I am not alone and make friends with similar interests.
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project Requirements
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```md
+- Use React for the front end.
+- Use GraphQL with a Node.js and Express.js server.
+- Use MongoDB and the Mongoose ODM for the database.
+- Use queries and mutations for retrieving, adding, updating, and deleting data.
+- Be deployed using Heroku (with data).
+- Have a polished UI.
+- Be responsive.
+- Be interactive (i.e., accept and respond to user input).
+- Include authentication (JWT).
+- Protect sensitive API key information on the server.
+- Have a clean repository that meets quality coding standards (file structure, naming conventions, best practices for class and id naming conventions, indentation, high-quality comments, etc.).
+- Have a high-quality README (with unique name, description, technologies used, screenshot, and link to deployed application). 
+```
+<br>
+<hr>
+<br>
 
-### `npm run eject`
+### __User experience 👤__
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+ <!-- TODO: Update -->
+* The following versions are needed: 
+  - react: ^17.0.2
+  - react-dom: ^17.0.2
+  - react-scripts: 4.0.3
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone repo
+2. run `npm start`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<br>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+### __Screenshot 📸__
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+​<br>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+ <!-- TODO: Update -->
+![]()
+​
+​<br>
 
-### Code Splitting
+### __Links 🔗__
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+ <!-- TODO: Update -->
 
-### Analyzing the Bundle Size
+- Live URL: []()
+- Github Repository: []()
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<br>
+<hr>
+<br>
 
-### Making a Progressive Web App
+##  __My process 💡__
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+ <!-- TODO: Update -->
+###  Built with 🔨
+- Tailwind
+- React, MERN stack
+- Node.js/Express.js
+- Apollo, GraphQL, 
+- MongoDb, Mongoose
+- GitHub, Heroku
 
-### Advanced Configuration
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+###  __Useful resources 📚__
 
-### Deployment
+- Emojis: [https://github.com/ikatyang/emoji-cheat-sheet#office](https://github.com/ikatyang/emoji-cheat-sheet#office)
+- Deploy your application to Heroku with a MongoDB database using MongoDB Atlas: [Deploy with Heroku and MongoDB Atlas](https://coding-boot-camp.github.io/full-stack/mongodb/deploy-with-heroku-and-mongodb-atlas)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<br>
+<hr>
+<br>
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## __Author ✏️__
+
+ <!-- TODO: Update -->
+
+- Colton Smith: [GitHub](https://github.com/coltonsmith135)
+- Chrissy Martin: [GitHub](https://github.com/chrissy-martin)
+- Spencer Carlson Smith: [GitHub](https://github.com/anomic84)
+- Avery Caldwell:  [GitHub](https://github.com/AveryCaldwell)
+
+
+<br>
+
+
+
