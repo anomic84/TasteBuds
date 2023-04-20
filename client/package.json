@@ -1,0 +1,26 @@
+{
+    "name": "activityamigo",
+    "version": "0.1.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "watch": "nodemon",
+        "seed": "node config/seeds.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@apollo/client": "^3.7.12",
+        "@testing-library/jest-dom": "^4.2.4",
+        "@testing-library/react": "^9.3.2",
+        "@testing-library/user-event": "^7.1.2",
+        "jwt-decode": "^2.2.0",
+        "react": "^17.0.2",
+        "react-bootstrap": "^2.7.0",
+        "react-dom": "^17.0.2",
+        "react-router-dom": "^6.2.1",
+        "react-scripts": "^5.0.1"
+    }
+}
