@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import "./loginmodal.css"
+// import "./loginmodal.css"
+// import "./modalcss.css"
 import LoginInput from './LoginInput'
 
 
@@ -47,21 +48,26 @@ const LoginModal = () => {
     }
 
     return (
-        <div className=''>
+        <div className='w-full flex'>
             <button
                 onClick={toggleModal}
-                className="btn-modal text-2xl py-5 font-manrope text-navtext1">
+                className="text-2xl py-5 font-manrope text-navtext1
+                         md:bg-navbg md:font-bowlby md:text-borderblue  md:w-[180px]  md:p-2 md:drop-shadow-md
+                         md:mt-4 md:mx-auto md:text-base">
                 Login
             </button>
 
             {modal && (
-                <div className=''>
-                    < div className='bg-signupcard border border-footerblue rounded-lg p-4 drop-shadow-xl w-[100%]'>
-                        <div className="overlay"></div>
-                        <div className="modal-content">
+                // <div className='max-w-[450px] mx-auto'>
+                < div className='fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm
+                flex justify-center items-center w-full'>
+                    <div onClick={toggleModal} className="overlay">
+                        <div className="modal-content bg-card border border-borderblue rounded-lg p-4 drop-shadow-xl
+                        w-[300px] sm:w-[400px]">
                             <div className=''>
+                                {/* md:flex md:flex-col md:items-center md:justify-center */}
                                 <form className='' onSubmit={handleSubmit}>
-                    
+
                                     {inputs.map((input) => (
                                         <LoginInput
                                             key={input.id}
@@ -71,19 +77,19 @@ const LoginModal = () => {
                                         />
                                     ))}
                                     <div className='flex flex-row justify-center'>
-                                        <button className='mt-4 mx-auto text-cetner rounded bg-navbg text-navnametext font-bowlby text-footerblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md'>
+                                        <button className='mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md'>
                                             Submit</button>
                                         <button
-                                            className='close-modal mt-4 mx-auto text-cetner rounded bg-navbg text-navnametext font-bowlby text-footerblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md'
+                                            className='close-modal mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md'
                                             onClick={toggleModal}>CLOSE
                                         </button>
                                     </div>
                                 </form>
                             </div>
-
                         </div>
                     </div>
                 </div>
+                // </div>
             )}
         </div >
     )

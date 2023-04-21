@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Admin, Listings, User, Event, Home } from './pages'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
-
+import './index.css'
 function App() {
   const [currentPage, setCurrentPage] = React.useState('Home');
 
@@ -26,7 +26,7 @@ function App() {
 
   return (
     // APP
-    <div className='w-screen h-screen '>
+    <div className='w-screen h-[100%]'>
       <div className='maingradient h-[100%]'>
         <Navbar currentPage={currentPage} handlePageChange={handlePageChange} />
 

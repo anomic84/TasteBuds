@@ -2,7 +2,8 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='absolute bottom-0 w-full h-10 bg-navbg'>Footer</div>
+    // mt-auto keeps footer at bottom of screen
+    <div className='mt-auto sticky bottom-0 w-full h-10 bg-navbg'>Footer</div>
   )
 }
 

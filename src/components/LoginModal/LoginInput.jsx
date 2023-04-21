@@ -10,9 +10,9 @@ const LoginInput = (props) => {
 
   return (
      <div className="formInput mx-auto flex flex-col">
-        <label className=''>{label}</label>
+        <label className='p-2'>{label}</label>
         <input
-        className=''
+        className='p-2 rounded'
           {...inputProps}
           onChange={onChange}
           onBlur={handleFocus}
