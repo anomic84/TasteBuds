@@ -1,11 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa';
+import LoginModal from './LoginModal/LoginModal';
 
 const Navbar = ({ currentPage, handlePageChange }) => {
     // toggles navbar mobile menu
     const [toggleMenu, setToggleMenu] = useState(false);
 
+
+ 
 
     return (
         <div className="w-full py-3 lg:py-7 relative bg-navbg">
@@ -36,7 +39,7 @@ const Navbar = ({ currentPage, handlePageChange }) => {
                     <div className='flex flex-col w-full'>
                         <FaTimes className="text-navtext1  right-4" size={27} onClick={() => setToggleMenu((prev) => !prev)} />
                         <div className="z-10 h-screen  flex justify-center items-center">
-                            <div className="text-navtext  sm:text-xl text-center flex flex-col justify-center ">
+                            <div className="text-navtext  sm:text-xl text-center w-full flex flex-col justify-center">
                                 <p className='text-2xl py-5 font-manrope text-navtext1'>
                                     <a
                                         href='#home'
@@ -58,13 +61,15 @@ const Navbar = ({ currentPage, handlePageChange }) => {
                                         Listings
                                     </a>
                                 </p>
-                                <p className='text-2xl py-3 mt-2 w-[120px] bg-footerblue rounded-2xl drop-shadow-md font-manrope text-signupcard'>
+                                
+                                <LoginModal />
+                                {/* <p className='text-2xl py-3 mt-2 w-[120px] bg-footerblue rounded-2xl drop-shadow-md font-manrope text-signupcard'>
                                     <a
                                         href='#listings'
                                         onClick={() => { handlePageChange('Login'); setToggleMenu((prev) => !prev) }}>
                                         Login
                                     </a>
-                                </p>
+                                </p> */}
                             </div>
                         </div>
                     </div>

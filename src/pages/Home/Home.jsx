@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import SignUpInput from '../../components/SignUpInput/SignUpInput';
 
 const Home = () => {
+  // --------------- SIGN UP VALUES AND INPUTS --------------- //
   const [values, setValues] = useState({
     username: "",
     email: "",
@@ -53,15 +54,17 @@ const Home = () => {
     }
   ]
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+    // --------------- SIGN UP METHODS --------------- //
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
   };
 
   const onChange = (e) => {
-    console.log(e.target.value)
-    setValues({ ...values, [e.target.name]: e.target.value })
+      console.log(e.target.value)
+      setValues({ ...values, [e.target.name]: e.target.value })
   }
-
+  
   return (
     <div className='h-[100%] w-full px-4  flex flex-col'>
       {/* Greetings Section <--to--> Not a Member? */}
@@ -71,8 +74,8 @@ const Home = () => {
           TO <br />
           TASTEBUDS!
         </h1>
-        <p className='text-right font-manrope text-[17px] right-4 w-[70%] self-end drop-shadow-md'>
-          Where you can find and dine with peace of mind
+        <p className='text-right font-manrope text-xl right-4 w-[70%] self-end drop-shadow-md'>
+          Where foodies become besties
         </p>
         <p className='text-center font-bowlby text-footerblue drop-shadow-md text-2xl py-8'>
           Not a member?
