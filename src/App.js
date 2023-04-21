@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Admin, Listings, User, Event, Home } from './pages'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
-import './app.css'
 
 function App() {
   const [currentPage, setCurrentPage] = React.useState('Home');
@@ -11,11 +10,14 @@ function App() {
     if (currentPage === "Home") {
       return <Home />;
     }
-    if (currentPage === "Profile") {
+    if (currentPage === "Admin") {
       return <Admin />;
     }
     if (currentPage === "Listings") {
       return <Listings />;
+    }
+    if (currentPage === "User") {
+      return <User />;
     }
     return <Event />;
   };
@@ -24,16 +26,16 @@ function App() {
 
   return (
     // APP
-    <div className="w-screen h-screen">
-      <Navbar currentPage={currentPage} handlePageChange={handlePageChange} />
+    <div className='w-screen h-screen '>
+      <div className='maingradient h-[100%]'>
+        <Navbar currentPage={currentPage} handlePageChange={handlePageChange} />
 
-      <main className="render-container">
-        {renderPage()}
-      </main>
+        <main className='flex w-full'>
+          {renderPage()}
+        </main>
+      </div >
       <Footer />
     </div >
-
-
   );
 }
 
