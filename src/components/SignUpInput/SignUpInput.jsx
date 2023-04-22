@@ -10,9 +10,12 @@ const SignUpInput = (props) => {
   };
   return (
     <div className="formInput mx-auto flex flex-col ">
-      <label className='text-navtext1 text-lg leading-lg pb-1 font-manrope'>{label}</label>
+      <label className='text-navtext1 text-lg leading-lg pb-1 font-manrope
+                        xl:text-2xl'>{label}
+                        </label>
       <input
-        className='rounded border border-borderblue text-slate-800 font-[500] p-1'
+        className='rounded border border-borderblue text-slate-800 font-[500] p-1
+                   xl:text-2xl'
         {...inputProps}
         onChange={onChange}
         onBlur={handleFocus}

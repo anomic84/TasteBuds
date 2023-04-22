@@ -71,26 +71,31 @@ const Home = () => {
       {/* Greetings Section <--to--> Not a Member? */}
       <div className='flex flex-col flex-1'>
         <h1 className=' py-5 text-5xl font-bowlby text-borderblue  drop-shadow-lg
-        md:text-center'>
+        md:text-center
+        xl:text-8xl'>
           WELCOME <br className='md:hidden' />
           TO <br />
           TASTEBUDS!
         </h1>
         <p className='text-right  font-manrope text-lg  right-4 w-full self-end drop-shadow-md
-        sm:text-xl
-        md:text-center'>
-          Where foodies become besties
+        sm:text-xl sm:pb-10
+        md:text-center
+        xl:text-3xl'>
+          "Where foodies become besties"
         </p>
-        <p className='text-center font-bowlby text-borderblue drop-shadow-md text-2xl py-8'>
+        <p className='text-center font-bowlby text-borderblue drop-shadow-md text-2xl py-8
+        xl:text-4xl'>
           Not a member?
         </p>
       </div>
       {/* SignUp and Login */}
       <div className=''>
         {/* Sign Up */}
-        <div className='bg-card border border-borderblue rounded-lg p-4 drop-shadow-xl max-w-[450px] mx-auto'>
+        <div className='bg-card border border-borderblue rounded-lg p-4 drop-shadow-xl max-w-[450px] mx-auto
+        xl:max-w-[800px]'>
           <form className='' onSubmit={handleSubmit}>
-            <h1 className='text-center text-navtext1 pb-2'>Sign Up!</h1>
+            <h1 className='text-center text-navtext1 pb-2
+                          xl:text-2xl'>Sign Up!</h1>
             {inputs.map((input) => (
               <SignUpInput
                 key={input.id}
@@ -101,7 +106,7 @@ const Home = () => {
             ))}
             <div className='flex flex-col justify-center'>
               <button className='mt-4 mx-auto text-center rounded bg-navbg font-bowlby text-borderblue  w-[180px] max-w-[180px] p-2 drop-shadow-md
-              '>Submit</button>
+                                 xl:text-2xl'>Submit</button>
             </div>
           </form>
 
