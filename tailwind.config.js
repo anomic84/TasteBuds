@@ -9,11 +9,11 @@ module.exports = {
         'titan': 'Titan One, cursive'
       },
       colors: {
-        footerblue: '#274472',
+        borderblue: '#274472',
         navtext1: '#5C474D',
         navtext2: '#B8A3A9',
         navbg: '#F2AFA9',
-        signupcard: '#FADEDC'
+        card: '#FADEDC',
       }
     },
   },
