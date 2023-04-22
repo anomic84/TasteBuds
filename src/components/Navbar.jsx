@@ -11,7 +11,8 @@ const Navbar = ({ currentPage, handlePageChange }) => {
 
 
     return (
-        <div className="w-full py-3 lg:py-7 relative bg-navbg">
+        <div className="w-full py-3 relative bg-navbg
+                        lg:py-2 ">
             {/* // MONITORS */}
             <div className="hidden md:flex flex-row justify-between items-center px-4">
                 <div className=''>
