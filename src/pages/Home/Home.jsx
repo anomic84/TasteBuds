@@ -78,12 +78,16 @@ const Home = () => {
           TASTEBUDS!
         </h1>
         <p className='text-right  font-manrope text-lg  right-4 w-full self-end drop-shadow-md
-        sm:text-xl sm:pb-10
+        sm:text-xl
         md:text-center
         xl:text-3xl'>
           "Where foodies become besties"
         </p>
-        <p className='text-center font-bowlby text-borderblue drop-shadow-md text-2xl py-8
+         {/* Login */}
+         <div className='hidden md:flex justify-center py-5'>
+          <LoginModal className='' />
+        </div>
+        <p className='text-center font-bowlby text-borderblue drop-shadow-md text-2xl pt-12 pb-4
         xl:text-4xl'>
           Not a member?
         </p>
@@ -109,11 +113,6 @@ const Home = () => {
                                  xl:text-2xl'>Submit</button>
             </div>
           </form>
-
-        </div>
-        {/* Login */}
-        <div className='hidden md:flex justify-center'>
-          <LoginModal className='' />
         </div>
       </div>
     </div>
