@@ -66,3 +66,16 @@ export const allEvents = [
         id: 5,
     }
 ]
+
+export const comments = [
+    {
+        username: 'Jack Crackel',
+        commentText: 'I can taste the color burnt toast!',
+        id:1
+    },
+    {
+        username: 'Morpheus Porpheus',
+        commentText: 'Big blue handle bars touch the earth with such ease!',
+        id:2
+    }
+]
