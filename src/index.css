@@ -1,4 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Manrope&family=Titan+One&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* This helps keep footer stuck at the bottom, paired with the mt-auto*/
+body {
+    display: flex;
+  flex: column;
+  min-height: 100vh;
+}
+
+.maingradient {
+
+    /* ff 3.6+ */
+    background: -moz-radial-gradient(circle at 50% 50%, #FAF8F8 0%, #E5D4C373 100%);
+
+    /* safari 5.1+,chrome 10+ */
+    background: -webkit-radial-gradient(circle at 50% 50%, #FAF8F8 0%, #E5D4C373 100%);
+
+    /* opera 11.10+ */
+    background: -o-radial-gradient(circle at 50% 50%, #FAF8F8 0%, #E5D4C373 100%);
+
+    /* ie 10+ */
+    background: -ms-radial-gradient(circle at 50% 50%, #FAF8F8 0%, #E5D4C373 100%);
+
+    /* global 92%+ browsers support */
+    background: radial-gradient(circle at 50% 50%, #FAF8F8 0%, #E5D4C373 100%);
+
+}
