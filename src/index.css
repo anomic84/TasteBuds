@@ -10,6 +10,13 @@
     box-sizing: border-box;
 }
 
+/* This helps keep footer stuck at the bottom, paired with the mt-auto*/
+body {
+    display: flex;
+  flex: column;
+  min-height: 100vh;
+}
+
 .maingradient {
 
     /* ff 3.6+ */
