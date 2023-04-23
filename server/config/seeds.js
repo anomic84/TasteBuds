@@ -1,6 +1,7 @@
 // FIXME: update to match models
 const db = require('./connection');
 const { User, Post } = require('../models');
+// test
 
 db.once('open', async () => {
     await Post.deleteMany();
