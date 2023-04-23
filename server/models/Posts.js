@@ -1,36 +1,38 @@
-const { Schema, model, } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
-const commentSchema = new Schema({
+const commentSchema = new Schema(
+  {
     commentText: {
-        type: String,
-        required: true,
-        maxLength: 280,
+      type: String,
+      required: true,
+      maxLength: 280,
     },
     username: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     createdAt: {
-        type: Date,
-        default: Date.now,
-        get: (createdAtVal) => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
+      type: Date,
+      default: Date.now,
+      get: (createdAtVal) =>
+        moment(createdAtVal).format("MMM DD, YYYY [at] hh:mm a"),
     },
-},
+  },
 
-{
+  {
     toJSON: {
-        virtuals: true,
-        getters: true
+      virtuals: true,
+      getters: true,
     },
-    id: false
-}
+    id: false,
+  }
 );
 
 const postsSchema = new Schema({
   username: {
-     type: String,
-     required: true,
-     ref: 'User'
+    type: String,
+    required: true,
+    ref: "User",
   },
   title: {
     type: String,
@@ -43,8 +45,8 @@ const postsSchema = new Schema({
     maxLength: 500,
   },
   createdAt: {
-   type: Date,
-   default: Date.now,
+    type: Date,
+    default: Date.now,
   },
   time: {
     type: Date,
@@ -56,8 +58,6 @@ const postsSchema = new Schema({
   },
   comments: [commentSchema],
 });
-
-    
 
 const Posts = model("Posts", postsSchema);
 

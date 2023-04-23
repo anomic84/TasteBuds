@@ -1,7 +1,6 @@
 const { Schema, model, Types } = require("mongoose");
-const { postsSchema } = require('./Posts')
-const { isEmail } = require('validator')
-
+const { postsSchema } = require("./Posts");
+const { isEmail } = require("validator");
 
 const userSchema = new Schema({
   username: {
@@ -15,8 +14,8 @@ const userSchema = new Schema({
     unique: true,
     trimmed: true,
     email: {
-      validate: [isEmail, 'invalid email'],
-    }
+      validate: [isEmail, "invalid email"],
+    },
   },
   password: {
     type: String,
@@ -26,7 +25,7 @@ const userSchema = new Schema({
   posts: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Posts',
+      ref: "Posts",
     },
   ],
 });
