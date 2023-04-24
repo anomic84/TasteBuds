@@ -12,12 +12,12 @@ const Admin = () => {
                 <h1 className='text-center text-borderblue font-manrope font-bold text-4xl
                 xl:text-6xl xl:py-2'>Cryptic Andy</h1>
             </div>
-            <div className='m-4 flex flex-col items-center'>
+            <div className='sm:m-4 flex flex-col items-center'>
                 {adminEvents.map((adminEvent) => (
                     <EventCard key={adminEvent.id} {...adminEvent} />
                 ))}
             </div>
-            <div className=''>
+            <div className='z-0'>
                 <CreateModal />
             </div>
         </section>
