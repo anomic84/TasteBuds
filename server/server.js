@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const db = require('./config/connection');
+const bodyParser = require('body-parser');
 
 const { ApolloServer } = require('apollo-server-express');
 const { authMiddleware } = require('./utils/auth');
@@ -17,6 +18,8 @@ const server = new ApolloServer({
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+app.use(bodyParser.json());
+
 // Serve up static assets
 // app.use('/images', express.static(path.join(__dirname, '../client/images')));
 
@@ -31,17 +34,19 @@ app.get('/', (req, res) => {
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async (typeDefs, resolvers) => {
     await server.start();
-    server.applyMiddleware({ app });
-
-    db.once('open', () => {
-        app.listen(PORT, () => {
-            console.log(`🌍 Now listening on localhost:${PORT}`);
-            console.log(
-                `Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`
-            );
-        });
-    });
+    // server.applyMiddleware({ app });
+      server.applyMiddleware({ app, path: '/graphql' });
 };
+
+
+db.once('open', () => {
+    app.listen(PORT, () => {
+        console.log(`🌍 Now listening on localhost:${PORT}`);
+        console.log(
+            `Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`
+        );
+    });
+});
 
 // Call the async function to start the server
 startApolloServer(typeDefs, resolvers);
