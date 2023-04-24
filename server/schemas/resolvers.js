@@ -1,6 +1,6 @@
-const { User } = require('../models');
-const { AuthenticationError } = require('apollo-server-express');
-const { signToken } = require('../utils/auth');
+const { User, Posts } = require('../models')
+const { AuthenticationError } = require('apollo-server-express')
+const { signToken } = require('../utils/auth')
 
 const resolvers = {
     Query: {
@@ -38,5 +38,74 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-    },
-};
+
+        getUserByName: async (parent, args) => {
+            if(args.username) {
+                const user = await User.findOne(
+                  {username: args.username}
+                
+                )
+                return { user }
+
+            }else if (args.email) {
+                const user = await User.findOne(
+                    {email: args.email}
+                )
+            }
+        },
+
+        createPost: async (parent, args) => {
+         const post = await Posts.create(args)
+            return { post }
+        },
+
+        updatePost: async (parent, { _id, data }) => {
+            const post = await Posts.findOneAndUpdate(
+                {_id}, 
+                {$set: data},
+                {new: true}
+            )
+            return { post }
+        },
+
+        // getUserPost: async (parent, args) => {
+
+        // }
+
+
+
+        deletePost: async (parent, { _id }) => {
+            const post = await Posts.findByIdAndDelete(
+                {_id}
+            )
+        return { message: "Post deleted", success: true }
+
+      },
+
+      createComment: async (parent, args ) => {
+    
+      },
+
+      deleteComment: async (parent, { _id }) => {
+        const comment = await Posts.findByIdAndDelete(
+          
+        )
+      },
+
+      updateComment: async (parent, { _id, comment: commentId}) {
+        
+      },
+
+
+
+    
+
+  updateComment: async (parent, { _id, comment: commentId}) {
+        
+      }
+
+
+    }
+
+    
+}

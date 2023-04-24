@@ -25,24 +25,23 @@ module.exports = {
   },
 
   async login(req, res) {
-      await User.findOne({ $or: [{ username: req.body.username}, { email: req.body.email }] })
-        .then((user) => 
-         !user
-           ? res.status(404).json({ message: "No user found with that username or email."})
-           : res.json({ user })
-        )
-        .catch((err) => {
-          console.log(err)
-          return res.status(500).json(err)
-        })
+    try {
+      const user = await User.findOne({ $or: [{ username: req.body.username}, { email: req.body.email }] })
 
-      const correctPassword = await User.isCorrectPassword(req.body.password)
-
-      if(!correctPassword){
-        return res.status(400).json({ message: 'Wrong password!' })
+      if(!user) {
+        return res.status(400).json({ message: 'Wrong login information'})
       }
+           
 
-      const token = signToken(user)
-      res.json({ token, user })
+           const correctPassword = await User.isCorrectPassword(req.body.password)
+     
+           if(!correctPassword){
+             return res.status(400).json({ message: 'Wrong password!' })
+           }
+           const token = signToken(user)
+           res.json({ token, user })
+    } catch (error) {
+      res.status(400).json(error)}
+
   },
 };

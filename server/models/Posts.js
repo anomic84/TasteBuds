@@ -20,45 +20,53 @@ const commentSchema = new Schema(
         },
     },
 
-    {
-        toJSON: {
-            virtuals: true,
-            getters: true,
-        },
-        id: false,
-    }
+  {
+    timestamps,
+    toJSON: {
+      virtuals: true,
+      getters: true,
+    },
+    id: false,
+  }
 );
 
 const postsSchema = new Schema({
-    username: {
-        type: String,
-        required: true,
-        ref: 'User',
-    },
-    title: {
-        type: String,
-        required: true,
-    },
-    description: {
-        type: String,
-        required: true,
-        minlength: 1,
-        maxLength: 500,
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-        
-    },
-    time: {
-        type: Date,
-        required: true,
-    },
-    location: {
-        type: String,
-        required: true,
-    },
-    comments: [commentSchema],
+  username: {
+    type: String,
+    required: true,
+    ref: "User",
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+    minlength: 1,
+    maxLength: 500,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  time: {
+    type: Date,
+    required: true,
+  },
+  location: {
+    type: String,
+    required: true,
+  },
+  comments: [commentSchema],
+},
+{
+  timestamps,
+  toJSON: {
+    virtuals: true,
+    getters: true,
+  },
+  id: false,
 });
 
 const Posts = model('Posts', postsSchema);
