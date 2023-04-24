@@ -2,9 +2,7 @@ const { Posts } = require("../models");
 
 module.exports = {
   async createPost(req, res) {
-    Posts.create(req.body)
-      .then((post) => res.json(post))
-      .catch((err) => res.json(err));
+    
   },
 
   async getOnePost(req, res) {
@@ -78,25 +76,27 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 
-  async getOneComment(req, res) {
-      Posts.findOne(
-        { comments: req.params.postsId  },
-      )
-      .then((posts) =>
-        !posts
-          ? res.status(404).json({ message: "No post found with that ID" })
-          : res.json({ posts })
-      )
-      .catch((err) => {
-        console.log(err);
-        return res.status(500).json(err);
-      });
-  },
+  // async getOneComment(req, res) {
+  //     Posts.findOneUpdate(
+  //       { _id: req.params.postsId },
+  //     { $pull: { comments: req.params.commentId } },
+  //     { new: true, runValidators: true }
+  //     )
+  //     .then((posts) =>
+  //       !posts
+  //         ? res.status(404).json({ message: "No post found with that ID" })
+  //         : res.json({ posts })
+  //     )
+  //     .catch((err) => {
+  //       console.log(err);
+  //       return res.status(500).json(err);
+  //     });
+  // },
 
   async deleteComment(req, res) {
     Posts.findByIdAndUpdate(
       { _id: req.params.postsId },
-      { $pull: { comments: req.params.postsId } },
+      { $pull: { comments: req.params.commentId } },
       { new: true, runValidators: true }
     )
       .then((posts) => {
@@ -111,7 +111,7 @@ module.exports = {
   async updateComment(req, res) {
      Posts.findOneAndUpdate(
         { _id: req.params.postsId },
-        { $set: { comments: req.params.postsId }},
+        { $set: { comments: req.params.commentId }},
         { new: true, runValidators: true }
      )
      .then((posts) => {

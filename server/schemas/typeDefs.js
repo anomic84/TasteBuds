@@ -15,12 +15,11 @@ const typeDefs = gql`
     }
 
     type Posts {
-        username: String!
-        title: String!
-        description: String!
-        createdAt: String
-        time: String!
-        location: String!
+        username: String
+        title: String
+        description: String
+        time: Date
+        location: String
     }
 
     type Auth {
@@ -31,7 +30,14 @@ const typeDefs = gql`
     type Mutation {
         login(email: String!, password: String!): Auth
         newUser(username: String!, email: String!, password: String!): Auth
+        getUserByName(username: String!, email: String!): Auth
+        createPost(username: String!,
+            title: String!,
+            description: String!,
+            time: Date,
+            location: String!): Auth
+        updatePost(_id: ID, data): Auth
+        deletePost(_id: ID): Auth
     }
-`;
 
-module.exports = typeDefs;
+`
