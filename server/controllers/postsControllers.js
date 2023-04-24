@@ -9,8 +9,9 @@ module.exports = {
     Posts.findOne({ _id: req.params.postsId })
       .then((post) =>
         !post
-          ? res.status(404).json({ message: "No post found with that ID" })
-          : res.json({ post })
+          ? res.status(404).json({ message: "No posts found with that ID" })
+          //  : res.json({ post })
+          : res.json({ Posts })
       )
       .catch((err) => {
         console.log(err);
@@ -29,7 +30,7 @@ module.exports = {
   async deletePost(req, res) {
     Posts.findOneAndRemove({ _id: req.params.postsId }).then((posts) => {
       if (!posts) {
-        return res.status(404).json({ message: "Post not found" });
+        return res.status(404).json({ message: "Posts not found" });
       }
       return User.findOneAndUpdate(
         { posts: req.params.postsId },
@@ -38,9 +39,9 @@ module.exports = {
       )
         .then((posts) => {
           if (!posts) {
-            return res.status(404).json({ message: "Post not found" });
+            return res.status(404).json({ message: "Posts not found" });
           }
-          res.json({ message: "Post has been deleted" });
+          res.json({ message: "Posts has been deleted" });
         })
         .catch((err) => res.status(500).json(err));
     });
@@ -54,7 +55,7 @@ module.exports = {
     )
       .then((posts) => {
         if (!posts) {
-          return res.status(404).json({ message: "Post not found" });
+          return res.status(404).json({ message: "Posts not found" });
         }
         res.json(posts);
       })
@@ -69,7 +70,7 @@ module.exports = {
     )
       .then((posts) => {
         if (!posts) {
-          return res.status(404).json({ message: "Post not found" });
+          return res.status(404).json({ message: "Posts not found" });
         }
         res.json(posts);
       })
@@ -84,7 +85,7 @@ module.exports = {
   //     )
   //     .then((posts) =>
   //       !posts
-  //         ? res.status(404).json({ message: "No post found with that ID" })
+  //         ? res.status(404).json({ message: "No posts found with that ID" })
   //         : res.json({ posts })
   //     )
   //     .catch((err) => {
@@ -101,7 +102,7 @@ module.exports = {
     )
       .then((posts) => {
         if (!posts) {
-          return res.status(404).json({ message: "Post not found" });
+          return res.status(404).json({ message: "Posts not found" });
         }
         res.json(posts);
       })
@@ -116,7 +117,7 @@ module.exports = {
      )
      .then((posts) => {
         if(!posts) {
-            return res.status(404).json({ message: " Post not found" })
+            return res.status(404).json({ message: " Posts not found" })
         }
         res.json(posts)
      })

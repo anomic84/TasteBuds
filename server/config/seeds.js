@@ -70,16 +70,8 @@ db.once('open', async () => {
         },
     ]);
 
-    console.log('Posts seeded');
-    // Save the post to the database
-    // newPost
-    //     .save()
-    //     .then((post) => {
-    //         console.log('Post created:', post);
-    //     })
-    //     .catch((error) => {
-    //         console.error('Error creating post:', error);
-    //     });
+    console.log('Posts seeded 📝');
+
 
     await User.deleteMany();
 
@@ -106,7 +98,7 @@ db.once('open', async () => {
         }
     );
 
-    console.log('users seeded');
+    console.log('Users seeded 💁');
 
     process.exit();
 });

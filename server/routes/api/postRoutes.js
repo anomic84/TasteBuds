@@ -19,7 +19,7 @@ router.route('/').get(getUserPosts).post(createPost);
 // /api/posts/:postsId
 router.route('/:postsId').get(getOnePost).put(updatePosts).delete(deletePost);
 
-//  /api/posts/:postsId/Comments POST new comments
+//  /api/posts/:postsId/Comments POSTs new comments
 router.route('/:postsId/comments').post(createComment);
 
 // /api/posts/:postsId/comments/:CommentId DELETE comment by ID
