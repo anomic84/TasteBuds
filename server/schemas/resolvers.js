@@ -98,14 +98,6 @@ const resolvers = {
         //             const comment = await Comment.findByIdAndDelete(_id);
         //             return { message: 'Comment deleted', success: true };
         //         },
-
-        //         updateComment: async (parent, { _id, comment: commentId }) => {
-        //             const comment = await Posts.findOneAndUpdate(
-        //                 { _id },
-        //                 { $set: { comment: commentId } },
-        //                 { new: true }
-        //             );
-        //             return { comment };
     },
 };
 
