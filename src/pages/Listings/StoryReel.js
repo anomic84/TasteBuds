@@ -1,6 +1,6 @@
 import React from 'react';
-import Story from "./Story"
-import "../styles/StoryReel.css";
+
+import "./styStoryReel.css";
 
 function StoryReel({ image, profileSrc, title }) {
     return (
