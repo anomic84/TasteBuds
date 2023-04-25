@@ -13,6 +13,37 @@ const resolvers = {
             }
             throw new AuthenticationError('Not logged in');
         },
+        getUserByName: async (parent, args) => {
+            console.log(args);
+            if (args.username) {
+                const user = await User.findOne({ username: args.username });
+                console.log(user);
+                return user;
+            }
+        },
+        getUserPost: async (parent, args) => {
+            console.log(args);
+            if (args.userId) {
+                const user = await User.findById(args.user).select('-password');
+                if (!user) {
+                    throw new Error('User not found');
+                }
+                const posts = await Posts.find({ username: user.username });
+                return { user, posts };
+            } else if (args.username) {
+                const user = await User.findOne({
+                    username: args.username,
+                }).select('-password');
+                if (!user) {
+                    throw new Error('User not found');
+                }
+                const posts = await Posts.find({ username: user.username });
+                console.log(user, posts);
+                return posts;
+            } else {
+                throw new Error('Invalid arguments');
+            }
+        },
     },
 
     Mutation: {
@@ -32,87 +63,49 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        // adds a new user to the database.
         newUser: async (parent, args) => {
             const user = await User.create(args);
             const token = signToken(user);
             return { token, user };
         },
 
-        getUserByName: async (parent, args) => {
-            if (args.username) {
-                const user = await User.findOne({ username: args.username });
-                return { user };
-            } else if (args.email) {
-                const user = await User.findOne({ email: args.email });
-            }
-        },
+        //             createPost: async (parent, args) => {
+        //                 const posts = await Posts.create(args);
+        //                 return { posts };
+        //             },
 
-        // CREATE post
-        createPost: async (parent, args) => {
-            const posts = await Posts.create(args);
-            return { posts };
-        },
+        //             updatePost: async (parent, { _id, data }) => {
+        //                 const posts = await Posts.findOneAndUpdate(
+        //                     { _id },
+        //                     { $set: data },
+        //                     { new: true }
+        //                 );
+        //                 return { posts };
+        //             },
+        //         },
 
-        // UPDATE post
-        updatePost: async (parent, { _id, data }) => {
-            const posts = await Posts.findOneAndUpdate(
-                { _id },
-                { $set: data },
-                { new: true }
-            );
-            return { posts };
-        },
+        //         deletePost: async (parent, { _id }) => {
+        //             const posts = await Posts.findByIdAndDelete({ _id });
+        //             return { message: 'Post deleted', success: true };
+        //         },
 
-        // GET post
-        getUserPost: async (parent, args) => {
-            if (args.userId) {
-                const user = await User.findById(args.user).select('-password');
-                if (!user) {
-                    throw new Error('User not found');
-                }
-                const posts = await Posts.find({ author: user._id });
-                return { user, posts };
-            } else if (args.username) {
-                const user = await User.findOne({
-                    username: args.username,
-                }).select('-password');
-                if (!user) {
-                    throw new Error('User not found');
-                }
-                const posts = await Posts.find({ author: user._id });
-                return { user, posts };
-            } else {
-                throw new Error('Invalid arguments');
-            }
-        },
+        //         createComment: async (parent, args) => {
+        //             const comment = await Comment.create(args);
+        //             return { comment };
+        //         },
 
-        // DELETE post
-        deletePost: async (parent, { _id }) => {
-            const posts = await Posts.findByIdAndDelete({ _id });
-            return { message: 'Post deleted', success: true };
-        },
+        //         deleteComment: async (parent, { _id }) => {
+        //             const comment = await Comment.findByIdAndDelete(_id);
+        //             return { message: 'Comment deleted', success: true };
+        //         },
 
-        // CREATE comment
-        createComment: async (parent, args) => {
-            const comment = await Comment.create(args);
-            return { comment };
-        },
-
-        // DELETE comment
-        deleteComment: async (parent, { _id }) => {
-            const comment = await Comment.findByIdAndDelete(_id);
-            return { message: 'Comment deleted', success: true };
-        },
-
-        updateComment: async (parent, { _id, comment: commentId }) => {
-            const comment = await Posts.findOneAndUpdate(
-                { _id },
-                { $set: { comment: commentId } },
-                { new: true }
-            );
-            return { comment };
-        },
+        //         updateComment: async (parent, { _id, comment: commentId }) => {
+        //             const comment = await Posts.findOneAndUpdate(
+        //                 { _id },
+        //                 { $set: { comment: commentId } },
+        //                 { new: true }
+        //             );
+        //             return { comment };
     },
 };
 
