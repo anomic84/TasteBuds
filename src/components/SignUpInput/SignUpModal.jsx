@@ -1,50 +1,75 @@
-import React, { useState } from 'react'
-import LoginInput from './LoginInput'
+import React, {useState} from 'react'
+import SignUpInput from './SignUpInput'
 
-
-const LoginModal = () => {
-    const [modal, setModal] = useState(false);
+const SignUpModal = () => {
+   const [modal, setModal] = useState(false);
 
     const toggleModal = () => {
         setModal(!modal)
     }
 
-    // --------------- LOGIN VALUES AND INPUTS --------------- //
-    const [values, setValues] = useState({
-        email: "",
-        password: "",
-    });
+      // --------------- SIGN UP VALUES AND INPUTS --------------- //
+  const [values, setValues] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
 
-    const inputs = [
-        {
-            id: 1,
-            name: "username",
-            type: "text",
-            placeholder: "Username",
-            label: "Username",
-            required: true,
-        },
-        {
-            id: 2,
-            name: "password",
-            type: "password",
-            placeholder: "Password",
-            label: "Password",
-            required: true,
-        }
-    ]
-
-    // --------------- SIGN UP METHODS --------------- //
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    };
-
-    const onChange = (e) => {
-        console.log(e.target.value)
-        setValues({ ...values, [e.target.name]: e.target.value })
+  const inputs = [
+    {
+      id: 1,
+      name: "username",
+      type: "text",
+      placeholder: "Username",
+      errorMessage:
+        "Username should be 3-16 characters and shouldn't include any special character!",
+      label: "Username",
+      pattern: "^[A-Za-z0-9]{3,16}$",
+      required: true,
+    },
+    {
+      id: 2,
+      name: "email",
+      type: "email",
+      placeholder: "Email",
+      errorMessage: "It should be a valid email address!",
+      label: "Email",
+      required: true,
+    },
+    {
+      id: 3,
+      name: "password",
+      type: "password",
+      placeholder: "Password",
+      errorMessage:
+        "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!",
+      label: "Password",
+      pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
+      required: true,
+    },
+    {
+      id: 4,
+      name: "confirmPassword",
+      type: "password",
+      placeholder: "Confirm Password",
+      errorMessage: "Passwords need to match!",
+      label: "Confirm Password",
+      pattern: values.password,
+      required: true,
     }
+  ]
 
+  // --------------- SIGN UP METHODS --------------- //
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  const onChange = (e) => {
+    console.log(e.target.value)
+    setValues({ ...values, [e.target.name]: e.target.value })
+  }
     return (
         <div className='w-full flex'>
             <button
@@ -53,7 +78,7 @@ const LoginModal = () => {
                          md:bg-navbg md:font-bowlby md:text-borderblue  md:w-[180px]  md:p-2 md:drop-shadow-md
                          md:mt-4 md:mx-auto md:text-base
                          xl:text-2xl'>
-                Login
+                Sign Up!
             </button>
 
             {modal && (
@@ -65,11 +90,11 @@ const LoginModal = () => {
                         xl:w-[800px]'>
                             <div className='xl:py-8'>
                                 <h1 className='text-center font-titan text-borderblue text-2xl
-                                               xl:text-4xl'>Login</h1>
+                                               xl:text-4xl'>Sign Up!</h1>
                                 <form className='' onSubmit={handleSubmit}>
 
                                     {inputs.map((input) => (
-                                        <LoginInput
+                                        <SignUpInput
                                             key={input.id}
                                             {...input}
                                             value={values[input.name]}
@@ -94,7 +119,7 @@ const LoginModal = () => {
                 // </div>
             )}
         </div >
-    )
+  )
 }
 
-export default LoginModal
+export default SignUpModal
