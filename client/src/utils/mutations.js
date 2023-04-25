@@ -49,23 +49,45 @@ export const CREATE_POST = gql`
 `;
 // from graphQL sandbox
 export const UPDATE_POST = gql`
-mutation updatePost($description: String, $title: String, $time: String, $location: String, $postId: ID!) {
-  updatePost(description: $description, title: $title, time: $time, location: $location, postId: $postId) {
-    description
-    location
-    time
-    title
-  }
-}
-`;
-
-export const DELETE_POST = gql`
-    mutation deletePost($postId: ID!) {
-        deletePost(postId: $postId)
+    mutation updatePost(
+        $description: String
+        $title: String
+        $time: String
+        $location: String
+        $postId: ID!
+    ) {
+        updatePost(
+            description: $description
+            title: $title
+            time: $time
+            location: $location
+            postId: $postId
+        ) {
+            description
+            location
+            time
+            title
+        }
     }
 `;
+// TODO: FINISH MUTATIONS
 
-export const DELETE_COMMENT = gql`
-mutation deleteComment($commentId: ID!) {
-  deleteComment(commentId: $commentId)
-}
+// export const CREATE_COMMENT = gql`
+
+
+// export const DELETE_POST = gql`
+//     mutation deletePost($postId: ID!) {
+    //         deletePost(postId: $postId)
+    //     }
+    // `;
+    
+// export const DELETE_COMMENT = gql`
+//     mutation deleteComment($commentId: ID!) {
+    //         deleteComment(commentId: $commentId)
+    //     }
+    // `;
+    
+
+    // TODO: OPTIONAL 
+    // export const UPDATE_COMMENT = gql`
+      // export const UPDATE_USER = gql`

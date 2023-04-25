@@ -15,6 +15,7 @@ export const QUERY_ME = gql`
                 location
                 comments {
                     _id
+                    postId
                     commentText
                     username
                     createdAt
@@ -24,40 +25,22 @@ export const QUERY_ME = gql`
     }
 `;
 
-
 export const QUERY_SINGLE_POST = gql`
-    query getUserPost($postId: ID!) {
-        posts(postId: $postId) {
-            _id
-            username
-            title
+    query GetUserPost($username: String, $userId: ID) {
+        getUserPost(username: $username, userID: $userId) {
             description
-            time
             location
-            comments {
-                _id
-                commentText
-                username
-                createdAt
-            }
+            time
+            title
         }
     }
 `;
+
 export const QUERY_USERNAME = gql`
-    query getUserByName($postId: ID!) {
-        posts(postId: $postId) {
+    query GetUserByName($username: String, $userId: ID) {
+        getUserByName(username: $username, userID: $userId) {
             _id
             username
-            title
-            description
-            time
-            location
-            comments {
-                _id
-                commentText
-                username
-                createdAt
-            }
         }
     }
 `;
