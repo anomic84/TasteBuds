@@ -11,6 +11,7 @@ const typeDefs = gql`
         _id: ID
         username: String
         email: String
+        password: String
         posts: [Posts]
     }
 
@@ -38,16 +39,12 @@ const typeDefs = gql`
         user: User
     }
 
-    type newUserResponse {
-        username: String!
-        email: String!
-        password: String!
-    }
     type Mutation {
         login(email: String!, password: String!): Auth
-        newUser(id: ID!): newUserResponse!
+        newUser(username: String!, email: String!, password: String!): User
         createPost(
-            userId: ID!
+            userId: ID
+            username: String!
             title: String!
             description: String!
             time: String
@@ -66,7 +63,8 @@ const typeDefs = gql`
             commentText: String!
             username: String!
         ): Comment
-        updateComment(_id: ID!, comment: ID!): Posts
+        # updateComment(_id: ID!, comment: ID!): Posts
+        # updateUser(username: String, email: String, password: String): User
         deleteComment(commentId: ID!): Boolean
     }
 `;

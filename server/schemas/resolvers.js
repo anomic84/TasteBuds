@@ -69,44 +69,46 @@ const resolvers = {
             return { token, user };
         },
 
-        //             createPost: async (parent, args) => {
-        //                 const posts = await Posts.create(args);
-        //                 return { posts };
-        //             },
+        createPost: async (parent, args) => {
+            const posts = await Posts.create(args);
+            console.log(posts);
+            return { posts };
+        },
 
-        //             updatePost: async (parent, { _id, data }) => {
-        //                 const posts = await Posts.findOneAndUpdate(
-        //                     { _id },
-        //                     { $set: data },
-        //                     { new: true }
-        //                 );
-        //                 return { posts };
-        //             },
-        //         },
+        updatePost: async (parent, args) => {
+            const postToUpdate = await Posts.findOne({ postId: args._id });
+            console.log(postToUpdate);
+            if (!postToUpdate) {
+                throw new Error('Post not found');
+            }
+            // Update the post fields with new values
+            postToUpdate.title = args.title;
+            postToUpdate.description = args.description;
+            postToUpdate.time = args.time;
+            postToUpdate.location = args.location;
 
-        //         deletePost: async (parent, { _id }) => {
-        //             const posts = await Posts.findByIdAndDelete({ _id });
-        //             return { message: 'Post deleted', success: true };
-        //         },
-
-        //         createComment: async (parent, args) => {
-        //             const comment = await Comment.create(args);
-        //             return { comment };
-        //         },
-
-        //         deleteComment: async (parent, { _id }) => {
-        //             const comment = await Comment.findByIdAndDelete(_id);
-        //             return { message: 'Comment deleted', success: true };
-        //         },
-
-        //         updateComment: async (parent, { _id, comment: commentId }) => {
-        //             const comment = await Posts.findOneAndUpdate(
-        //                 { _id },
-        //                 { $set: { comment: commentId } },
-        //                 { new: true }
-        //             );
-        //             return { comment };
+            // Save the updated post
+            const updatedPost = await postToUpdate.save();
+            console.log(updatedPost);
+            return updatedPost;
+        },
     },
+
+    // deletePost: async (parent, args, context) => {
+    //     const postToDelete = await Posts.findByIdAndDelete({ postId: args._id });
+    //     console.log(postToDelete);
+    //     return deletePost;
+    // },
+    // return { message: 'Post deleted', success: true };
+    //         createComment: async (parent, args) => {
+    //             const comment = await Comment.create(args);
+    //             return { comment };
+    //         },
+
+    // deleteComment: async (parent, { _id }) => {
+    //     const comment = await Comment.findByIdAndDelete(_id);
+    //     return { message: 'Comment deleted', success: true };
+    // },
 };
 
 module.exports = resolvers;
