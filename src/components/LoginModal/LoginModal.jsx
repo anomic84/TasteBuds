@@ -2,12 +2,17 @@ import React, { useState } from 'react'
 import LoginInput from './LoginInput'
 
 
-const LoginModal = () => {
-    const [modal, setModal] = useState(false);
+const LoginModal = ({ loginModal, toggleLoginModal }) => {
 
-    const toggleModal = () => {
-        setModal(!modal)
-    }
+
+  
+
+    // const loginBtn = document.getElementById('loginButton')
+    // console.log(loginBtn)
+    // loginBtn.addEventListener('click', (e) => {
+    //     e.preventDefault()
+    //     toggleLoginModal()
+    // })
 
     // --------------- LOGIN VALUES AND INPUTS --------------- //
     const [values, setValues] = useState({
@@ -47,25 +52,20 @@ const LoginModal = () => {
 
     return (
         <div className='w-full flex'>
-            <button
-                onClick={toggleModal}
-                className='text-2xl py-5 font-manrope text-navtext1
-                         md:bg-navbg md:font-bowlby md:text-borderblue  md:w-[180px]  md:p-2 md:drop-shadow-md
-                         md:mt-4 md:mx-auto md:text-base
-                         xl:text-2xl'>
-                Login
-            </button>
 
-            {modal && (
+
+            {loginModal && (
                 < div className='fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm
                 flex justify-center items-center w-full'>
-                    <div onClick={toggleModal} className="overlay">
+                    <div  className="overlay">
+                        {/* onClick={toggleLoginModal} */}
                         <div className='modal-content bg-card border border-borderblue rounded-lg p-4 drop-shadow-xl w-[300px] 
                         sm:w-[400px]
                         xl:w-[800px]'>
                             <div className='xl:py-8'>
                                 <h1 className='text-center font-titan text-borderblue text-2xl
                                                xl:text-4xl'>Login</h1>
+
                                 <form className='' onSubmit={handleSubmit}>
 
                                     {inputs.map((input) => (
@@ -83,7 +83,7 @@ const LoginModal = () => {
                                         <button
                                             className='close-modal mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                        xl:text-2xl'
-                                            onClick={toggleModal}>CLOSE
+                                            onClick={toggleLoginModal}>CLOSE
                                         </button>
                                     </div>
                                 </form>

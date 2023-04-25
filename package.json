@@ -23,6 +23,7 @@
         "web-vitals": "^2.1.4"
     },
     "scripts": {
+        "reactstart": "react-scripts start",
         "start": "node server --ignore client",
         "build": "cd client && npm run build",
         "install": "cd server && npm i && cd ../client && npm i",
