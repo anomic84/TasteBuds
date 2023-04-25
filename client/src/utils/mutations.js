@@ -72,22 +72,13 @@ export const UPDATE_POST = gql`
 `;
 // TODO: FINISH MUTATIONS
 
-// export const CREATE_COMMENT = gql`
+export const CREATE_COMMENT = gql`
+mutation CreateComment($postId: ID!, $commentText: String!, $username: String) {
+  createComment(postId: $postId, commentText: $commentText, username: $username) {
+    commentText
+    createdAt
+    username
+  }
+}
 
 
-// export const DELETE_POST = gql`
-//     mutation deletePost($postId: ID!) {
-    //         deletePost(postId: $postId)
-    //     }
-    // `;
-    
-// export const DELETE_COMMENT = gql`
-//     mutation deleteComment($commentId: ID!) {
-    //         deleteComment(commentId: $commentId)
-    //     }
-    // `;
-    
-
-    // TODO: OPTIONAL 
-    // export const UPDATE_COMMENT = gql`
-      // export const UPDATE_USER = gql`

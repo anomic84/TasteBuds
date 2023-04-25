@@ -75,6 +75,19 @@ const resolvers = {
             return { posts };
         },
 
+        createComment: async (parent, { postId, commentText }) => {
+            return Posts.findOneAndUpdate(
+                { _id: postId },
+                {
+                    $addToSet: { comments: { commentText } },
+                },
+                {
+                    new: true,
+                    runValidators: true,
+                }
+            );
+        },
+
         updatePost: async (parent, args) => {
             const postToUpdate = await Posts.findOne({ postId: args._id });
             console.log(postToUpdate);
@@ -93,6 +106,15 @@ const resolvers = {
             return updatedPost;
         },
     },
+
+    //     removeComment: async (parent, { thoughtId, commentId }) => {
+    //       return Thought.findOneAndUpdate(
+    //         { _id: thoughtId },
+    //         { $pull: { comments: { _id: commentId } } },
+    //         { new: true }
+    //       );
+    //     },
+    //   },
 
     // deletePost: async (parent, args, context) => {
     //     const postToDelete = await Posts.findByIdAndDelete({ postId: args._id });

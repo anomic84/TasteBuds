@@ -61,7 +61,7 @@ const typeDefs = gql`
         createComment(
             postId: ID!
             commentText: String!
-            username: String!
+            username: String
         ): Comment
         # updateComment(_id: ID!, comment: ID!): Posts
         # updateUser(username: String, email: String, password: String): User
