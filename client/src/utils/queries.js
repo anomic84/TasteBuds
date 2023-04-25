@@ -24,9 +24,10 @@ export const QUERY_ME = gql`
     }
 `;
 
-export const QUERY_POSTS = gql`
-    {
-        posts {
+
+export const QUERY_SINGLE_POST = gql`
+    query getUserPost($postId: ID!) {
+        posts(postId: $postId) {
             _id
             username
             title
@@ -42,9 +43,8 @@ export const QUERY_POSTS = gql`
         }
     }
 `;
-
-export const QUERY_SINGLE_POST = gql`
-    query getSinglePost($postId: ID!) {
+export const QUERY_USERNAME = gql`
+    query getUserByName($postId: ID!) {
         posts(postId: $postId) {
             _id
             username

@@ -43,7 +43,8 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         newUser(username: String!, email: String!, password: String!): User
         createPost(
-            userId: ID!
+            userId: ID
+            username: String!
             title: String!
             description: String!
             time: String
