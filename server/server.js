@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 // Serve up static assets
-// app.use('/images', express.static(path.join(__dirname, '../client/images')));
+app.use('/images', express.static(path.join(__dirname, '../client/images')));
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/build')));
@@ -35,9 +35,8 @@ app.get('/', (req, res) => {
 const startApolloServer = async (typeDefs, resolvers) => {
     await server.start();
     // server.applyMiddleware({ app });
-      server.applyMiddleware({ app, path: '/graphql' });
+    server.applyMiddleware({ app, path: '/graphql' });
 };
-
 
 db.once('open', () => {
     app.listen(PORT, () => {
