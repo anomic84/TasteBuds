@@ -11,7 +11,7 @@ export const LOGIN_USER = gql`
         }
     }
 `;
-// from graphQL sandbox
+// GET
 export const NEW_USER = gql`
     mutation newUser($username: String!, $email: String!, $password: String!) {
         addUser(username: $username, email: $email, password: $password) {
@@ -23,7 +23,7 @@ export const NEW_USER = gql`
         }
     }
 `;
-// from graphQL sandbox
+// CREATE
 export const CREATE_POST = gql`
     mutation createPost(
         $title: String!
@@ -47,7 +47,26 @@ export const CREATE_POST = gql`
         }
     }
 `;
-// from graphQL sandbox
+
+export const CREATE_COMMENT = gql`
+    mutation CreateComment(
+        $postId: ID!
+        $commentText: String!
+        $username: String
+    ) {
+        createComment(
+            postId: $postId
+            commentText: $commentText
+            username: $username
+        ) {
+            commentText
+            createdAt
+            username
+        }
+    }
+`;
+
+// UPDATE
 export const UPDATE_POST = gql`
     mutation updatePost(
         $description: String
@@ -70,24 +89,31 @@ export const UPDATE_POST = gql`
         }
     }
 `;
-// TODO: FINISH MUTATIONS
+//  DELETE
+export const DELETE_POST = gql`
+    mutation deletePost($postId: ID!) {
+        deletePost(postId: $postId) {
+            _id
+            username
+            title
+            description
+            time
+            location
+        }
+    }
+`;
+export const DELETE_COMMENT = gql`
+    mutation deleteComment($postId: ID!, $commentId: ID!) {
+        deleteComment(postId: $postId, commentId: $commentId) {
+            comments {
+                commentText
+                postId
+                _id
+                username
+                createdAt
+            }
+        }
+    }
+`;
 
-// export const CREATE_COMMENT = gql`
-
-
-// export const DELETE_POST = gql`
-//     mutation deletePost($postId: ID!) {
-    //         deletePost(postId: $postId)
-    //     }
-    // `;
-    
-// export const DELETE_COMMENT = gql`
-//     mutation deleteComment($commentId: ID!) {
-    //         deleteComment(commentId: $commentId)
-    //     }
-    // `;
-    
-
-    // TODO: OPTIONAL 
-    // export const UPDATE_COMMENT = gql`
-      // export const UPDATE_USER = gql`
+// TODO: finish mutations
