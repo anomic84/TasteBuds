@@ -50,6 +50,11 @@ const typeDefs = gql`
             time: String
             location: String!
         ): Posts
+        createComment(
+            postId: ID!
+            commentText: String!
+            username: String
+        ): Comment
         updatePost(
             postId: ID!
             title: String
@@ -57,15 +62,11 @@ const typeDefs = gql`
             time: String
             location: String
         ): Posts
-        deletePost(postId: ID!): Boolean
-        createComment(
-            postId: ID!
-            commentText: String!
-            username: String
-        ): Comment
+        deleteComment(postId: ID!, commentId: ID!): Posts
+        deletePost(postId: ID!): Posts
+
         # updateComment(_id: ID!, comment: ID!): Posts
         # updateUser(username: String, email: String, password: String): User
-        deleteComment(commentId: ID!): Boolean
     }
 `;
 

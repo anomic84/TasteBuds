@@ -13,6 +13,7 @@ const resolvers = {
             }
             throw new AuthenticationError('Not logged in');
         },
+        // READ
         getUserByName: async (parent, args) => {
             console.log(args);
             if (args.username) {
@@ -47,6 +48,7 @@ const resolvers = {
     },
 
     Mutation: {
+        // FIXME: needs to be tested again with encryption on front end
         login: async (parent, { email, password }) => {
             //  logs in a user with their email and password.
             const user = await User.findOne({ email });
@@ -63,6 +65,7 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
+        // CREATE
         newUser: async (parent, args) => {
             const user = await User.create(args);
             const token = signToken(user);
@@ -88,6 +91,7 @@ const resolvers = {
             );
         },
 
+        // UPDATE
         updatePost: async (parent, args) => {
             const postToUpdate = await Posts.findOne({ postId: args._id });
             console.log(postToUpdate);
@@ -105,32 +109,22 @@ const resolvers = {
             console.log(updatedPost);
             return updatedPost;
         },
+
+        // DELETE
+        deleteComment: async (parent, { postId, commentId }) => {
+            console.log('Comment deleted');
+            return Posts.findOneAndUpdate(
+                { _id: postId },
+                { $pull: { comments: { _id: commentId } } },
+                { new: true }
+            );
+        },
+
+        deletePost: async (parent, { postId }) => {
+            console.log('Post deleted');
+            return Posts.findOneAndDelete({ _id: postId });
+        },
     },
-
-    //     removeComment: async (parent, { thoughtId, commentId }) => {
-    //       return Thought.findOneAndUpdate(
-    //         { _id: thoughtId },
-    //         { $pull: { comments: { _id: commentId } } },
-    //         { new: true }
-    //       );
-    //     },
-    //   },
-
-    // deletePost: async (parent, args, context) => {
-    //     const postToDelete = await Posts.findByIdAndDelete({ postId: args._id });
-    //     console.log(postToDelete);
-    //     return deletePost;
-    // },
-    // return { message: 'Post deleted', success: true };
-    //         createComment: async (parent, args) => {
-    //             const comment = await Comment.create(args);
-    //             return { comment };
-    //         },
-
-    // deleteComment: async (parent, { _id }) => {
-    //     const comment = await Comment.findByIdAndDelete(_id);
-    //     return { message: 'Comment deleted', success: true };
-    // },
 };
 
 module.exports = resolvers;
