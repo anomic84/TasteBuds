@@ -3,34 +3,48 @@ const { postsSchema } = require('./Posts');
 const { isEmail } = require('validator');
 const bcrypt = require('bcrypt');
 
-const userSchema = new Schema({
-    username: {
-        type: String,
-        required: true,
-        unique: true,
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true,
-        trimmed: true,
-        // email: {
-        //     validate: [isEmail, 'invalid email'],
-        // },
-        validate: [isEmail, 'invalid email'],
-    },
-    password: {
-        type: String,
-        required: true,
-        // unique: true,
-    },
-    posts: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Posts',
+const userSchema = new Schema(
+    {
+        username: {
+            type: String,
+            required: true,
+            unique: true,
         },
-    ],
-    // posts: [postsSchema],
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+            trimmed: true,
+            // email: {
+            //     validate: [isEmail, 'invalid email'],
+            // },
+            validate: [isEmail, 'invalid email'],
+        },
+        password: {
+            type: String,
+            required: true,
+            // unique: true,
+        },
+        // posts: [
+        //     {
+        //         type: Schema.Types.ObjectId,
+        //         ref: 'Posts',
+        //     },
+        // ],
+    },
+    {
+        toJSON: {
+            virtuals: true,
+            getters: true,
+        },
+        id: false,
+    }
+);
+
+userSchema.virtual('posts', {
+    ref: 'Post',
+    localField: ['username'],
+    foreignField: ['username'],
 });
 
 // custom method to compare and validate password for logging in

@@ -13,9 +13,42 @@ const resolvers = {
             }
             throw new AuthenticationError('Not logged in');
         },
+        // READ
+        getUserByName: async (parent, args) => {
+            console.log(args);
+            if (args.username) {
+                const user = await User.findOne({ username: args.username });
+                console.log(user);
+                return user;
+            }
+        },
+        getUserPost: async (parent, args) => {
+            console.log(args);
+            if (args.userId) {
+                const user = await User.findById(args.user).select('-password');
+                if (!user) {
+                    throw new Error('User not found');
+                }
+                const posts = await Posts.find({ username: user.username });
+                return { user, posts };
+            } else if (args.username) {
+                const user = await User.findOne({
+                    username: args.username,
+                }).select('-password');
+                if (!user) {
+                    throw new Error('User not found');
+                }
+                const posts = await Posts.find({ username: user.username });
+                console.log(user, posts);
+                return posts;
+            } else {
+                throw new Error('Invalid arguments');
+            }
+        },
     },
 
     Mutation: {
+        // FIXME: needs to be tested again with encryption on front end
         login: async (parent, { email, password }) => {
             //  logs in a user with their email and password.
             const user = await User.findOne({ email });
@@ -32,86 +65,64 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        // adds a new user to the database.
+        // CREATE
         newUser: async (parent, args) => {
             const user = await User.create(args);
             const token = signToken(user);
             return { token, user };
         },
 
-        getUserByName: async (parent, args) => {
-            if (args.username) {
-                const user = await User.findOne({ username: args.username });
-                return { user };
-            } else if (args.email) {
-                const user = await User.findOne({ email: args.email });
-            }
-        },
-
-        // CREATE post
         createPost: async (parent, args) => {
             const posts = await Posts.create(args);
+            console.log(posts);
             return { posts };
         },
 
-        // UPDATE post
-        updatePost: async (parent, { _id, data }) => {
-            const posts = await Posts.findOneAndUpdate(
-                { _id },
-                { $set: data },
-                { new: true }
+        createComment: async (parent, { postId, commentText }) => {
+            return Posts.findOneAndUpdate(
+                { _id: postId },
+                {
+                    $addToSet: { comments: { commentText } },
+                },
+                {
+                    new: true,
+                    runValidators: true,
+                }
             );
-            return { posts };
         },
 
-        // GET post
-        getUserPost: async (parent, args) => {
-            if (args.userId) {
-                const user = await User.findById(args.user).select('-password');
-                if (!user) {
-                    throw new Error('User not found');
-                }
-                const posts = await Posts.find({ author: user._id });
-                return { user, posts };
-            } else if (args.username) {
-                const user = await User.findOne({
-                    username: args.username,
-                }).select('-password');
-                if (!user) {
-                    throw new Error('User not found');
-                }
-                const posts = await Posts.find({ author: user._id });
-                return { user, posts };
-            } else {
-                throw new Error('Invalid arguments');
+        // UPDATE
+        updatePost: async (parent, args) => {
+            const postToUpdate = await Posts.findOne({ postId: args._id });
+            console.log(postToUpdate);
+            if (!postToUpdate) {
+                throw new Error('Post not found');
             }
+            // Update the post fields with new values
+            postToUpdate.title = args.title;
+            postToUpdate.description = args.description;
+            postToUpdate.time = args.time;
+            postToUpdate.location = args.location;
+
+            // Save the updated post
+            const updatedPost = await postToUpdate.save();
+            console.log(updatedPost);
+            return updatedPost;
         },
 
-        // DELETE post
-        deletePost: async (parent, { _id }) => {
-            const posts = await Posts.findByIdAndDelete({ _id });
-            return { message: 'Post deleted', success: true };
-        },
-
-        // CREATE comment
-        createComment: async (parent, args) => {
-            const comment = await Comment.create(args);
-            return { comment };
-        },
-
-        // DELETE comment
-        deleteComment: async (parent, { _id }) => {
-            const comment = await Comment.findByIdAndDelete(_id);
-            return { message: 'Comment deleted', success: true };
-        },
-
-        updateComment: async (parent, { _id, comment: commentId }) => {
-            const comment = await Posts.findOneAndUpdate(
-                { _id },
-                { $set: { comment: commentId } },
+        // DELETE
+        deleteComment: async (parent, { postId, commentId }) => {
+            console.log('Comment deleted');
+            return Posts.findOneAndUpdate(
+                { _id: postId },
+                { $pull: { comments: { _id: commentId } } },
                 { new: true }
             );
-            return { comment };
+        },
+
+        deletePost: async (parent, { postId }) => {
+            console.log('Post deleted');
+            return Posts.findOneAndDelete({ _id: postId });
         },
     },
 };

@@ -4,10 +4,10 @@ const moment = require('moment'); // import the moment library
 const commentSchema = new Schema(
     {
         // FIXME: added commentId
-        commentId: {
-            type: mongoose.ObjectId,
-            default: () => new mongoose.Types.ObjectId(),
-        },
+        // commentId: {
+        //     type: mongoose.ObjectId,
+        //     default: () => new mongoose.Types.ObjectId(),
+        // },
         commentText: {
             type: String,
             required: true,
