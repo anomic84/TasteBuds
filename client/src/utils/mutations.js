@@ -115,5 +115,3 @@ export const DELETE_COMMENT = gql`
         }
     }
 `;
-
-// TODO: finish mutations

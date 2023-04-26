@@ -2,12 +2,14 @@
 import { useContext, useEffect, useRef, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { editUserData, editUserBio, getUser } from "./EditProfile"
+// const { AuthService } = require('../utils/auth');
 
 
 const User = () => {
   const params = useParams()
   const userId = params.id
-  const { auth, setAuth } = useContext()//need Auth
+  // const { auth, setAuth } = useContext()//need Auth
+  const { auth, setAuth } = useContext()
 
   const bioRef = useRef('')
   const [errors, setErrors] = useState(false)
@@ -25,7 +27,9 @@ const User = () => {
     })
 
 useEffect(() => {
-    (async function getUserData() {
+  // FIX ME: made changes
+    // (async function getUserData() {
+      const fetchUserData = async ()=> { // Rename to fetchUserData for clarity
       const data = await getUser(userId)
       setUserData(data)
       setFormData({
@@ -33,43 +37,56 @@ useEffect(() => {
         bio: data.bio,
         email: data.email,
       })
-        })()
-    }, []);
+        }
+        // FIXME: made changes
+        fetchUserData()
+    }, [userId]); // Add userId as dependency
 
 useEffect(() => {
-  if (auth?._id === userId && isOwner === false)
-  setIsOwner(true)
-  }, [formData])
+  // FIX ME: updated comparison
+  // if (auth?._id === userId && isOwner === false)
+    if (auth?._id === userId && !isOwner) {
+  setIsOwner(true);
+}
+   // FIXME: made changes
+  // }, [formData])
+}, [formData, userId, auth, isOwner]);
+
+// FIXME: reformatted
   async function handleUserData(e) {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      const formDataValue = new FormData(e.target)
-      const { username, email } = Object.fromEntries(formDataValue.entries())
-      const data = await editUserData(auth._id, username, email)
+      const formDataValue = new FormData(e.target);
+      const { username, email } = Object.fromEntries(formDataValue.entries());
+      const data = await editUserData(auth._id, username, email);
 
       if (data?.message) {
-        setErrors(true)
+        setErrors(true);
       } else {
-        setAuth(data)
-        setErrors(false)
+        setAuth(data);
+        setErrors(false);
       }
       } catch (error) {
-          setErrors(true)
+          setErrors(true);
       }
     }
+// FIXME: reformatted
 async function handleUserBio(e) {
-  e.preventDefault()
-  const bioData = bioRef.current.value
+  e.preventDefault();
+  const bioData = bioRef.current.value;
   try {
-    const data = await editUserBio(auth._id, auth.username, bioData)
-    if (data?.message)
-      setErrors(true)
-    else
-      setAuth(data)
+    const data = await editUserBio(auth._id, auth.username, bioData);
+    if (data?.message) {
+      setErrors(true);
+     } else {
+      setAuth(data);
+     }
     } catch (error) {
-        setErrors(true)
+        setErrors(true);
     }
     }
+  
+
     return (
       <div className="container emp-profile">
         <form method="POST" onSubmit={handleUserData}>
