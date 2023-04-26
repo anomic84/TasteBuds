@@ -45,6 +45,10 @@ const resolvers = {
                 throw new Error('Invalid arguments');
             }
         },
+        getAllPosts: async (parent, args) => {
+            const posts = await Posts.find();
+            return posts;
+        },
     },
 
     Mutation: {
