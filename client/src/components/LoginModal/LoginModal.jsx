@@ -11,7 +11,7 @@ const LoginModal = ({ loginModal, toggleLoginModal }) => {
 
     // --------------- LOGIN VALUES AND INPUTS --------------- //
     const [userFormData, setUserFormData] = useState({
-        email: "",
+        username: "",
         password: "",
     });
 
@@ -52,9 +52,12 @@ const LoginModal = ({ loginModal, toggleLoginModal }) => {
         }
 
         try {
+            console.log('userFormData: ', userFormData)
             const { data } = await login({
                 variables: { ...userFormData },
             });
+
+            console.log(data)
 
             Auth.login(data.login.token);
         } catch (err) {
