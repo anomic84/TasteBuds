@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './logininput.css'
+
 const LoginInput = (props) => {
   const [focused, setFocused] = useState(false);
   const { label, onChange, id, ...inputProps } = props;

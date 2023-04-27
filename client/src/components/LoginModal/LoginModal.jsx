@@ -43,6 +43,7 @@ const LoginModal = ({ loginModal, toggleLoginModal }) => {
     };
    const handleFormSubmit = async (event) => {
         event.preventDefault();
+            setUserFormData(event.target.username.value);
 
         // check if form has everything (as per react-bootstrap docs)
         const form = event.currentTarget;
