@@ -18,7 +18,7 @@ const Home = () => {
 
     <div className=' flex flex-col mx-auto'>
       {/* Greetings Section <--to--> Not a Member? */}
-      <div className='flex flex-col'>
+      <div className='flex flex-col px-4'>
         <h1 className=' py-5 text-5xl font-bowlby text-borderblue  drop-shadow-lg
         md:text-center
         xl:text-8xl'>
@@ -40,7 +40,7 @@ const Home = () => {
         </p>
       </div>
       {/* SignUp and Login */}
-      <div className='flex flex-row justify-center items-center gap-2'>
+      <div className='flex flex-row justify-center mx-auto items-center gap-2'>
         <div className='hidden md:flex justify-center'>
           <button
             onClick={toggleSignUpModal}
