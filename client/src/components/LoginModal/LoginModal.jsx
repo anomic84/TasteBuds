@@ -8,12 +8,6 @@ import { LOGIN_USER } from '../../utils/mutations';
 
 const LoginModal = ({ loginModal, toggleLoginModal }) => {
 
-    // const loginBtn = document.getElementById('loginButton')
-    // console.log(loginBtn)
-    // loginBtn.addEventListener('click', (e) => {
-    //     e.preventDefault()
-    //     toggleLoginModal()
-    // })
 
     // --------------- LOGIN VALUES AND INPUTS --------------- //
     const [userFormData, setUserFormData] = useState({
@@ -39,7 +33,6 @@ const LoginModal = ({ loginModal, toggleLoginModal }) => {
             required: true,
         }
     ]
-    const [setShowAlert] = useState(false);
 
     const [login] = useMutation(LOGIN_USER);
 
@@ -66,12 +59,11 @@ const LoginModal = ({ loginModal, toggleLoginModal }) => {
             Auth.login(data.login.token);
         } catch (err) {
             console.error(err);
-            setShowAlert(true);
         }
 
         setUserFormData({
             username: '',
-            email: '',
+            // email: '',
             password: '',
         });
     };
@@ -104,7 +96,7 @@ const LoginModal = ({ loginModal, toggleLoginModal }) => {
                                     ))}
                                     <div className='flex flex-row justify-center'>
                                         <button className='mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
-                                                          xl:text-2xl'>
+                                                          xl:text-2xl'  type='submit' variant='success'>
                                             Submit</button>
                                         <button
                                             className='close-modal mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md

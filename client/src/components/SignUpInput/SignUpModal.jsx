@@ -28,7 +28,6 @@ const SignUpModal = ({ signUpModal, toggleSignUpModal }) => {
   
         event.preventDefault();
         console.log('HANDLE FORM SUBMIT TRIGGERED')
-        console.log('userFormData: ', userFormData)
         // check if form has everything (as per react-bootstrap docs)
         const form = event.currentTarget;
         if (form.checkValidity() === false) {

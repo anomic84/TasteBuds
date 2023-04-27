@@ -72,29 +72,28 @@ db.once('open', async () => {
 
     console.log('Posts seeded 📝');
 
-
     await User.deleteMany();
 
     await User.create(
         {
             username: 'HungryHippoEatsAlone',
             email: 'nomnomnom@gmail.com',
-            password: 'BurgerLover123',
+            password: 'BurgerLover123!',
         },
         {
             username: 'FoodieFunster',
             email: 'dineanddash@yahoo.com',
-            password: 'CheesyFriesRule',
+            password: 'CheesyFriesRule1!',
         },
         {
             username: 'TableForOneNoMore',
             email: 'solofoodieadventures@hotmail.com',
-            password: 'FoodieFriendFinder',
+            password: 'FoodieFriendFinder1!',
         },
         {
             username: 'NoMoreLonelyMeals',
             email: 'foodiecomrade@gmail.com',
-            password: 'EatingIsBetterWithCompany',
+            password: 'EatingIsBetterWithCompany1!',
         }
     );
 
