@@ -1,19 +1,57 @@
 import React, { useState } from 'react'
 import SignUpInput from './SignUpInput'
+import { useMutation } from '@apollo/client';
+import { NEW_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
 const SignUpModal = ({ signUpModal, toggleSignUpModal }) => {
 
 
- 
-
   // --------------- SIGN UP VALUES AND INPUTS --------------- //
-  const [values, setValues] = useState({
+  const [userFormData, setUserFormData] = useState({
     username: "",
     email: "",
-    password: "",
-    confirmPassword: "",
+    password: ""
   });
+    // set state for form validation
+    // const [validated] = useState(false);
+    // set state for alert
+    // define mutation for adding a user
+    const [newUser, { error }] = useMutation(NEW_USER);
 
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setUserFormData({ ...userFormData, [name]: value });
+    };
+
+    const handleFormSubmit = async (event) => {
+  
+        event.preventDefault();
+        console.log('HANDLE FORM SUBMIT TRIGGERED')
+        // check if form has everything (as per react-bootstrap docs)
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
+        try {
+            const { data } = await newUser({
+                variables: {...userFormData},
+            });
+
+            Auth.login(data.newUser.token);
+            console.log(data.newUser.token);
+        } catch (err) {
+            console.error(err);
+        }
+
+        setUserFormData({
+            username: '',
+            email: '',
+            password: '',
+        });
+    };
   const inputs = [
     {
       id: 1,
@@ -46,28 +84,22 @@ const SignUpModal = ({ signUpModal, toggleSignUpModal }) => {
       pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
       required: true,
     },
-    {
-      id: 4,
-      name: "confirmPassword",
-      type: "password",
-      placeholder: "Confirm Password",
-      errorMessage: "Passwords need to match!",
-      label: "Confirm Password",
-      pattern: values.password,
-      required: true,
-    }
+    // {
+    //   id: 4,
+    //   name: "confirmPassword",
+    //   type: "password",
+    //   placeholder: "Confirm Password",
+    //   errorMessage: "Passwords need to match!",
+    //   label: "Confirm Password",
+    //   pattern:`^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
+    //   required: true,
+    // }
   ]
 
   // --------------- SIGN UP METHODS --------------- //
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
 
-  const onChange = (e) => {
-    console.log(e.target.value)
-    setValues({ ...values, [e.target.name]: e.target.value })
-  }
+
   return (
     <div className='w-full flex'>
 
@@ -83,19 +115,19 @@ const SignUpModal = ({ signUpModal, toggleSignUpModal }) => {
               <div className='xl:py-8'>
                 <h1 className='text-center font-titan text-borderblue text-2xl
                                                xl:text-4xl'>Sign Up!</h1>
-                <form className='' onSubmit={handleSubmit}>
+                <form className='' onSubmit={handleFormSubmit}  >
 
                   {inputs.map((input) => (
                     <SignUpInput
                       key={input.id}
                       {...input}
-                      value={values[input.name]}
-                      onChange={onChange}
+                      value={userFormData[input.name]}
+                      onChange={handleInputChange}
                     />
                   ))}
                   <div className='flex flex-row justify-center'>
                     <button className='mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
-                                                          xl:text-2xl'>
+                                                          xl:text-2xl' type='submit' variant='success'>
                       Submit</button>
                     <button
                       className='close-modal mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md

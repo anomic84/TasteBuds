@@ -49,6 +49,7 @@ const resolvers = {
             const posts = await Posts.find();
             return posts;
         },
+
     },
 
     Mutation: {

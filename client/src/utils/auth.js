@@ -23,6 +23,7 @@ class AuthService {
                 return true;
             } else return false;
         } catch (err) {
+            console.log('Invalid token EXPIRED', err);
             return false;
         }
     }
