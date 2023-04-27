@@ -5,6 +5,7 @@ const typeDefs = gql`
         me: User
         getUserByName(username: String, userID: ID): User
         getUserPost(username: String, userID: ID): [Posts]
+        getAllPosts: [Posts]
     }
 
     type User {
