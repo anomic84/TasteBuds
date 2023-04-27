@@ -54,15 +54,16 @@ const resolvers = {
 
     Mutation: {
         // FIXME: needs to be tested again with encryption on front end
-        login: async (parent, { email, password }) => {
+        login: async (parent, { username, password }) => {
             //  logs in a user with their email and password.
-            const user = await User.findOne({ email });
+            const user = await User.findOne({ username });
             // checks if a user with the given email exists in the database.
             if (!user) {
                 throw new AuthenticationError('No user found with this email.');
             }
             // checks if the password provided matches the user's password in the database.
             const correctPassword = await user.isCorrectPassword(password);
+            
             if (!correctPassword) {
                 throw new AuthenticationError('Incorrect password');
             }
