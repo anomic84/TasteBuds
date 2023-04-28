@@ -44,3 +44,16 @@ export const QUERY_USERNAME = gql`
         }
     }
 `;
+export const QUERY_POSTS = gql`
+    query getAllPosts {
+        getAllPosts {
+            _id
+            userId
+            username
+            title
+            description
+            time
+            location
+        }
+    }
+`;

@@ -1,6 +1,6 @@
 import React from 'react'
-import { adminEvents } from '../../constants/constants'
-import EventCard from '../../components/EventCard'
+// import { adminEvents } from '../../constants/constants'
+// import EventCard from '../../components/EventCard'
 import CreateModal from '../../components/CreateModal/CreateModal'
 
 const Admin = () => {
@@ -13,9 +13,9 @@ const Admin = () => {
                 xl:text-6xl xl:py-2'>Cryptic Andy</h1>
             </div>
             <div className='sm:m-4 flex flex-col items-center'>
-                {adminEvents.map((adminEvent) => (
+                {/* {adminEvents.map((adminEvent) => (
                     <EventCard key={adminEvent.id} {...adminEvent} />
-                ))}
+                ))} */}
             </div>
             <div className='z-0'>
                 <CreateModal />
