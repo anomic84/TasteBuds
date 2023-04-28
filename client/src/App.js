@@ -1,6 +1,7 @@
 import React from 'react';
-import { Admin, Listings, User, Event, Home } from './pages';
-import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+// import { Admin, Listings, User, Event, Home } from './pages';
+import { Admin, Listings, Home } from './pages';
+import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import './index.css';
@@ -43,9 +44,9 @@ function App() {
                     /> */}
                         <Navbar />
                         <Routes>
-                            <Route path="/" exact element={<Home />} />
-                            <Route path="/admin" element={<Admin />} />
-                            <Route path="/listings" element={<Listings />} />
+                            <Route path='/' exact element={<Home />} />
+                            <Route path='/admin' element={<Admin />} />
+                            <Route path='/listings' element={<Listings />} />
                         </Routes>
                         {/* <main className='flex w-full'>{renderPage()}</main> */}
                     </div>
