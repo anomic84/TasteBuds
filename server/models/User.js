@@ -1,5 +1,5 @@
 const { Schema, model, Types } = require('mongoose');
-const { postsSchema } = require('./Posts');
+const { Posts, postsSchema } = require('./Posts');
 const { isEmail } = require('validator');
 const bcrypt = require('bcrypt');
 
@@ -42,7 +42,7 @@ const userSchema = new Schema(
 );
 
 userSchema.virtual('posts', {
-    ref: 'Post',
+    ref: 'Posts',
     localField: ['username'],
     foreignField: ['username'],
 });
@@ -50,13 +50,12 @@ userSchema.virtual('posts', {
 // hash user password
 userSchema.pre('save', async function (next) {
     if (this.isNew || this.isModified('password')) {
-      const saltRounds = 10;
-      this.password = await bcrypt.hash(this.password, saltRounds);
+        const saltRounds = 10;
+        this.password = await bcrypt.hash(this.password, saltRounds);
     }
-  
+
     next();
-  });
-  
+});
 
 // custom method to compare and validate password for logging in
 userSchema.methods.isCorrectPassword = async function (password) {

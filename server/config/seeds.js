@@ -6,7 +6,7 @@ db.once('open', async () => {
 
     const posts = await Posts.insertMany([
         {
-            username: 'HungryHippoEatsAlone',
+            username: 'HungryHippoEats',
             title: 'Dine and Connect: Seeking Company for Dinner at a Cozy Bistro!',
             description:
                 "Tired of dining alone? Join me for a lovely evening of good food and great company at a charming bistro. Let's enjoy a delicious meal together, share stories, and connect over our love for food. All are welcome, and no one should have to eat alone! Looking forward to meeting new friends over a scrumptious meal.",
@@ -31,13 +31,13 @@ db.once('open', async () => {
                 {
                     commentText:
                         "I love Italian food! Can't wait for the feast!",
-                    username: 'TableForOneNoMore',
+                    username: 'TableForMore',
                     createdAt: new Date(),
                 },
             ],
         },
         {
-            username: 'TableForOneNoMore',
+            username: 'TableForMore',
             title: 'Sushi and Socializing: Seeking Sushi Lover to Join Me for Dinner!',
             description:
                 "Love sushi as much as I do? Let's enjoy a sushi extravaganza together at a popular sushi restaurant. We'll sample fresh sashimi, creative rolls, and share our mutual love for this Japanese delicacy. Whether you're a sushi connoisseur or new to the world of sushi, come join me for a delicious and social dining experience!",
@@ -47,13 +47,13 @@ db.once('open', async () => {
                 {
                     commentText:
                         "Sushi is my favorite! I'm in for a sushi extravaganza!",
-                    username: 'NoMoreLonelyMeals',
+                    username: 'NoLonelyMeals',
                     createdAt: new Date(),
                 },
             ],
         },
         {
-            username: 'NoMoreLonelyMeals',
+            username: 'NoLonelyMeals',
             title: 'Burger Buddy: Seeking Foodie to Share a Burger Feast!',
             description:
                 "Hey, I want to try this new burger joint! I have been craving burgers, but all my friends are vegetarian. Join me for a casual and delicious burger dinner at a local burger joint. Let's satisfy our burger cravings and make new foodie friends!",
@@ -63,7 +63,7 @@ db.once('open', async () => {
                 {
                     commentText:
                         'Burgers are always a good idea! See you there!',
-                    username: 'HungryHippoEatsAlone',
+                    username: 'HungryHippoEats',
                     createdAt: new Date(),
                 },
             ],
@@ -76,24 +76,24 @@ db.once('open', async () => {
 
     await User.create(
         {
-            username: 'HungryHippoEatsAlone',
-            email: 'nomnomnom@gmail.com',
+            username: 'HungryHippoEats',
+            email: 'nomnom@gmail.com',
             password: 'BurgerLover123!',
         },
         {
             username: 'FoodieFunster',
             email: 'dineanddash@yahoo.com',
-            password: 'CheesyFriesRule1!',
+            password: 'FriesRule1!',
         },
         {
-            username: 'TableForOneNoMore',
-            email: 'solofoodieadventures@hotmail.com',
-            password: 'FoodieFriendFinder1!',
+            username: 'TableForMore',
+            email: 'solofoodie@hotmail.com',
+            password: 'FoodieFriend1!',
         },
         {
-            username: 'NoMoreLonelyMeals',
-            email: 'foodiecomrade@gmail.com',
-            password: 'EatingIsBetterWithCompany1!',
+            username: 'NoLonelyMeals',
+            email: 'foodie@gmail.com',
+            password: 'EatingIsFun1!',
         }
     );
 
