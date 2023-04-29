@@ -36,7 +36,7 @@ const EventCard = ({ title, description, username, location, time, comments, pos
     const handleSubmit = (e) => {
         e.preventDefault();
     };
-
+// add comment
     const addComment = async () => {
         console.log(postId);
         try {
@@ -84,7 +84,6 @@ const EventCard = ({ title, description, username, location, time, comments, pos
         lg:max-w-[900px]
         xl:max-w-[1100px]'>
             {/* ------------  TABLETS AND UP ------------ */}
-            {/* TODO: link these params to backend */}
             <div className='hidden w-[90%] sm:flex flex-col font-manrope p-4 
             sm:w-full 
                         md:max-w-[600px] md:rounded-3xl md:m-4
@@ -198,7 +197,7 @@ const EventCard = ({ title, description, username, location, time, comments, pos
                         ))}
                         <div className='flex flex-row justify-center'>
                             <button className='mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
-                       xl:text-2xl' onClick={()=>addComment()} >
+                       xl:text-2xl' type="submit" onClick={()=>addComment()} >
                                 Submit</button>
                             <button
                                 className='close-modal mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md

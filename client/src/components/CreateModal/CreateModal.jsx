@@ -4,6 +4,8 @@ import { useMutation } from '@apollo/client';
 import { CREATE_POST } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { QUERY_ME, QUERY_POSTS } from '../../utils/queries';
+
+
 const CreateModal = ({ client, source }) => {
     const [modal, setModal] = useState(false);
     const [post] = useMutation(CREATE_POST);
@@ -42,7 +44,7 @@ const CreateModal = ({ client, source }) => {
         {
             id: 4,
             name: "time",
-            type: "text",
+            type: "time",
             placeholder: "Time",
             label: "Time",
             required: true,

@@ -11,6 +11,8 @@ import Auth from '../../utils/auth';
 import { TbCalendarPlus } from 'react-icons/tb'
 import CreateInput
     from '../../components/CreateModal/CreateInput';
+
+
 const Admin = ({ client }) => {
 
     const [modal, setModal] = useState(false);
@@ -88,7 +90,7 @@ const Admin = ({ client }) => {
         try {
             const token = Auth.loggedIn() ? Auth.getToken() : null;
             const userData = Auth.getProfile();
-            console.log(userData)
+            // console.log(userData)
             if (!token) {
                 return false;
             }
@@ -102,16 +104,6 @@ const Admin = ({ client }) => {
                 }
             });
 
-            // console.log(data)
-            // if (source === "admin") {
-            //     await client.refetchQueries({ include: [QUERY_ME] })
-            //     toggleModal()
-            // } else if (source === "listing") {
-            //     console.log('made it')
-            //     await client.refetchQueries({ include: [QUERY_POSTS] })
-            //     toggleModal()
-            // }
-
         } catch (err) {
             console.error(err);
         }
@@ -119,7 +111,7 @@ const Admin = ({ client }) => {
 
     const { loading, data } = useQuery(QUERY_ME);
     if (data) {
-        console.log('DATA: ', data.me);
+        // console.log('DATA: ', data.me);
     }
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) {
@@ -132,7 +124,7 @@ const Admin = ({ client }) => {
             md:w-[80%]
             xl:max-w-[1000px]'>
                 <h1 className='text-center text-borderblue font-manrope font-bold text-4xl
-                xl:text-6xl xl:py-2'>{data ? data.me.username : "waffles"}</h1>
+                xl:text-6xl xl:py-2'>{data ? data.me.username : <br/>}</h1>
             </div>
             <div className='z-10'>
                 <CreateModal source={"admin"} client={client} />

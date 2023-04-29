@@ -10,11 +10,11 @@ const CommentInput = (props) => {
     };
     return (
         <div className="formInput mx-auto flex  flex-col ">
-            <label className='text-navtext1 text-sm leading-lg pb-1 font-manrope
+            <label for="comment" className='text-navtext1 text-sm leading-lg pb-1 font-manrope
                               lg:text-lg
                               xl:text-xl'>{label}
             </label>
-            <input
+            <textarea
                 className='rounded border border-borderblue text-slate-800 font-[500] p-1
                          xl:text-xl'
                 {...inputProps}
