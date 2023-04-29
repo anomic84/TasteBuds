@@ -13,8 +13,6 @@ import { QUERY_ME, QUERY_POSTS} from '../utils/queries';
 const EventCard = ({ title, description, username, location, time, comments, postId,  source, client}) => {
 
 
-   
-
     // --------------- COMMENT VALUES AND INPUTS --------------- //
     const [values, setValues] = useState({
         username: '',
@@ -22,14 +20,7 @@ const EventCard = ({ title, description, username, location, time, comments, pos
     });
     const [comment] = useMutation(CREATE_COMMENT);
     const inputs = [
-        // {
-        //     id: 1,
-        //     name: "username",
-        //     type: "text",
-        //     placeholder: "Username",
-        //     label: "Username",
-        //     required: true,
-        // },
+      
         {
             id: 2,
             name: "commentText",
@@ -76,6 +67,8 @@ const EventCard = ({ title, description, username, location, time, comments, pos
             console.error(err);
         }
     };
+
+    
 
     const onChange = (e) => {
         //console.log(e.target.value)
@@ -176,24 +169,24 @@ const EventCard = ({ title, description, username, location, time, comments, pos
                           xl:text-lg'>{time}</p>
                         </div>
                     </div>
-                    <div className='flex w-[10%] flex-col  sm:hidden'>
+                    {/* <div className='flex w-[10%] flex-col  sm:hidden'> */}
                         {/* How many going */}
-                        <div className='flex flex-col items-center py-4'>
-                            <FaCheckSquare className='text-borderblue' size={27} />
+                        {/* <div className='flex flex-col items-center py-4'> */}
+                            {/* <FaCheckSquare className='text-borderblue' size={27} /> */}
                             {/* TODO: THIS NEEDS TO SWITCH TO {going.count} IF WE DO THIS */}
-                            <p className='text-xs text-navtext1'>3</p>
+                            {/* <p className='text-xs text-navtext1'>3</p> */}
 
-                        </div>
+                        {/* </div>
                         <div className='flex flex-col items-center py-4'>
-                            <FaCommentAlt className='text-borderblue' size={27} />
+                            <FaCommentAlt className='text-borderblue' size={27} /> */}
                             {/* TODO: THIS NEEDS TO SWITCH TO {comment.count} IF WE DO THIS */}
-                            <p className='text-xs text-navtext1'>3</p>
+                            {/* <p className='text-xs text-navtext1'>3</p>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className='mx-auto w-[80%] mb-4 flex sm:hidden'>
-                    <form className='' onSubmit={handleSubmit}>
+                    <form className='w-[100%]' onSubmit={handleSubmit}>
 
                         {inputs.map((input) => (
                             <CommentInput
@@ -205,7 +198,7 @@ const EventCard = ({ title, description, username, location, time, comments, pos
                         ))}
                         <div className='flex flex-row justify-center'>
                             <button className='mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
-                       xl:text-2xl' type="submit" >
+                       xl:text-2xl' onClick={()=>addComment()} >
                                 Submit</button>
                             <button
                                 className='close-modal mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md

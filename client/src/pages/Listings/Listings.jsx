@@ -21,10 +21,18 @@ function Listings({client}) {
     if (!token) {
         return false;
     }
+
+   
+
     return (
 
         <section className=' w-full  flex flex-col justify-center'>
-<h1 className='p-1 text-4xl font-bold text-borderblue text-center'>Listing of ALL posts</h1>
+               {/* <h1 className='text-center text-borderblue font-manrope font-bold text-4xl
+                xl:text-6xl xl:py-2'>Logged in as {data ? data.me.username : "waffles"}</h1> */}
+                <div className='z-10'>
+                    <CreateModal source={"listing"} client={client} />
+                </div>
+
             {/* <p className='ml-4 w-[160px] text-manrope text-xs bg-blue-100 p-1 rounded text-navtext1'>logged in as {" "} </p> */}
             <div className='sm:m-4 flex flex-col items-center'>
                 {data?data.getAllPosts.map((post) => (
@@ -34,15 +42,12 @@ function Listings({client}) {
                 )):<br/>}
                 
                 {/* {loading ? (
-            <h1> Loading posts</h1>
-          ) : (
-               <EventCard posts={posts}/>
-             ) 
-         }
-     ;  */}
-            </div>
-            <div className=''>
-                <CreateModal source={"listing"} client={client} />
+                    <h1> Loading posts</h1>
+                    ) : (
+                        <EventCard posts={posts}/>
+                        ) 
+                    }
+                ;  */}
             </div>
         </section>
     );
