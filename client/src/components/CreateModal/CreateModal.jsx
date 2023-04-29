@@ -3,8 +3,8 @@ import CreateInput from './CreateInput';
 import { useMutation } from '@apollo/client';
 import { CREATE_POST } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-import { QUERY_ME, QUERY_POSTS} from '../../utils/queries';
-const CreateModal = ({client, source}) => {
+import { QUERY_ME, QUERY_POSTS } from '../../utils/queries';
+const CreateModal = ({ client, source }) => {
     const [modal, setModal] = useState(false);
     const [post] = useMutation(CREATE_POST);
     const toggleModal = () => {
@@ -65,7 +65,7 @@ const CreateModal = ({client, source}) => {
         },
     ]
 
-    // --------------- SIGN UP METHODS --------------- //
+    // --------------- CREATE EVENT METHODS --------------- //
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -85,21 +85,22 @@ const CreateModal = ({client, source}) => {
                 return false;
             }
             const { data } = await post({
-                variables: {         
+                variables: {
                     title: values.title,
                     description: values.description,
                     location: values.location,
                     time: Date(),
-                    username: userData.data.username}
+                    username: userData.data.username
+                }
             });
 
             console.log(data)
-            if(source === "admin"){
-                await client.refetchQueries({include:[QUERY_ME]})
+            if (source === "admin") {
+                await client.refetchQueries({ include: [QUERY_ME] })
                 toggleModal()
-            } else if (source === "listing"){
+            } else if (source === "listing") {
                 console.log('made it')
-                await client.refetchQueries({include:[QUERY_POSTS]})
+                await client.refetchQueries({ include: [QUERY_POSTS] })
                 toggleModal()
             }
 
@@ -142,7 +143,7 @@ const CreateModal = ({client, source}) => {
                                     ))}
                                     <div className='flex flex-row justify-center'>
                                         <button className='mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
-                                                           xl:text-2xl' onClick={()=>handleCreatePost()}>
+                                                           xl:text-2xl' onClick={() => handleCreatePost()}>
                                             Submit</button>
                                         <button
                                             className='close-modal mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
