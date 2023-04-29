@@ -3,10 +3,14 @@ import { FaCheckSquare, FaCommentAlt } from 'react-icons/fa'
 import CommentInput from './CommentInput/CommentInput'
 import { comments } from './../constants/constants'
 import CommentCard from './CommentCard'
+
+
 // import CommentModal from './CommentModal/CommentModal'
 
-const EventCard = ({ title, description, username, location, time, createdAt }) => {
+const EventCard = ({ title, description, username, location, time }) => {
 
+
+   
 
     // --------------- COMMENT VALUES AND INPUTS --------------- //
     const [values, setValues] = useState({
@@ -65,7 +69,7 @@ const EventCard = ({ title, description, username, location, time, createdAt }) 
                 <div className='w-[90%] flex flex-col mx-auto'>
                     <p className='text-[10px] text-navtext1
                           lg:text-sm
-                          xl:text-base'>Created by {username} on {createdAt}</p>
+                          xl:text-base'>Created by {username}</p>
                     <p className='w-full mx-auto py-2 text-sm text-slate-800
                           lg:text-lg lg:py-4
                           xl:text-xl'>{description}</p>
@@ -125,7 +129,7 @@ const EventCard = ({ title, description, username, location, time, createdAt }) 
                         <div className='w-[90%] flex flex-col mx-auto'>
                             <p className='text-[10px] text-navtext1
                           lg:text-sm
-                          xl:text-lg'>Created by {username} on {createdAt}</p>
+                          xl:text-lg'>Created by {username}</p>
                             <p className='w-full mx-auto py-2 text-sm text-slate-800
                           lg:text-lg lg:py-4
                           xl:text-2xl'>{description}</p>
