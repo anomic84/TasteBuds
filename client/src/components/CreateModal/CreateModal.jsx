@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import CreateInput from './CreateInput';
-
-const CreateModal = () => {
+import { useMutation } from '@apollo/client';
+import { CREATE_POST } from '../../utils/mutations';
+import Auth from '../../utils/auth';
+import { QUERY_ME, QUERY_POSTS} from '../../utils/queries';
+const CreateModal = ({client, source}) => {
     const [modal, setModal] = useState(false);
-
+    const [post] = useMutation(CREATE_POST);
     const toggleModal = () => {
         setModal(!modal)
     }
@@ -19,14 +22,7 @@ const CreateModal = () => {
     });
 
     const inputs = [
-        {
-            id: 1,
-            name: "username",
-            type: "text",
-            placeholder: "Username",
-            label: "Username",
-            required: true,
-        },
+
         {
             id: 2,
             name: "title",
@@ -51,14 +47,14 @@ const CreateModal = () => {
             label: "Time",
             required: true,
         },
-        {
-            id: 5,
-            name: "createdAt",
-            type: "text",
-            placeholder: "Created At",
-            label: "Created At",
-            required: true,
-        },
+        // {
+        //     id: 5,
+        //     name: "createdAt",
+        //     type: "text",
+        //     placeholder: "Created At",
+        //     label: "Created At",
+        //     required: true,
+        // },
         {
             id: 6,
             name: "location",
@@ -76,10 +72,41 @@ const CreateModal = () => {
     };
 
     const onChange = (e) => {
-        console.log(e.target.value)
+        // console.log(e.target.value)
         setValues({ ...values, [e.target.name]: e.target.value })
     }
+    const handleCreatePost = async () => {
 
+        try {
+            const token = Auth.loggedIn() ? Auth.getToken() : null;
+            const userData = Auth.getProfile();
+            console.log(userData)
+            if (!token) {
+                return false;
+            }
+            const { data } = await post({
+                variables: {         
+                    title: values.title,
+                    description: values.description,
+                    location: values.location,
+                    time: Date(),
+                    username: userData.data.username}
+            });
+
+            console.log(data)
+            if(source === "admin"){
+                await client.refetchQueries({include:[QUERY_ME]})
+                toggleModal()
+            } else if (source === "listing"){
+                console.log('made it')
+                await client.refetchQueries({include:[QUERY_POSTS]})
+                toggleModal()
+            }
+
+        } catch (err) {
+            console.error(err);
+        }
+    }
     return (
         <div className='w-full flex'>
             <button
@@ -93,7 +120,7 @@ const CreateModal = () => {
             {modal && (
                 < div className='fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm
             flex justify-center items-center w-full'>
-                    <div onClick={toggleModal} className="overlay">
+                    <div className="overlay">
                         <div className='modal-content bg-card border-borderblue border-2 rounded-lg p-4 drop-shadow-xl w-[300px] 
                     sm:w-[400px]
                     xl:w-[800px]'>
@@ -113,7 +140,7 @@ const CreateModal = () => {
                                     ))}
                                     <div className='flex flex-row justify-center'>
                                         <button className='mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
-                                                           xl:text-2xl'>
+                                                           xl:text-2xl' onClick={()=>handleCreatePost()}>
                                             Submit</button>
                                         <button
                                             className='close-modal mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md

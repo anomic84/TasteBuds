@@ -7,8 +7,11 @@ const resolvers = {
         me: async (parent, args, context) => {
             if (context.user) {
                 const userData = await User.findOne({
-                    _id: context.user._id,
-                }).select('-__v -password');
+                    username: context.user.username,
+                })
+                    .populate('posts')
+                    .select('-__v -password');
+                //console.log(context.user);
                 return userData;
             }
             throw new AuthenticationError('Not logged in');
@@ -84,11 +87,11 @@ const resolvers = {
             return { posts };
         },
 
-        createComment: async (parent, { postId, commentText }) => {
+        createComment: async (parent, { postId, commentText, username }) => {
             return Posts.findOneAndUpdate(
                 { _id: postId },
                 {
-                    $addToSet: { comments: { commentText } },
+                    $addToSet: { comments: { commentText, username } },
                 },
                 {
                     new: true,

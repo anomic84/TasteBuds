@@ -32,6 +32,11 @@ export const QUERY_SINGLE_POST = gql`
             location
             time
             title
+            comments {
+                commentText
+                username
+                createdAt
+            }
         }
     }
 `;
@@ -54,6 +59,13 @@ export const QUERY_POSTS = gql`
             description
             time
             location
+            comments {
+                _id
+                postId
+                commentText
+                username
+                createdAt
+            }
         }
     }
 `;

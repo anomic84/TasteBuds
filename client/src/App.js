@@ -45,8 +45,14 @@ function App() {
                         <Navbar />
                         <Routes>
                             <Route path='/' exact element={<Home />} />
-                            <Route path='/admin' element={<Admin />} />
-                            <Route path='/listings' element={<Listings />} />
+                            <Route
+                                path='/admin'
+                                element={<Admin client={client} />}
+                            />
+                            <Route
+                                path='/listings'
+                                element={<Listings client={client} />}
+                            />
                         </Routes>
                         {/* <main className='flex w-full'>{renderPage()}</main> */}
                     </div>
