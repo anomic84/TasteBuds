@@ -4,6 +4,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Make the underline onhover effect for navbar */
+@layer utilities {
+	ul li {
+		@apply relative tracking-[1px];
+	}
+	ul li::after {
+		@apply content-[''] bg-[#ADD8E6] h-[3px] w-[0%] -bottom-[-10px] left-0  rounded-xl absolute duration-300;
+	}
+	ul li:hover::after {
+		@apply w-[80%];
+	}
+}
+
 * {
     margin: 0;
     padding: 0;

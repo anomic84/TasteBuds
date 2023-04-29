@@ -10,6 +10,7 @@ module.exports = {
       },
       colors: {
         borderblue: '#274472',
+        hoverblue: '#ADD8E6',
         navtext1: '#5C474D',
         navtext2: '#B8A3A9',
         navbg: '#F2AFA9',

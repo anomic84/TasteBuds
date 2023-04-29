@@ -29,18 +29,21 @@ const Navbar = ({ currentPage, handlePageChange }) => {
             {/* // MONITORS */}
             <div className="hidden md:flex flex-row justify-between items-center px-4">
                 <div className=''>
-                    <p className='text-4xl py-5 font-anrope text-navtext1'>TasteBuds</p>
+                    <p className='text-4xl py-5 font-anrope text-navtext1 '>TasteBuds</p>
                 </div>
                 <ul className="flex items-center justify-end">
                     {auth.loggedIn() ? (
                         <>
-                            <li className='text-2xl py-5 font-manrope text-navtext1 pr-4'>
+                            <li className='text-2xl py-5 font-manrope text-navtext1 pr-4
+                            hover:text-hoverblue duration-150'>
                                 <Link to="/admin">Profile</Link>
                             </li>
-                            <li className='text-2xl py-5 font-manrope text-navtext1 pr-4'>
+                            <li className='text-2xl py-5 font-manrope text-navtext1 pr-4
+                            hover:text-hoverblue duration-150'>
                                 <Link to="/listings">Listings</Link>
                             </li>
-                            <li className='text-2xl py-5 font-manrope text-navtext1 pr-4'>
+                            <li className='text-2xl py-5 font-manrope text-navtext1 pr-4
+                            hover:text-hoverblue duration-150'>
                                 <Link to="/" onClick={auth.logout}>Logout</Link>
                             </li>
                         </>
@@ -69,15 +72,18 @@ const Navbar = ({ currentPage, handlePageChange }) => {
                             <div className="text-navtext  sm:text-xl text-center w-full flex flex-col justify-center">
                                 {auth.loggedIn() ? (
                                     <>
-                                        <Link className='text-2xl py-5 font-manrope text-navtext1'
+                                        <Link className='text-2xl py-5 font-manrope text-navtext1
+                                        hover:text-hoverblue duration-150'
                                             to="/admin"
                                             onClick={() => setToggleNavMenu((prev) => !prev)}>Profile
                                         </Link>
-                                        <Link className='text-2xl py-5 font-manrope text-navtext1'
+                                        <Link className='text-2xl py-5 font-manrope text-navtext1
+                                        hover:text-hoverblue duration-150'
                                             to="/listings"
                                             onClick={() => setToggleNavMenu((prev) => !prev)}>Listings
                                         </Link>
-                                        <Link className='text-2xl py-5 font-manrope text-navtext1'
+                                        <Link className='text-2xl py-5 font-manrope text-navtext1
+                                        hover:text-hoverblue duration-150'
                                             to="/"
                                             onClick={auth.logout}>Logout
                                         </Link>
@@ -88,7 +94,8 @@ const Navbar = ({ currentPage, handlePageChange }) => {
                                             <div className='flex justify-center'>
                                                 <button
                                                     onClick={toggleSignUpModal}
-                                                    className='text-2xl py-5 font-manrope text-navtext1'>
+                                                    className='text-2xl py-5 font-manrope text-navtext1
+                                                    hover:text-hoverblue duration-150'>
                                                     Sign Up!
                                                 </button>
                                             </div>
@@ -96,7 +103,8 @@ const Navbar = ({ currentPage, handlePageChange }) => {
                                                 <button
                                                     onClick={toggleLoginModal}
                                                     id='loginButton'
-                                                    className='text-2xl py-5 font-manrope text-navtext1'>
+                                                    className='text-2xl py-5 font-manrope text-navtext1
+                                                    hover:text-hoverblue duration-150'>
                                                     Login
                                                 </button>
                                             </div>
