@@ -17,7 +17,7 @@ const CreateModal = ({client, source}) => {
         title: '',
         description: '',
         time: '',
-        createdAt: '',
+        // createdAt: '',
         location: '',
     });
 
@@ -107,6 +107,8 @@ const CreateModal = ({client, source}) => {
             console.error(err);
         }
     }
+
+
     return (
         <div className='w-full flex'>
             <button
