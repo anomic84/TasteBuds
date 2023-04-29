@@ -20,14 +20,7 @@ const EventCard = ({ title, description, username, location, time, comments, pos
     });
     const [comment] = useMutation(CREATE_COMMENT);
     const inputs = [
-        // {
-        //     id: 1,
-        //     name: "username",
-        //     type: "text",
-        //     placeholder: "Username",
-        //     label: "Username",
-        //     required: true,
-        // },
+      
         {
             id: 2,
             name: "commentText",
@@ -205,7 +198,7 @@ const EventCard = ({ title, description, username, location, time, comments, pos
                         ))}
                         <div className='flex flex-row justify-center'>
                             <button className='mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
-                       xl:text-2xl' type="submit" >
+                       xl:text-2xl' onClick={()=>addComment()} >
                                 Submit</button>
                             <button
                                 className='close-modal mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md

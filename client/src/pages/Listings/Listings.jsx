@@ -22,12 +22,13 @@ function Listings({client}) {
         return false;
     }
 
+   
 
     return (
 
         <section className=' w-full  flex flex-col justify-center'>
-               <h1 className='text-center text-borderblue font-manrope font-bold text-4xl
-                xl:text-6xl xl:py-2'>Logged in as {data ? data.me.username : "waffles"}</h1>
+               {/* <h1 className='text-center text-borderblue font-manrope font-bold text-4xl
+                xl:text-6xl xl:py-2'>Logged in as {data ? data.me.username : "waffles"}</h1> */}
                 <div className='z-10'>
                     <CreateModal source={"listing"} client={client} />
                 </div>

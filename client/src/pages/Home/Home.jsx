@@ -71,25 +71,3 @@ const Home = () => {
 
 export default Home
 
-{/* <div className=''>
-      
-        <div className='bg-card border border-borderblue rounded-lg p-4 drop-shadow-xl max-w-[450px] mx-auto
-        xl:max-w-[800px]'>
-          <form className='' onSubmit={handleSubmit}>
-            <h1 className='text-center text-navtext1 pb-2
-                          xl:text-2xl'>Sign Up!</h1>
-            {inputs.map((input) => (
-              <SignUpInput
-                key={input.id}
-                {...input}
-                value={values[input.name]}
-                onChange={onChange}
-              />
-            ))}
-            <div className='flex flex-col justify-center'>
-              <button className='mt-4 mx-auto text-center rounded bg-navbg font-bowlby text-borderblue  w-[180px] max-w-[180px] p-2 drop-shadow-md
-                                 xl:text-2xl'>Submit</button>
-            </div>
-          </form>
-        </div>
-      </div> */}

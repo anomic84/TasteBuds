@@ -13,8 +13,6 @@ import CreateInput
     from '../../components/CreateModal/CreateInput';
 const Admin = ({ client }) => {
 
-
-
     const [modal, setModal] = useState(false);
     const [post] = useMutation(CREATE_POST);
     const toggleModal = () => {
