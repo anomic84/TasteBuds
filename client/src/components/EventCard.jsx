@@ -6,7 +6,7 @@ import CommentCard from './CommentCard'
 
 import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
-import { CREATE_COMMENT } from '../utils/mutations';
+import { CREATE_COMMENT, DELETE_POST } from '../utils/mutations';
 import { QUERY_ME, QUERY_POSTS} from '../utils/queries';
 // import CommentModal from './CommentModal/CommentModal'
 
@@ -19,6 +19,7 @@ const EventCard = ({ title, description, username, location, time, comments, pos
         commentText: '',
     });
     const [comment] = useMutation(CREATE_COMMENT);
+
     const inputs = [
       
         {
@@ -36,7 +37,7 @@ const EventCard = ({ title, description, username, location, time, comments, pos
     const handleSubmit = (e) => {
         e.preventDefault();
     };
-// add comment
+// ADD COMMENT
     const addComment = async () => {
         console.log(postId);
         try {
@@ -68,14 +69,31 @@ const EventCard = ({ title, description, username, location, time, comments, pos
         }
     };
 
-    
-
     const onChange = (e) => {
         //console.log(e.target.value)
         setValues({ ...values, [e.target.name]: e.target.value })
 
     }
 
+
+    // DELETE POST
+   const [deletePost] = useMutation(DELETE_POST, {
+      refetchQueries: [{ query: QUERY_ME }],
+    });
+    
+    const handleDelete = (postId) => {
+        console.log(postId);
+          if (!postId) {
+    console.log("postId is undefined");
+    return;
+          }
+    deletePost({ variables: { postId: postId.toString() } });
+  };
+ 
+
+
+
+// UPDATE POST
 
     return (
 
@@ -119,15 +137,16 @@ const EventCard = ({ title, description, username, location, time, comments, pos
                             onChange={onChange}
                         />
                     ))}
+                    {/* ---------------BUTTONS ------------ */}
                     <div className='hidden sm:flex flex-row justify-start'>
                         <button className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
                        xl:text-2xl' onClick={()=>addComment()}>
                             Submit
                         </button>
+  
                         <div className='flex flex-row items-center justify-center gap-2 mt-4 ml-4 w-[22.5%] rounded bg-navbg py-1 drop-shadow-md'>
                             <FaCheckSquare className=' text-borderblue' size={30} />
-                            {/* TODO: THIS NEEDS TO SWITCH TO {going.count} IF WE DO THIS */}
                             <p className='text-2xl font-titan  px-2 rounded text-borderblue'>3</p>
                         </div>
                     </div>
@@ -141,7 +160,11 @@ const EventCard = ({ title, description, username, location, time, comments, pos
                     ))}
                 </div>
             </div>
-
+                           <button className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                       sm:w-[25%]
+                       xl:text-2xl'   onClick={() => handleDelete(postId)}>
+                            Delete
+                        </button>
 
             {/* ------------  MOBILE ------------ */}
 
