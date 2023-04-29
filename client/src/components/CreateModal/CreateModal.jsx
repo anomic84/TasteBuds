@@ -44,7 +44,7 @@ const CreateModal = ({ client, source }) => {
         {
             id: 4,
             name: "time",
-            type: "time",
+            type: "datetime-local",
             placeholder: "Time",
             label: "Time",
             required: true,
