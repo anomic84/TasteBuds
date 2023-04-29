@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import { FaCheckSquare, FaCommentAlt } from 'react-icons/fa'
 import CommentInput from './CommentInput/CommentInput'
-import { comments } from './../constants/constants'
+// import { comments } from './../constants/constants'
 import CommentCard from './CommentCard'
 
-
+import Auth from '../utils/auth';
+import { useMutation } from '@apollo/client';
+import { CREATE_COMMENT } from '../utils/mutations';
+import { QUERY_ME, QUERY_POSTS} from '../utils/queries';
 // import CommentModal from './CommentModal/CommentModal'
 
-const EventCard = ({ title, description, username, location, time }) => {
+const EventCard = ({ title, description, username, location, time, comments, postId,  source, client}) => {
 
 
    
@@ -17,16 +20,16 @@ const EventCard = ({ title, description, username, location, time }) => {
         username: '',
         commentText: '',
     });
-
+    const [comment] = useMutation(CREATE_COMMENT);
     const inputs = [
-        {
-            id: 1,
-            name: "username",
-            type: "text",
-            placeholder: "Username",
-            label: "Username",
-            required: true,
-        },
+        // {
+        //     id: 1,
+        //     name: "username",
+        //     type: "text",
+        //     placeholder: "Username",
+        //     label: "Username",
+        //     required: true,
+        // },
         {
             id: 2,
             name: "commentText",
@@ -43,9 +46,41 @@ const EventCard = ({ title, description, username, location, time }) => {
         e.preventDefault();
     };
 
+    const addComment = async () => {
+        console.log(postId);
+        try {
+            const token = Auth.loggedIn() ? Auth.getToken() : null;
+            
+            if (!token) {
+                return false;
+            }
+            const userData = Auth.getProfile();
+            console.log(Auth);
+
+            const { data } = await comment({
+                variables: {         
+                    postId: postId,
+                    commentText: values.commentText,
+                    username: userData.data.username},
+            });
+
+            console.log(data)
+            if(source === "admin"){
+                await client.refetchQueries({include:[QUERY_ME]})
+            } else if (source === "listing"){
+                console.log('made it')
+                await client.refetchQueries({include:[QUERY_POSTS]})
+            }
+
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
     const onChange = (e) => {
-        console.log(e.target.value)
+        //console.log(e.target.value)
         setValues({ ...values, [e.target.name]: e.target.value })
+
     }
 
 
@@ -78,7 +113,7 @@ const EventCard = ({ title, description, username, location, time }) => {
                           xl:text-base'>{location}</p>
                     <p className='text-right text-[10px] text-navtext1
                           lg:text-sm
-                          xl:text-base'>{time}</p>
+                          xl:text-base'>{Date(time) }</p>
                 </div>
 
                 {/* ------------  COMMENT INPUT  ------------ */}
@@ -95,7 +130,7 @@ const EventCard = ({ title, description, username, location, time }) => {
                     <div className='hidden sm:flex flex-row justify-start'>
                         <button className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
-                       xl:text-2xl'>
+                       xl:text-2xl' onClick={()=>addComment()}>
                             Submit
                         </button>
                         <div className='flex flex-row items-center justify-center gap-2 mt-4 ml-4 w-[22.5%] rounded bg-navbg py-1 drop-shadow-md'>
@@ -170,7 +205,7 @@ const EventCard = ({ title, description, username, location, time }) => {
                         ))}
                         <div className='flex flex-row justify-center'>
                             <button className='mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
-                       xl:text-2xl'>
+                       xl:text-2xl' type="submit" >
                                 Submit</button>
                             <button
                                 className='close-modal mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
