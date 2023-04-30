@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FaCheckSquare, FaCommentAlt } from 'react-icons/fa';
 import CommentInput from './CommentInput/CommentInput';
-// import { comments } from './../constants/constants'
 import CommentCard from './CommentCard';
 import EditModal from './EditModal/EditModal';
 import Auth from '../utils/auth';
@@ -51,7 +50,6 @@ const EventCard = ({
     const addComment = async () => {
         try {
             const token = Auth.loggedIn() ? Auth.getToken() : null;
-
 
             if (!token) {
                 return false;
@@ -110,7 +108,7 @@ const EventCard = ({
 
     return (
         <div
-            className='flex flex-row items-center drop-shadow-lg w-full bg-card my-4 
+            className='flex flex-row items-center drop-shadow-lg w-full bg-lightblue my-4 
         sm:flex-col
         lg:max-w-[900px]
         xl:max-w-[1100px]'
@@ -124,7 +122,7 @@ const EventCard = ({
                         xl:max-w-[1000px]'
             >
                 <h1
-                    className='text-lg font-bold text-borderblue 
+                    className='text-lg font-bold text-darkest 
                            lg:text-xl
                            xl:text-2xl'
                 >
@@ -132,7 +130,7 @@ const EventCard = ({
                 </h1>
                 <div className='w-[90%] flex flex-col mx-auto'>
                     <p
-                        className='text-[10px] text-navtext1
+                        className='text-[10px] text-darkblue
                           lg:text-sm
                           xl:text-base'
                     >
@@ -146,14 +144,14 @@ const EventCard = ({
                         {description}
                     </p>
                     <p
-                        className='text-right text-[10px] text-navtext1
+                        className='text-right text-[10px] text-blue
                           lg:text-sm
                           xl:text-base'
                     >
                         {location}
                     </p>
                     <p
-                        className='text-right text-[10px] text-navtext1
+                        className='text-right text-[10px] text-blue
                           lg:text-sm
                           xl:text-base'
                     >
@@ -175,24 +173,23 @@ const EventCard = ({
                     {/* ---------------ADD COMMENT BUTTON ------------ */}
                     <div className='hidden sm:flex flex-row justify-between'>
                         <button
-                            className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                            className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-hotpink  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
                        xl:text-2xl'
                             onClick={() => addComment()}
                         >
-                            Submit
+                            Comment
                         </button>
 
-                        <div className='flex flex-row items-center justify-center gap-2 mt-4 ml-4 w-[22.5%] rounded bg-navbg py-1 drop-shadow-md'>
+                        <div className='flex flex-row items-center justify-center gap-2 mt-4 ml-4 w-[22.5%] rounded bg-darkblue py-1 drop-shadow-md'>
                             <FaCheckSquare
-                                className=' text-borderblue'
+                                className=' text-hotpink'
                                 size={30}
                             />
                             <p className='text-2xl font-titan  px-2 rounded text-borderblue'>
                                 3
                             </p>
                         </div>
-                     
                     </div>
                 </form>
 
@@ -203,51 +200,42 @@ const EventCard = ({
                         <CommentCard key={comment.id} {...comment} />
                     ))}
                 </div>
-            </div>
-            {/* -----------DELETE POST BUTTON -----------*/}
-            {userData.data.username === username ? (
-                // <button
-                //     className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
-                //             sm:w-[25%]
-                //             xl:text-2xl'
-                //     onClick={toggleModal}
-                // >
-                //     Edit
-                // </button>
-                <button
-                    className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+
+                {/* -----------DELETE/EDIT POST BUTTON -----------*/}
+                <div className='flex flex-row items-center justify-between'>
+                    {userData.data.username === username ? (
+                        <button
+                            className='mt-4 text-center rounded bg-darkblue text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
                        xl:text-2xl'
-                    onClick={() => handleDelete(postId)}
-                >
-                    Delete
-                </button>
-            ) : (
-                <nbsp />
-            )}
+                            onClick={() => handleDelete(postId)}
+                        >
+                            Delete
+                        </button>
+                    ) : (
+                        <br />
+                    )}
 
-            {/* -----------UPDATE POST BUTTON ----------- */}
-            {userData.data.username === username ? (
-                // <button
-                //     className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
-                //             sm:w-[25%]
-                //             xl:text-2xl'
-                //     onClick={toggleModal}
-                // >
-                //     Edit
-                // </button>
-                <EditModal
-                    title={title}
-                    description={description}
-                    time={time}
-                    location={location}
-                    postId={postId}
-                    client={client}
-                    source={source}
-                />
-            ) : (
-                <br />
-            )}
+                    {/* -----------UPDATE POST BUTTON ----------- */}
+                    {/* TODO: fix edit button styling */}
+                    <div className='flex flex-row items-center justify-between'>
+                        {userData.data.username === username ? (
+                            <EditModal
+                                title={title}
+                                description={description}
+                                time={time}
+                                location={location}
+                                postId={postId}
+                                client={client}
+                                source={source}
+                            />
+                        ) : (
+                            <br />
+                        )}
+                    </div>
+                </div>
+            </div>
+
             {/* {modal && (
                 <div
                     className='fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm
@@ -299,8 +287,7 @@ const EventCard = ({
             )} */}
 
             {/* ------------  MOBILE ------------ */}
-
-
+            {/* FIXME - match desktop styling */}
             <div className='flex flex-col mx-auto'>
                 {/* <div className='flex flex-row'> */}
                 <div className='w-[90%] flex sm:hidden flex-col font-manrope p-4'>
@@ -343,14 +330,6 @@ const EventCard = ({
                     </div>
                 </div>
                 <div className='flex sm:hidden flex-row justify-between my-2'>
-                    {/* <button
-                        className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
-                       sm:w-[25%]
-                       xl:text-2xl'
-                        onClick={() => editPost()}
-                    >
-                        Edit
-                    </button> */}
                     <button
                         className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
