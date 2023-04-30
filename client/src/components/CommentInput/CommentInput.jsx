@@ -10,7 +10,7 @@ const CommentInput = (props) => {
     };
     return (
         <div className="formInput mx-auto flex  flex-col ">
-            <label for="comment" className='text-navtext1 text-sm leading-lg pb-1 font-manrope
+            <label htmlFor="comment" className='text-navtext1 text-sm leading-lg pb-1 font-manrope
                               lg:text-lg
                               xl:text-xl'>{label}
             </label>

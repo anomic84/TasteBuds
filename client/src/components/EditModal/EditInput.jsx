@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CreateInput = (props) => {
+const EditInput = (props) => {
     const [focused, setFocused] = useState(false);
     const { label, onChange, id, ...inputProps } = props;
 
@@ -8,7 +8,7 @@ const CreateInput = (props) => {
         setFocused(true);
     };
     const handler = (e) => {
-        props.setCreateTime(e.target.value);
+        props.setUpdateTime(e.target.value);
     };
     if (props.name === 'time') {
         return (
@@ -60,4 +60,4 @@ const CreateInput = (props) => {
     }
 };
 
-export default CreateInput;
+export default EditInput;
