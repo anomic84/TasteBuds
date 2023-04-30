@@ -38,19 +38,19 @@ const Navbar = ({ currentPage, handlePageChange }) => {
                         <>
                             <li
                                 className='text-2xl py-5 font-manrope text-navtext1 pr-4
-                            hover:text-card duration-150'
+                            hover:text-pink duration-150'
                             >
                                 <Link to='/admin'>Profile</Link>
                             </li>
                             <li
                                 className='text-2xl py-5 font-manrope text-navtext1 pr-4
-                            hover:text-card duration-150'
+                            hover:text-pink duration-150'
                             >
                                 <Link to='/listings'>Listings</Link>
                             </li>
                             <li
                                 className='text-2xl py-5 font-manrope text-navtext1 pr-4
-                            hover:text-card duration-150'
+                            hover:text-pink duration-150'
                             >
                                 <Link to='/' onClick={auth.logout}>
                                     Logout

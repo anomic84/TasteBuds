@@ -23,8 +23,9 @@ function Listings({ client }) {
     return (
         <section className=' w-full  flex flex-col justify-center'>
             <h1
-                className='text-left text-borderblue font-manrope  text-3xl
-                xl:text-6xl xl:py-2'
+                // TODO: add max width
+                className='text-left text-darkest font-manrope  text-lg
+                xl:text-6xl xl:py-2 m-4'
             >
                 Welcome {data ? userData.data.username : 'Foodie'}!
             </h1>

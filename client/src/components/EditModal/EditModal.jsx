@@ -62,14 +62,7 @@ const EditModal = ({
             value: toDateTime(time),
             defaultValue: toDateTime(time),
         },
-        // {
-        //     id: 5,
-        //     name: "createdAt",
-        //     type: "text",
-        //     placeholder: "Created At",
-        //     label: "Created At",
-        //     required: true,
-        // },
+
         {
             id: 6,
             name: 'location',
@@ -127,9 +120,7 @@ const EditModal = ({
         <div className='w-full flex'>
             <button
                 onClick={toggleModal}
-                className='
-                     bg-navbg font-bowlby text-borderblue p-5 drop-shadow-md
-                     mt-4 mx-auto text-2xl rounded-2xl'
+                className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md sm:w-[25%] xl:text-2xl'
             >
                 Edit
             </button>
