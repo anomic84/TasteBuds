@@ -1,9 +1,9 @@
-import React from 'react'
-import { useState } from 'react'
+import React from 'react';
+import { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import LoginModal from './LoginModal/LoginModal';
 import SignUpModal from './SignUpInput/SignUpModal';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import auth from '../utils/auth';
 
@@ -15,77 +15,112 @@ const Navbar = ({ currentPage, handlePageChange }) => {
     const [loginModal, setLoginModal] = useState(false);
     const [signUpModal, setSignUpModal] = useState(false);
     const toggleLoginModal = () => {
-        setLoginModal(!loginModal)
-    }
+        setLoginModal(!loginModal);
+    };
     const toggleSignUpModal = () => {
-        setSignUpModal(!signUpModal)
-    }
-
-
+        setSignUpModal(!signUpModal);
+    };
 
     return (
-        <div className="w-full py-3 relative bg-navbg
-                        lg:py-2 ">
+        <div
+            className='w-full py-3 relative bg-navbg
+                        lg:py-2 '
+        >
             {/* // MONITORS */}
-            <div className="hidden md:flex flex-row justify-between items-center px-4">
+            <div className='hidden md:flex flex-row justify-between items-center px-4'>
                 <div className=''>
-                    <p className='text-4xl py-5 font-anrope text-navtext1 '>TasteBuds</p>
+                    <p className='text-4xl py-5 font-anrope text-navtext1 '>
+                        TasteBuds
+                    </p>
                 </div>
-                <ul className="flex items-center justify-end">
+                <ul className='flex items-center justify-end'>
                     {auth.loggedIn() ? (
                         <>
-                            <li className='text-2xl py-5 font-manrope text-navtext1 pr-4
-                            hover:text-hoverblue duration-150'>
-                                <Link to="/admin">Profile</Link>
+                            <li
+                                className='text-2xl py-5 font-manrope text-navtext1 pr-4
+                            hover:text-card duration-150'
+                            >
+                                <Link to='/admin'>Profile</Link>
                             </li>
-                            <li className='text-2xl py-5 font-manrope text-navtext1 pr-4
-                            hover:text-hoverblue duration-150'>
-                                <Link to="/listings">Listings</Link>
+                            <li
+                                className='text-2xl py-5 font-manrope text-navtext1 pr-4
+                            hover:text-card duration-150'
+                            >
+                                <Link to='/listings'>Listings</Link>
                             </li>
-                            <li className='text-2xl py-5 font-manrope text-navtext1 pr-4
-                            hover:text-hoverblue duration-150'>
-                                <Link to="/" onClick={auth.logout}>Logout</Link>
+                            <li
+                                className='text-2xl py-5 font-manrope text-navtext1 pr-4
+                            hover:text-card duration-150'
+                            >
+                                <Link to='/' onClick={auth.logout}>
+                                    Logout
+                                </Link>
                             </li>
                         </>
                     ) : (
-                        <>
-                           
-                        </>
+                        <></>
                     )}
                 </ul>
             </div>
             {/* MOBILE */}
 
-            <div className="md:hidden flex flex-row justify-between items-center px-4 w-full">
-                {toggleNavMenu
-                    ? ''
-                    : <h1 className="text-navtext1 text-lg">TasteBuds</h1>
-                }
-                {toggleNavMenu
-                    ? ''
-                    : <FaBars className="text-navtext1" size={27} onClick={() => setToggleNavMenu((prev) => !prev)} />
-                }
+            <div className='md:hidden flex flex-row justify-between items-center px-4 w-full'>
+                {toggleNavMenu ? (
+                    ''
+                ) : (
+                    <h1 className='text-navtext1 text-lg'>TasteBuds</h1>
+                )}
+                {toggleNavMenu ? (
+                    ''
+                ) : (
+                    <FaBars
+                        className='text-navtext1'
+                        size={27}
+                        onClick={() => setToggleNavMenu((prev) => !prev)}
+                    />
+                )}
                 {toggleNavMenu && (
                     <div className='flex flex-col w-full'>
-                        <FaTimes className="text-navtext1  right-4" size={27} onClick={() => setToggleNavMenu((prev) => !prev)} />
-                        <div className="z-10 h-screen flex justify-center items-center">
-                            <div className="text-navtext  sm:text-xl text-center w-full flex flex-col justify-center">
+                        <FaTimes
+                            className='text-navtext1  right-4'
+                            size={27}
+                            onClick={() => setToggleNavMenu((prev) => !prev)}
+                        />
+                        <div className='z-10 h-screen flex justify-center items-center'>
+                            <div className='text-navtext  sm:text-xl text-center w-full flex flex-col justify-center'>
                                 {auth.loggedIn() ? (
                                     <>
-                                        <Link className='text-2xl py-5 font-manrope text-navtext1
-                                        hover:text-hoverblue duration-150'
-                                            to="/admin"
-                                            onClick={() => setToggleNavMenu((prev) => !prev)}>Profile
+                                        <Link
+                                            className='text-2xl py-5 font-manrope text-navtext1
+                                        hover:text-card duration-150'
+                                            to='/admin'
+                                            onClick={() =>
+                                                setToggleNavMenu(
+                                                    (prev) => !prev
+                                                )
+                                            }
+                                        >
+                                            Profile
                                         </Link>
-                                        <Link className='text-2xl py-5 font-manrope text-navtext1
-                                        hover:text-hoverblue duration-150'
-                                            to="/listings"
-                                            onClick={() => setToggleNavMenu((prev) => !prev)}>Listings
+                                        <Link
+                                            className='text-2xl py-5 font-manrope text-navtext1
+                                        hover:text-card duration-150'
+                                            to='/listings'
+                                            onClick={() =>
+                                                setToggleNavMenu(
+                                                    (prev) => !prev
+                                                )
+                                            }
+                                        >
+                                            Listings
                                         </Link>
-                                        <Link className='text-2xl py-5 font-manrope text-navtext1
-                                        hover:text-hoverblue duration-150'
-                                            to="/"
-                                            onClick={auth.logout}>Logout
+                                        <Link
+                                            className='text-2xl py-5 font-manrope text-navtext1
+                                        hover:text-card duration-150'
+                                            to='/'
+                                            onClick={auth.logout}
+                                        >
+                                            Logout
                                         </Link>
                                     </>
                                 ) : (
@@ -95,7 +130,8 @@ const Navbar = ({ currentPage, handlePageChange }) => {
                                                 <button
                                                     onClick={toggleSignUpModal}
                                                     className='text-2xl py-5 font-manrope text-navtext1
-                                                    hover:text-hoverblue duration-150'>
+                                                    hover:text-card duration-150'
+                                                >
                                                     Sign Up!
                                                 </button>
                                             </div>
@@ -104,14 +140,28 @@ const Navbar = ({ currentPage, handlePageChange }) => {
                                                     onClick={toggleLoginModal}
                                                     id='loginButton'
                                                     className='text-2xl py-5 font-manrope text-navtext1
-                                                    hover:text-hoverblue duration-150'>
+                                                    hover:text-card duration-150'
+                                                >
                                                     Login
                                                 </button>
                                             </div>
-                                            <SignUpModal className='' signUpModal={signUpModal} setSignUpModal={setSignUpModal} toggleSignUpModal={toggleSignUpModal} />
-                                            <LoginModal className='' loginModal={loginModal} setLoginModal={setLoginModal} toggleLoginModal={toggleLoginModal} />
+                                            <SignUpModal
+                                                className=''
+                                                signUpModal={signUpModal}
+                                                setSignUpModal={setSignUpModal}
+                                                toggleSignUpModal={
+                                                    toggleSignUpModal
+                                                }
+                                            />
+                                            <LoginModal
+                                                className=''
+                                                loginModal={loginModal}
+                                                setLoginModal={setLoginModal}
+                                                toggleLoginModal={
+                                                    toggleLoginModal
+                                                }
+                                            />
                                         </div>
-
                                     </>
                                 )}
                             </div>
@@ -119,9 +169,8 @@ const Navbar = ({ currentPage, handlePageChange }) => {
                     </div>
                 )}
             </div>
-        </div >
-    )
-}
+        </div>
+    );
+};
 
-
-export default Navbar
+export default Navbar;
