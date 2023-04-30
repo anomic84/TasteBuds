@@ -32,9 +32,9 @@ const CommentCard = ({
     // TODO: deleteComment
     const deleteComment = async () => {};
     return (
-        <div className='flex flex-col w-full m-4 bg-navbg drop-shadow-lg rounded p-4 font-manrope '>
+        <div className='flex flex-col w-full m-4 bg-blue drop-shadow-lg rounded p-4 font-manrope '>
             <p
-                className='text-left text-borderblue w-full py-2 text-base 
+                className='text-left text-white w-full py-2 text-base 
                           lg:text-lg lg:py-1
                           xl:text-xl'
             >
@@ -43,7 +43,7 @@ const CommentCard = ({
             {/* TODO: Make username a link to users profile */}
             <div className='flex flex-row items-center justify-between'>
                 <p
-                    className='text-left pl-3 text-sm text-navtext1
+                    className='text-left pl-3 text-sm text-white
                           lg:text-base
                           xl:text-lg'
                 >
@@ -52,7 +52,7 @@ const CommentCard = ({
                 {/* DELETE COMMENT BUTTON */}
 
                 <button
-                    className='mt-4 text-center rounded bg-borderblue text-navnametext font-bowlby text-navtext2  w-[30%]  max-w-[180px] p-1 drop-shadow-md
+                    className='mt-4 text-center rounded bg-darkblue text-navnametext font-bowlby text-navtext2  w-[30%]  max-w-[180px] p-1 drop-shadow-md
                        sm:w-[25%]
                        xl:text-2xl'
                     onClick={() => deleteComment()}

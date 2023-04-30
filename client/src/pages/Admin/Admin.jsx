@@ -139,12 +139,12 @@ const Admin = ({ client, editPost, setEditPost }) => {
                     modal={modal}
                 />
             </div>
-            <div className='sm:m-4 flex flex-col items-center'>
-                {/* {userData.map((post) => (
+            {/* <div className='sm:m-4 flex flex-col items-center'> */}
+            {/* {userData.map((post) => (
                     <EventCard key={post.id} {...post} />
                     
                 ))} */}
-            </div>
+            {/* </div> */}
             <div className='mx-auto'>
                 {/* <h1>About me</h1> */}
                 {/* is there a avatar generator in tailwind? */}

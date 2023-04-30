@@ -172,8 +172,9 @@ const EventCard = ({
                     ))}
                     {/* ---------------ADD COMMENT BUTTON ------------ */}
                     <div className='hidden sm:flex flex-row justify-between'>
+                        {/* TODO: edit padding under comment text area to make button closer to text box */}
                         <button
-                            className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-hotpink  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                            className='mt-1 text-center rounded bg-navbg text-navnametext font-bowlby text-hotpink  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
                        xl:text-2xl'
                             onClick={() => addComment()}
@@ -181,7 +182,8 @@ const EventCard = ({
                             Comment
                         </button>
 
-                        <div className='flex flex-row items-center justify-center gap-2 mt-4 ml-4 w-[22.5%] rounded bg-darkblue py-1 drop-shadow-md'>
+                        {/* FUTURE DEVELOPMENT - LIKE BUTTON */}
+                        {/* <div className='flex flex-row items-center justify-center gap-2 mt-4 ml-4 w-[22.5%] rounded bg-darkblue py-1 drop-shadow-md'>
                             <FaCheckSquare
                                 className=' text-hotpink'
                                 size={30}
@@ -189,7 +191,7 @@ const EventCard = ({
                             <p className='text-2xl font-titan  px-2 rounded text-borderblue'>
                                 3
                             </p>
-                        </div>
+                        </div> */}
                     </div>
                 </form>
 
