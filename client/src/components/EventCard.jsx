@@ -52,6 +52,7 @@ const EventCard = ({
         try {
             const token = Auth.loggedIn() ? Auth.getToken() : null;
 
+
             if (!token) {
                 return false;
             }
@@ -59,6 +60,7 @@ const EventCard = ({
             // console.log(Auth);
 
             const { data } = await comment({
+                variables: {
                 variables: {
                     postId: postId,
                     commentText: values.commentText,
@@ -172,7 +174,7 @@ const EventCard = ({
                         />
                     ))}
                     {/* ---------------ADD COMMENT BUTTON ------------ */}
-                    <div className='hidden sm:flex flex-row justify-start'>
+                    <div className='hidden sm:flex flex-row justify-between'>
                         <button
                             className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
@@ -191,6 +193,7 @@ const EventCard = ({
                                 3
                             </p>
                         </div>
+                     
                     </div>
                 </form>
 
@@ -298,11 +301,11 @@ const EventCard = ({
 
             {/* ------------  MOBILE ------------ */}
 
-            {/* Left side of card */}
-            <div className='flex flex-col'>
-                <div className='flex flex-row'>
-                    <div className='w-[90%] flex sm:hidden flex-col font-manrope p-4'>
-                        <h1
+
+            <div className='flex flex-col mx-auto'>
+                {/* <div className='flex flex-row'> */}
+                <div className='w-[90%] flex sm:hidden flex-col font-manrope p-4'>
+                    <h1
                             className='text-lg font-bold text-borderblue 
                            lg:text-xl
                            xl:text-3xl'
@@ -340,23 +343,24 @@ const EventCard = ({
                             </p>
                         </div>
                     </div>
-                    {/* <div className='flex w-[10%] flex-col  sm:hidden'> */}
-                    {/* How many going */}
-                    {/* <div className='flex flex-col items-center py-4'> */}
-                    {/* <FaCheckSquare className='text-borderblue' size={27} /> */}
-                    {/* TODO: THIS NEEDS TO SWITCH TO {going.count} IF WE DO THIS */}
-                    {/* <p className='text-xs text-navtext1'>3</p> */}
-
-                    {/* </div>
-                        <div className='flex flex-col items-center py-4'>
-                            <FaCommentAlt className='text-borderblue' size={27} /> */}
-                    {/* TODO: THIS NEEDS TO SWITCH TO {comment.count} IF WE DO THIS */}
-                    {/* <p className='text-xs text-navtext1'>3</p>
-                        </div>
-                    </div> */}
+                    <div className='flex sm:hidden flex-row justify-between my-2'>
+                        <button className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                       sm:w-[25%]
+                       xl:text-2xl' onClick={() => editPost()}>
+                            Edit
+                        </button>
+                        <button className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                       sm:w-[25%]
+                       xl:text-2xl' onClick={() => deletePost()}>
+                            Delete
+                        </button>
+                    </div>
                 </div>
+                {/* </div> */}
 
-                <div className='mx-auto w-[80%] mb-4 flex sm:hidden'>
+
+                {/* COMMENT AREA */}
+                <div className='w-[90%] flex sm:hidden flex-col font-manrope p-4'>
                     <form className='w-[100%]' onSubmit={handleSubmit}>
                         {inputs.map((input) => (
                             <CommentInput
@@ -381,6 +385,8 @@ const EventCard = ({
                             >
                                 CLOSE
                             </button>
+                        
+
                         </div>
                     </form>
                 </div>
