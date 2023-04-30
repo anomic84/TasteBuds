@@ -19,8 +19,8 @@ const EventCard = ({ title, description, username, location, time, comments, pos
         commentText: '',
     });
     const [comment] = useMutation(CREATE_COMMENT);
+    const [post] = useMutation(DELETE_POST)
     const inputs = [
-
         {
             id: 2,
             name: "commentText",
@@ -78,7 +78,35 @@ const EventCard = ({ title, description, username, location, time, comments, pos
 
     // TODO: deletePost
     const deletePost = async () => {
+        console.log(postId);
 
+        try {
+            const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+            if (!token) {
+                return false;
+            }
+            const userData = Auth.getProfile();
+            console.log(Auth);
+
+            const { data } = await post({
+                variables: {
+                    postId: postId,
+                    username: userData.data.username
+                },
+            });
+
+            console.log(data)
+            if (source === "admin") {
+                await client.refetchQueries({ include: [QUERY_ME] })
+            } else if (source === "listing") {
+                console.log('made it')
+                await client.refetchQueries({ include: [QUERY_POSTS] })
+            }
+
+        } catch (err) {
+            console.error(err);
+        }
     }
 
 
