@@ -61,7 +61,6 @@ const EventCard = ({
 
             const { data } = await comment({
                 variables: {
-                variables: {
                     postId: postId,
                     commentText: values.commentText,
                     username: userData.data.username,
@@ -247,7 +246,7 @@ const EventCard = ({
                     source={source}
                 />
             ) : (
-                <nbsp />
+                <br />
             )}
             {/* {modal && (
                 <div
@@ -306,90 +305,92 @@ const EventCard = ({
                 {/* <div className='flex flex-row'> */}
                 <div className='w-[90%] flex sm:hidden flex-col font-manrope p-4'>
                     <h1
-                            className='text-lg font-bold text-borderblue 
+                        className='text-lg font-bold text-borderblue 
                            lg:text-xl
                            xl:text-3xl'
-                        >
-                            {title}
-                        </h1>
-                        <div className='w-[90%] flex flex-col mx-auto'>
-                            <p
-                                className='text-[10px] text-navtext1
+                    >
+                        {title}
+                    </h1>
+                    <div className='w-[90%] flex flex-col mx-auto'>
+                        <p
+                            className='text-[10px] text-navtext1
                           lg:text-sm
                           xl:text-lg'
-                            >
-                                Created by {username}
-                            </p>
-                            <p
-                                className='w-full mx-auto py-2 text-sm text-slate-800
+                        >
+                            Created by {username}
+                        </p>
+                        <p
+                            className='w-full mx-auto py-2 text-sm text-slate-800
                           lg:text-lg lg:py-4
                           xl:text-2xl'
-                            >
-                                {description}
-                            </p>
-                            <p
-                                className='text-right text-[10px] text-navtext1
+                        >
+                            {description}
+                        </p>
+                        <p
+                            className='text-right text-[10px] text-navtext1
                           lg:text-sm
                           xl:text-lg'
-                            >
-                                {location}
-                            </p>
-                            <p
-                                className='text-right text-[10px] text-navtext1
+                        >
+                            {location}
+                        </p>
+                        <p
+                            className='text-right text-[10px] text-navtext1
                           lg:text-sm
                           xl:text-lg'
-                            >
-                                {time}
-                            </p>
-                        </div>
-                    </div>
-                    <div className='flex sm:hidden flex-row justify-between my-2'>
-                        <button className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
-                       sm:w-[25%]
-                       xl:text-2xl' onClick={() => editPost()}>
-                            Edit
-                        </button>
-                        <button className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
-                       sm:w-[25%]
-                       xl:text-2xl' onClick={() => deletePost()}>
-                            Delete
-                        </button>
+                        >
+                            {time}
+                        </p>
                     </div>
                 </div>
-                {/* </div> */}
-
-
-                {/* COMMENT AREA */}
-                <div className='w-[90%] flex sm:hidden flex-col font-manrope p-4'>
-                    <form className='w-[100%]' onSubmit={handleSubmit}>
-                        {inputs.map((input) => (
-                            <CommentInput
-                                key={input.id}
-                                {...input}
-                                value={values[input.name]}
-                                onChange={onChange}
-                            />
-                        ))}
-                        <div className='flex flex-row justify-center'>
-                            <button
-                                className='mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                <div className='flex sm:hidden flex-row justify-between my-2'>
+                    {/* <button
+                        className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                       sm:w-[25%]
                        xl:text-2xl'
-                                type='submit'
-                                onClick={() => addComment()}
-                            >
-                                Submit
-                            </button>
-                            <button
-                                className='close-modal mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
-                   xl:text-2xl'
-                            >
-                                CLOSE
-                            </button>
-                        
-
-                        </div>
-                    </form>
+                        onClick={() => editPost()}
+                    >
+                        Edit
+                    </button> */}
+                    <button
+                        className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                       sm:w-[25%]
+                       xl:text-2xl'
+                        onClick={() => handleDelete(postId)}
+                    >
+                        Delete
+                    </button>
                 </div>
+            </div>
+            {/* </div> */}
+
+            {/* COMMENT AREA */}
+            <div className='w-[90%] flex sm:hidden flex-col font-manrope p-4'>
+                <form className='w-[100%]' onSubmit={handleSubmit}>
+                    {inputs.map((input) => (
+                        <CommentInput
+                            key={input.id}
+                            {...input}
+                            value={values[input.name]}
+                            onChange={onChange}
+                        />
+                    ))}
+                    <div className='flex flex-row justify-center'>
+                        <button
+                            className='mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                       xl:text-2xl'
+                            type='submit'
+                            onClick={() => addComment()}
+                        >
+                            Submit
+                        </button>
+                        <button
+                            className='close-modal mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                   xl:text-2xl'
+                        >
+                            CLOSE
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     );
