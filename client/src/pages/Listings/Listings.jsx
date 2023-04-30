@@ -25,8 +25,9 @@ function Listings({client}) {
     return (
 
         <section className=' w-full  flex flex-col justify-center'>
-               <h1 className='text-left text-borderblue font-manrope  text-3xl
-                xl:text-6xl xl:py-2'>Welcome {data ? userData.data.username  : "Foodie"}!</h1>
+               <h1 className=' bg-card p-4 text-center text-borderblue font-manrope drop-shadow-lg text-xl
+               sm:m-4 sm:text-3xl sm:text-left
+                xl:text-6xl xl:py-2'>Logged in as {data ? userData.data.username  : "Foodie"}!</h1>
                 <div className='z-10'>
                     <CreateModal source={"listing"} client={client} />
                 </div>

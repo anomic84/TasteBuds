@@ -1,17 +1,33 @@
 import React from 'react'
+import {DELETE_COMMENT} from '../utils/mutations'
+import { QUERY_ME, QUERY_POSTS } from '../utils/queries';
+import Auth from '../utils/auth';
+import { useMutation } from '@apollo/client';
 
-const CommentCard = ({ username, commentText }) => {
+const CommentCard = ({ username, commentText, source, client, postId, commentId }) => {
+    const [comment] = useMutation(DELETE_COMMENT);
+     // TODO: deleteComment
+     const deleteComment = async () => {
 
+    }
     return (
-       <div className="flex flex-col w-full m-4 bg-navbg drop-shadow-lg rounded p-4 font-manrope ">
-        <p className='text-left text-borderblue w-full py-2 text-base 
+        <div className="flex flex-col w-full m-4 bg-navbg drop-shadow-lg rounded p-4 font-manrope ">
+            <p className='text-left text-borderblue w-full py-2 text-base 
                           lg:text-lg lg:py-1
                           xl:text-xl'>"{commentText}"</p>
-                          {/* TODO: Make username a link to users profile */}
-        <p className='text-left pl-3 text-xs text-navtext1
-                          lg:text-sm
-                          xl:text-base'>- {username}</p>
-       </div> 
+            {/* TODO: Make username a link to users profile */}
+            <div className='flex flex-row items-center justify-between'>
+                <p className='text-left pl-3 text-sm text-navtext1
+                          lg:text-base
+                          xl:text-lg'>- {username}</p>
+                <button className='mt-4 text-center rounded bg-borderblue text-navnametext font-bowlby text-navtext2  w-[30%]  max-w-[180px] p-1 drop-shadow-md
+                       sm:w-[25%]
+                       xl:text-2xl'
+                       onClick={()=> deleteComment()}>
+                        Delete
+                       </button>
+            </div>
+        </div>
     )
 }
 
