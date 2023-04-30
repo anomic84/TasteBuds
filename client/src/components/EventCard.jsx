@@ -6,7 +6,7 @@ import CommentCard from './CommentCard'
 
 import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
-import { CREATE_COMMENT } from '../utils/mutations';
+import { CREATE_COMMENT, DELETE_COMMENT, DELETE_POST, UPDATE_POST } from '../utils/mutations';
 import { QUERY_ME, QUERY_POSTS } from '../utils/queries';
 // import CommentModal from './CommentModal/CommentModal'
 
@@ -69,6 +69,18 @@ const EventCard = ({ title, description, username, location, time, comments, pos
         }
     };
 
+   
+
+    // TODO: editPost
+    const editPost = async () => {
+
+    }
+
+    // TODO: deletePost
+    const deletePost = async () => {
+
+    }
+
 
 
     const onChange = (e) => {
@@ -108,6 +120,20 @@ const EventCard = ({ title, description, username, location, time, comments, pos
                           lg:text-sm
                           xl:text-base'>{Date(time)}</p>
                 </div>
+                <div className='hidden sm:flex flex-row justify-between my-2'>
+                    <button className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                       sm:w-[25%]
+                       xl:text-2xl' onClick={() => editPost()}>
+                        {/* onClick={() => editPost()} */}
+                        Edit
+                    </button>
+                    <button className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                       sm:w-[25%]
+                       xl:text-2xl' onClick={() => deletePost()}>
+                        {/* onClick={() => deletePost()} */}
+                        Delete
+                    </button>
+                </div>
 
                 {/* ------------  COMMENT INPUT  ------------ */}
 
@@ -120,7 +146,7 @@ const EventCard = ({ title, description, username, location, time, comments, pos
                             onChange={onChange}
                         />
                     ))}
-                    <div className='hidden sm:flex flex-row justify-start'>
+                    <div className='hidden sm:flex flex-row justify-between'>
                         <button className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
                        xl:text-2xl' onClick={() => addComment()}>
@@ -131,6 +157,7 @@ const EventCard = ({ title, description, username, location, time, comments, pos
                             {/* TODO: THIS NEEDS TO SWITCH TO {going.count} IF WE DO THIS */}
                             <p className='text-2xl font-titan  px-2 rounded text-borderblue'>3</p>
                         </div>
+                     
                     </div>
                 </form>
 
@@ -146,46 +173,46 @@ const EventCard = ({ title, description, username, location, time, comments, pos
 
             {/* ------------  MOBILE ------------ */}
 
-            {/* Left side of card */}
-            <div className='flex flex-col'>
-                <div className='flex flex-row'>
-                    <div className='w-[90%] flex sm:hidden flex-col font-manrope p-4'>
 
-                        <h1 className='text-lg font-bold text-borderblue 
+            <div className='flex flex-col mx-auto'>
+                {/* <div className='flex flex-row'> */}
+                <div className='w-[90%] flex sm:hidden flex-col font-manrope p-4'>
+
+                    <h1 className='text-lg font-bold text-borderblue 
                            lg:text-xl
                            xl:text-3xl'>{title}</h1>
-                        <div className='w-[90%] flex flex-col mx-auto'>
-                            <p className='text-[10px] text-navtext1
+                    <div className='w-[90%] flex flex-col mx-auto'>
+                        <p className='text-[10px] text-navtext1
                           lg:text-sm
                           xl:text-lg'>Created by {username}</p>
-                            <p className='w-full mx-auto py-2 text-sm text-slate-800
+                        <p className='w-full mx-auto py-2 text-sm text-slate-800
                           lg:text-lg lg:py-4
                           xl:text-2xl'>{description}</p>
-                            <p className='text-right text-[10px] text-navtext1
+                        <p className='text-right text-[10px] text-navtext1
                           lg:text-sm
                           xl:text-lg'>{location}</p>
-                            <p className='text-right text-[10px] text-navtext1
+                        <p className='text-right text-[10px] text-navtext1
                           lg:text-sm
                           xl:text-lg'>{Date(time)}</p>
-                        </div>
                     </div>
-                    {/* <div className='flex w-[10%] flex-col  sm:hidden'> */}
-                    {/* How many going */}
-                    {/* <div className='flex flex-col items-center py-4'> */}
-                    {/* <FaCheckSquare className='text-borderblue' size={27} /> */}
-                    {/* TODO: THIS NEEDS TO SWITCH TO {going.count} IF WE DO THIS */}
-                    {/* <p className='text-xs text-navtext1'>3</p> */}
-
-                    {/* </div>
-                        <div className='flex flex-col items-center py-4'>
-                            <FaCommentAlt className='text-borderblue' size={27} /> */}
-                    {/* TODO: THIS NEEDS TO SWITCH TO {comment.count} IF WE DO THIS */}
-                    {/* <p className='text-xs text-navtext1'>3</p>
-                        </div>
-                    </div> */}
+                    <div className='flex sm:hidden flex-row justify-between my-2'>
+                        <button className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                       sm:w-[25%]
+                       xl:text-2xl' onClick={() => editPost()}>
+                            Edit
+                        </button>
+                        <button className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                       sm:w-[25%]
+                       xl:text-2xl' onClick={() => deletePost()}>
+                            Delete
+                        </button>
+                    </div>
                 </div>
+                {/* </div> */}
 
-                <div className='mx-auto w-[80%] mb-4 flex flex-col sm:hidden'>
+
+                {/* COMMENT AREA */}
+                <div className='w-[90%] flex sm:hidden flex-col font-manrope p-4'>
                     <form className='w-[100%]' onSubmit={handleSubmit}>
 
                         {inputs.map((input) => (
@@ -196,15 +223,13 @@ const EventCard = ({ title, description, username, location, time, comments, pos
                                 onChange={onChange}
                             />
                         ))}
-                        <div className='flex flex-row justify-center'>
-                            <button className='mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                        <div className='flex flex-row justify-between my-2'>
+                            <button className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                        xl:text-2xl' type="submit" onClick={() => addComment()} >
-                                Submit</button>
-                            <button
-                                className='close-modal mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
-                   xl:text-2xl'
-                            >CLOSE
+                                Submit
                             </button>
+                        
+
                         </div>
                     </form>
                     {/* ------------ LIST OF COMMENTS  ------------ */}
@@ -218,7 +243,7 @@ const EventCard = ({ title, description, username, location, time, comments, pos
             </div >
         </div >
 
-  
+
     )
 }
 
