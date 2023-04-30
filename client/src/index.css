@@ -6,15 +6,15 @@
 
 /* Make the underline onhover effect for navbar */
 @layer utilities {
-	ul li {
-		@apply relative tracking-[1px];
-	}
-	ul li::after {
-		@apply content-[''] bg-[#ADD8E6] h-[3px] w-[0%] -bottom-[-10px] left-0  rounded-xl absolute duration-300;
-	}
-	ul li:hover::after {
-		@apply w-[80%];
-	}
+    ul li {
+        @apply relative tracking-[1px];
+    }
+    ul li::after {
+        @apply content-[''] bg-[#DFD4D6] h-[3px] w-[0%] -bottom-[-10px] left-0  rounded-xl absolute duration-300;
+    }
+    ul li:hover::after {
+        @apply w-[80%];
+    }
 }
 
 * {
@@ -22,29 +22,55 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* root {
+--darkest: color: #222831,
+--darkblue: color: #25364A,
+--blue: color: #4D677B,
+--lightblue: color: #96B0BF,
+--light: color: #D8E0E5,
+--pink: color: #E5C8C7,
+--lightpink: color: #DFD4D6,
+--hotpink: color: #F2AFA9
+
+} */
 
 /* This helps keep footer stuck at the bottom, paired with the mt-auto*/
 body {
     display: flex;
-  flex: column;
-  min-height: 100vh;
+    flex: column;
+    min-height: 100vh;
 }
 
 .maingradient {
-
+    background: var(--lightblue);
     /* ff 3.6+ */
-    background: -moz-radial-gradient(circle at 50% 50%, #FAF8F8 0%, #E5D4C373 100%);
+    /* background: -moz-radial-gradient(
+        circle at 50% 50%,
+        #faf8f8 0%,
+        #e5d4c373 100%
+    ); */
 
     /* safari 5.1+,chrome 10+ */
-    background: -webkit-radial-gradient(circle at 50% 50%, #FAF8F8 0%, #E5D4C373 100%);
+    /* background: -webkit-radial-gradient(
+        circle at 50% 50%,
+        #faf8f8 0%,
+        #d8e0e5 100%
+    ); */
 
     /* opera 11.10+ */
-    background: -o-radial-gradient(circle at 50% 50%, #FAF8F8 0%, #E5D4C373 100%);
+    /* background: -o-radial-gradient(
+        circle at 50% 50%,
+        #faf8f8 0%,
+        #e5d4c373 100%
+    ); */
 
     /* ie 10+ */
-    background: -ms-radial-gradient(circle at 50% 50%, #FAF8F8 0%, #E5D4C373 100%);
+    /* background: -ms-radial-gradient(
+        circle at 50% 50%,
+        #faf8f8 0%,
+        #e5d4c373 100%
+    ); */
 
     /* global 92%+ browsers support */
-    background: radial-gradient(circle at 50% 50%, #FAF8F8 0%, #E5D4C373 100%);
-
+    /* background: radial-gradient(circle at 50% 50%, #faf8f8 0%, #e5d4c373 100%); */
 }

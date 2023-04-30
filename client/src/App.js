@@ -46,7 +46,8 @@ function App() {
         <ApolloProvider client={client}>
             <Router>
                 <div className='w-screen h-[100%]'>
-                    <div className='maingradient h-[100%]'>
+                    {/* <div className='maingradient h-[100%]'> */}
+                    <div className='bg-mainbg h-[100%]'>
                         {/* <Navbar
                         currentPage={currentPage}
                         handlePageChange={handlePageChange}
