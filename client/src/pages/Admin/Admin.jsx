@@ -15,14 +15,14 @@ const Admin = ({ client, editPost, setEditPost }) => {
     const [modal, setModal] = useState(false);
 
     const [post] = useMutation(CREATE_POST);
-    // function toggleModal() {
-    //     console.log('fired');
+    function toggleModal() {
+        console.log('fired');
+        setModal(!modal);
+    }
+    // const toggleModal = () => {
     //     setModal(!modal);
-    // }
-    const toggleModal = () => {
-        // setModal(!modal);
-        // console.log(modal);
-    };
+    //     console.log(modal);
+    // };
     // --------------- EVENT VALUES AND INPUTS --------------- //
     const [values, setValues] = useState({
         username: '',
@@ -33,6 +33,7 @@ const Admin = ({ client, editPost, setEditPost }) => {
         location: '',
     });
 
+    const [postTime, setCreateTime] = useState();
     const inputs = [
         {
             id: 2,
@@ -53,10 +54,11 @@ const Admin = ({ client, editPost, setEditPost }) => {
         {
             id: 4,
             name: 'time',
-            type: 'text',
-            placeholder: 'Time',
+            type: 'datetime-local',
+            placeholder: Date(),
             label: 'Time',
             required: true,
+            value: Date(),
         },
         // {
         //     id: 5,
@@ -99,7 +101,7 @@ const Admin = ({ client, editPost, setEditPost }) => {
                     title: values.title,
                     description: values.description,
                     location: values.location,
-                    time: Date(),
+                    time: postTime,
                     username: userData.data.username,
                 },
             });
@@ -205,15 +207,16 @@ const Admin = ({ client, editPost, setEditPost }) => {
                                         <CreateInput
                                             key={input.id}
                                             {...input}
-                                            value={values[input.name]}
+                                            value={values[input.value]}
                                             onChange={onChange}
+                                            setCreateTime={setCreateTime}
                                         />
                                     ))}
                                     <div className='flex flex-row justify-center'>
                                         <button
                                             className='mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                            xl:text-2xl'
-                                            onClick={() => handleCreatePost()}
+                                            onClick={() => {handleCreatePost(); toggleModal()}}
                                         >
                                             Submit
                                         </button>
