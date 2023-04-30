@@ -1,45 +1,53 @@
 import React from 'react';
-import CreateModal from '../../components/CreateModal/CreateModal'
+import CreateModal from '../../components/CreateModal/CreateModal';
 import { useQuery } from '@apollo/client';
-import { QUERY_POSTS} from '../../utils/queries';
+import { QUERY_POSTS } from '../../utils/queries';
 import Auth from '../../utils/auth';
-import EventCard from '../../components/EventCard'
+import EventCard from '../../components/EventCard';
 // import { allEvents } from '../../constants/constants'
 
-function Listings({client}) {
+function Listings({ client }) {
     const { loading, data } = useQuery(QUERY_POSTS);
     let postData = data?.getAllPosts || [];
     const userData = Auth.getProfile();
-    console.log(postData, "postData")
-//  console.log(userData.data.username, "userData")
+    console.log(postData, 'postData');
+    //  console.log(userData.data.username, "userData")
     if (loading) {
-        return <h2>LOADING</h2>
+        return <h2>LOADING</h2>;
     }
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) {
         return false;
     }
 
-   
-
     return (
-
         <section className=' w-full  flex flex-col justify-center'>
-               <h1 className=' bg-card p-4 text-center text-borderblue font-manrope drop-shadow-lg text-xl
-               sm:m-4 sm:text-3xl sm:text-left
-                xl:text-6xl xl:py-2'>Logged in as {data ? userData.data.username  : "Foodie"}!</h1>
-                <div className='z-10'>
-                    <CreateModal source={"listing"} client={client} />
-                </div>
-{/* <div>Welcome {userData.data.username} ,</div> */}
+            <h1
+                className='text-left text-borderblue font-manrope  text-3xl
+                xl:text-6xl xl:py-2'
+            >
+                Welcome {data ? userData.data.username : 'Foodie'}!
+            </h1>
+            <div className='z-10'>
+                <CreateModal source={'listing'} client={client} />
+            </div>
+            {/* <div>Welcome {userData.data.username} ,</div> */}
             {/* <p className='ml-4 w-[160px] text-manrope text-xs bg-blue-100 p-1 rounded text-navtext1'>logged in as {" "} </p> */}
             <div className='sm:m-4 flex flex-col items-center'>
-                {data?data.getAllPosts.map((post) => (
-                    <EventCard postId={post._id} client={client} source="listing" {...post} />
-                    // <div>{post.username}</div>
+                {data ? (
+                    data.getAllPosts.map((post) => (
+                        <EventCard
+                            postId={post._id}
+                            client={client}
+                            source='listing'
+                            {...post}
+                        />
+                        // <div>{post.username}</div>
+                    ))
+                ) : (
+                    <br />
+                )}
 
-                )):<br/>}
-                
                 {/* {loading ? (
                     <h1> Loading posts</h1>
                     ) : (
@@ -52,12 +60,4 @@ function Listings({client}) {
     );
 }
 
-
 export default Listings;
-
-
-
-
-
-
-

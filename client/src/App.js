@@ -32,6 +32,15 @@ const client = new ApolloClient({
 });
 
 function App() {
+    const [editPost, setEditPost] = React.useState({
+        edit: false,
+        postid: '',
+        title: '',
+        description: '',
+        time: '',
+        username: '',
+        location: '',
+    });
     return (
         // APP
         <ApolloProvider client={client}>
@@ -47,11 +56,23 @@ function App() {
                             <Route path='/' exact element={<Home />} />
                             <Route
                                 path='/admin'
-                                element={<Admin client={client} />}
+                                element={
+                                    <Admin
+                                        client={client}
+                                        editPost={editPost}
+                                        setEditPost={setEditPost}
+                                    />
+                                }
                             />
                             <Route
                                 path='/listings'
-                                element={<Listings client={client} />}
+                                element={
+                                    <Listings
+                                        client={client}
+                                        editPost={editPost}
+                                        setEditPost={setEditPost}
+                                    />
+                                }
                             />
                         </Routes>
                         {/* <main className='flex w-full'>{renderPage()}</main> */}

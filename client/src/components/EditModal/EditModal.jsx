@@ -1,51 +1,66 @@
 import React, { useState } from 'react';
-import CreateInput from './CreateInput';
+import EditInput from './EditInput';
 import { useMutation } from '@apollo/client';
-import { CREATE_POST } from '../../utils/mutations';
+import { UPDATE_POST } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { QUERY_ME, QUERY_POSTS } from '../../utils/queries';
 
-const CreateModal = ({ client, source }) => {
+const EditModal = ({
+    client,
+    source,
+    title,
+    description,
+    time,
+    location,
+    postId,
+}) => {
     const [modal, setModal] = useState(false);
-    const [post] = useMutation(CREATE_POST);
+    const [post] = useMutation(UPDATE_POST);
     const toggleModal = () => {
         setModal(!modal);
     };
 
     // --------------- EVENT VALUES AND INPUTS --------------- //
-    const [values, setValues] = useState({
-        title: '',
-        description: '',
-        time: '',
-        location: '',
+    function toDateTime(secs) {
+        var t = new Date(parseInt(secs)); // Epoch
+        //t.setSeconds(parseInt(secs) / 1000);
+        //console.log(t.toISOString());
+        return t.toISOString();
+    }
+    const [updateValues, setUpdateValues] = useState({
+        title: title,
+        description: description,
+        location: location,
     });
-
-    const [postTime, setCreateTime] = useState();
+    const [updateTime, setUpdateTime] = useState(toDateTime(time));
     const inputs = [
         {
             id: 2,
             name: 'title',
             type: 'text',
-            placeholder: 'Title',
+            placeholder: title,
             label: 'Title',
             required: true,
+            value: title,
         },
         {
             id: 3,
             name: 'description',
             type: 'text',
-            placeholder: 'Description',
+            placeholder: description,
             label: 'Description',
             required: true,
+            value: description,
         },
         {
             id: 4,
             name: 'time',
             type: 'datetime-local',
-            placeholder: Date(),
+            placeholder: toDateTime(time),
             label: 'Time',
             required: true,
-            value: Date(),
+            value: toDateTime(time),
+            defaultValue: toDateTime(time),
         },
         // {
         //     id: 5,
@@ -59,9 +74,9 @@ const CreateModal = ({ client, source }) => {
             id: 6,
             name: 'location',
             type: 'text',
-            placeholder: 'Location',
+            placeholder: location,
             label: 'Location',
-            required: true,
+            value: location,
         },
     ];
 
@@ -73,27 +88,29 @@ const CreateModal = ({ client, source }) => {
 
     const onChange = (e) => {
         // console.log(e.target.value)
-        setValues({ ...values, [e.target.name]: e.target.value });
+        setUpdateValues({ ...updateValues, [e.target.name]: e.target.value });
     };
-    const handleCreatePost = async () => {
+    const handleUpdatePost = async () => {
         try {
             const token = Auth.loggedIn() ? Auth.getToken() : null;
             const userData = Auth.getProfile();
-            //console.log(userData);
+            //console.log(Date(updateValues.time));
             if (!token) {
                 return false;
             }
+            //console.log('updateValues:', updateValues);
             const { data } = await post({
                 variables: {
-                    title: values.title,
-                    description: values.description,
-                    location: values.location,
-                    time: postTime,
+                    postId: postId,
+                    title: updateValues.title,
+                    description: updateValues.description,
+                    location: updateValues.location,
+                    time: updateTime,
                     username: userData.data.username,
                 },
             });
 
-            //console.log(data);
+            // console.log(data);
             if (source === 'admin') {
                 await client.refetchQueries({ include: [QUERY_ME] });
                 toggleModal();
@@ -114,7 +131,7 @@ const CreateModal = ({ client, source }) => {
                      bg-navbg font-bowlby text-borderblue p-5 drop-shadow-md
                      mt-4 mx-auto text-2xl rounded-2xl'
             >
-                Create a New Event
+                Edit
             </button>
 
             {modal && (
@@ -133,23 +150,24 @@ const CreateModal = ({ client, source }) => {
                                     className='text-center font-titan text-borderblue text-2xl
                                                 xl:text-4xl'
                                 >
-                                    Create a new event!
+                                    Edit event!
                                 </h1>
                                 <form className='' onSubmit={handleSubmit}>
                                     {inputs.map((input) => (
-                                        <CreateInput
+                                        <EditInput
                                             key={input.id}
                                             {...input}
-                                            value={values[input.value]}
+                                            value={updateValues[input.value]}
                                             onChange={onChange}
-                                            setCreateTime={setCreateTime}
+                                            setUpdateTime={setUpdateTime}
+                                            //updateValues={updateValues}
                                         />
                                     ))}
                                     <div className='flex flex-row justify-center'>
                                         <button
                                             className='mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                            xl:text-2xl'
-                                            onClick={() => handleCreatePost()}
+                                            onClick={() => handleUpdatePost()}
                                         >
                                             Submit
                                         </button>
@@ -171,4 +189,4 @@ const CreateModal = ({ client, source }) => {
     );
 };
 
-export default CreateModal;
+export default EditModal;
