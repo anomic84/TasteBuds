@@ -102,21 +102,29 @@ const resolvers = {
 
         // UPDATE
         updatePost: async (parent, args) => {
-            const postToUpdate = await Posts.findOne({ postId: args._id });
+            const postToUpdate = await Posts.findOneAndUpdate(
+                { _id: args.postId },
+                {
+                    title: args.title,
+                    description: args.description,
+                    time: args.time,
+                    location: args.location,
+                }
+            );
             console.log(postToUpdate);
             if (!postToUpdate) {
                 throw new Error('Post not found');
             }
             // Update the post fields with new values
-            postToUpdate.title = args.title;
-            postToUpdate.description = args.description;
-            postToUpdate.time = args.time;
-            postToUpdate.location = args.location;
+            // postToUpdate.title = args.title;
+            // postToUpdate.description = args.description;
+            // postToUpdate.time = args.time;
+            // postToUpdate.location = args.location;
 
             // Save the updated post
-            const updatedPost = await postToUpdate.save();
-            console.log(updatedPost);
-            return updatedPost;
+            // const updatedPost = await postToUpdate.save();
+            // console.log(updatedPost);
+            return postToUpdate;
         },
 
         // DELETE
