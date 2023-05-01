@@ -56,9 +56,9 @@ const CommentModal = () => {
                      mt-4 mx-auto text-2xl rounded-2xl'
             >
                 <div className='flex flex-col items-center py-4'>
-                    <FaCommentAlt className='text-darkblue' size={27} />
+                    <FaCommentAlt className='text-orange' size={27} />
                     {/* TODO: THIS NEEDS TO SWITCH TO {comment.count} IF WE DO THIS */}
-                    <p className='text-xs text-navtext1'>3</p>
+                    <p className='text-xs text-cream'>3</p>
                 </div>
             </button>
 
@@ -103,13 +103,13 @@ const CommentModal = () => {
                                     ))}
                                     <div className='flex flex-row justify-center'>
                                         <button
-                                            className='mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-blue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                                            className='mt-4 mx-auto text-center rounded-lg bg-navbg text-navnametext font-bowlby text-blue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                            xl:text-2xl'
                                         >
                                             Submit
                                         </button>
                                         <button
-                                            className='close-modal mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-blue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                                            className='close-modal mt-4 mx-auto text-center rounded-lg bg-navbg text-navnametext font-bowlby text-blue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                        xl:text-2xl'
                                             onClick={toggleModal}
                                         >

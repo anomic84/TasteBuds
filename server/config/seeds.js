@@ -19,6 +19,8 @@ db.once('open', async () => {
                     createdAt: new Date(),
                 },
             ],
+            buddies: 4,
+            buddylist: ['HungryHippoEats'],
         },
         {
             username: 'FoodieFunster',
@@ -35,6 +37,8 @@ db.once('open', async () => {
                     createdAt: new Date(),
                 },
             ],
+            buddies: 6,
+            buddylist: ['FoodieFunster'],
         },
         {
             username: 'TableForMore',
@@ -51,6 +55,8 @@ db.once('open', async () => {
                     createdAt: new Date(),
                 },
             ],
+            buddies: 3,
+            buddylist: ['TableForMore'],
         },
         {
             username: 'NoLonelyMeals',
@@ -67,6 +73,8 @@ db.once('open', async () => {
                     createdAt: new Date(),
                 },
             ],
+            buddies: 2,
+            buddylist: ['NoLonelyMeals'],
         },
     ]);
 

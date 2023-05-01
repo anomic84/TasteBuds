@@ -109,6 +109,8 @@ const resolvers = {
                     description: args.description,
                     time: args.time,
                     location: args.location,
+                    buddies: args.buddies,
+                    buddylist: args.buddylist,
                 }
             );
             console.log(postToUpdate);

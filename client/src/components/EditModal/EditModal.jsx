@@ -13,6 +13,8 @@ const EditModal = ({
     time,
     location,
     postId,
+    buddies,
+    buddylist,
 }) => {
     const [modal, setModal] = useState(false);
     const [post] = useMutation(UPDATE_POST);
@@ -31,6 +33,7 @@ const EditModal = ({
         title: title,
         description: description,
         location: location,
+        buddies: buddies,
     });
     const [updateTime, setUpdateTime] = useState(toDateTime(time));
     const inputs = [
@@ -71,6 +74,14 @@ const EditModal = ({
             label: 'Location',
             value: location,
         },
+        {
+            id: 7,
+            name: 'buddies',
+            type: 'number',
+            placeholder: buddies,
+            label: 'Reservation Size',
+            value: buddies,
+        },
     ];
 
     // --------------- CREATE EVENT METHODS --------------- //
@@ -92,6 +103,7 @@ const EditModal = ({
                 return false;
             }
             //console.log('updateValues:', updateValues);
+            console.log(updateValues);
             const { data } = await post({
                 variables: {
                     postId: postId,
@@ -100,6 +112,7 @@ const EditModal = ({
                     location: updateValues.location,
                     time: updateTime,
                     username: userData.data.username,
+                    buddies: parseInt(updateValues.buddies),
                 },
             });
 
@@ -117,13 +130,20 @@ const EditModal = ({
     };
 
     return (
-        <div className='w-full flex'>
+        <div className='flex w-full '>
+            {/* <div className='flex sm:hidden flex-row justify-between my-2'> */}
             <button
                 onClick={toggleModal}
-                className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md sm:w-[25%] xl:text-2xl'
+                style={{
+                    width: '150px',
+                }}
+                className='mt-4 text-center rounded-lg bg-pink text-navnametext font-bowlby text-cream    max-w-[180px] p-2 drop-shadow-md
+                       sm:w-[25%]
+                       xl:text-2xl'
             >
-                Edit
+                Edit Post
             </button>
+            {/* </div> */}
 
             {modal && (
                 <div
@@ -132,16 +152,16 @@ const EditModal = ({
                 >
                     <div className='overlay'>
                         <div
-                            className='modal-content bg-card border-borderblue border-2 rounded-lg p-4 drop-shadow-xl w-[300px] 
+                            className='modal-content bg-apricot bg-opacity-80 border-darkest border-2 rounded-lg p-4 drop-shadow-xl w-[300px] 
                     sm:w-[400px]
                     xl:w-[800px]'
                         >
                             <div className='xl:py-8'>
                                 <h1
-                                    className='text-center font-titan text-borderblue text-2xl
+                                    className='text-center font-titan text-hotred text-2xl
                                                 xl:text-4xl'
                                 >
-                                    Edit event!
+                                    Edit Post!
                                 </h1>
                                 <form className='' onSubmit={handleSubmit}>
                                     {inputs.map((input) => (
@@ -156,14 +176,14 @@ const EditModal = ({
                                     ))}
                                     <div className='flex flex-row justify-center'>
                                         <button
-                                            className='mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                                            className='mt-4 mx-auto text-center rounded-lg bg-orange text-navnametext font-bowlby text-hotred  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                            xl:text-2xl'
                                             onClick={() => handleUpdatePost()}
                                         >
                                             Submit
                                         </button>
                                         <button
-                                            className='close-modal mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                                            className='close-modal mt-4 mx-auto text-center rounded-lg bg-orange text-navnametext font-bowlby text-hotred  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                        xl:text-2xl'
                                             onClick={toggleModal}
                                         >

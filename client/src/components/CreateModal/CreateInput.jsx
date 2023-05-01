@@ -14,13 +14,13 @@ const CreateInput = (props) => {
         return (
             <div className='formInput mx-auto flex flex-col'>
                 <label
-                    className='p-2 text-navtext1 font-titan
+                    className='p-2 text-hotred font-titan
                       xl:text-2xl'
                 >
                     {label}
                 </label>
                 <input
-                    className='p-2 rounded
+                    className='p-2 rounded-lg
                xl:text-2xl'
                     {...inputProps}
                     onChange={handler}
@@ -38,13 +38,13 @@ const CreateInput = (props) => {
         return (
             <div className='formInput mx-auto flex flex-col'>
                 <label
-                    className='p-2 text-navtext1 font-titan
+                    className='p-2 text-hotred font-titan
                       xl:text-2xl'
                 >
                     {label}
                 </label>
                 <input
-                    className='p-2 rounded
+                    className='p-2 rounded-lg
                xl:text-2xl'
                     {...inputProps}
                     onChange={onChange}

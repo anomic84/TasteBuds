@@ -8,31 +8,31 @@ import EventCard from '../../components/EventCard';
 import CreateModal from '../../components/CreateModal/CreateModal';
 import { useQuery } from '@apollo/client';
 import Auth from '../../utils/auth';
-import { TbCalendarPlus } from 'react-icons/tb';
+// import { TbCalendarPlus } from 'react-icons/tb';
 import CreateInput from '../../components/CreateModal/CreateInput';
 
-const Admin = ({ client, editPost, setEditPost }) => {
+const Admin = ({ client }) => {
     const [modal, setModal] = useState(false);
 
     const [post] = useMutation(CREATE_POST);
-    // function toggleModal() {
-    //     console.log('fired');
+    function toggleModal() {
+        console.log('fired');
+        setModal(!modal);
+    }
+    // const toggleModal = () => {
     //     setModal(!modal);
-    // }
-    const toggleModal = () => {
-        // setModal(!modal);
-        // console.log(modal);
-    };
+    //     console.log(modal);
+    // };
     // --------------- EVENT VALUES AND INPUTS --------------- //
     const [values, setValues] = useState({
         username: '',
         title: '',
         description: '',
         time: '',
-        // createdAt: '',
         location: '',
     });
 
+    const [postTime, setCreateTime] = useState();
     const inputs = [
         {
             id: 2,
@@ -53,19 +53,13 @@ const Admin = ({ client, editPost, setEditPost }) => {
         {
             id: 4,
             name: 'time',
-            type: 'text',
-            placeholder: 'Time',
+            type: 'datetime-local',
+            placeholder: Date(),
             label: 'Time',
             required: true,
+            value: Date(),
         },
-        // {
-        //     id: 5,
-        //     name: "createdAt",
-        //     type: "text",
-        //     placeholder: "Created At",
-        //     label: "Created At",
-        //     required: true,
-        // },
+
         {
             id: 6,
             name: 'location',
@@ -99,7 +93,7 @@ const Admin = ({ client, editPost, setEditPost }) => {
                     title: values.title,
                     description: values.description,
                     location: values.location,
-                    time: Date(),
+                    time: postTime,
                     username: userData.data.username,
                 },
             });
@@ -120,15 +114,15 @@ const Admin = ({ client, editPost, setEditPost }) => {
     return (
         <section className='w-full  flex flex-col justify-center'>
             <div
-                className='m-4 border-4 border-borderblue mx-auto rounded-3xl my-4 p-4 drop-shadow-lg bg-card max-w-[600px]
+                className=' m-4  mx-auto my-4 p-10 rounded-full drop-shadow-lg max-w-[500px]  drop-shadow-lg
             md:w-[80%]
-            xl:max-w-[1000px]'
+            xl:max-w-[1000px] '
             >
                 <h1
-                    className='text-center text-borderblue font-manrope font-bold text-4xl
-                xl:text-6xl xl:py-2'
+                    className=' text-center font-manrope text-2xl text-hotred
+                xl:text-4xl xl:py-2'
                 >
-                    {data ? data.me.username : <br />}
+                    {data ? data.me.username : <br />}'s profile
                 </h1>
             </div>
             <div className='z-10'>
@@ -139,17 +133,7 @@ const Admin = ({ client, editPost, setEditPost }) => {
                     modal={modal}
                 />
             </div>
-            {/* <div className='sm:m-4 flex flex-col items-center'> */}
-            {/* {userData.map((post) => (
-                    <EventCard key={post.id} {...post} />
-                    
-                ))} */}
-            {/* </div> */}
             <div className='mx-auto'>
-                {/* <h1>About me</h1> */}
-                {/* is there a avatar generator in tailwind? */}
-                {/* <p>Email: {data ? data.me.email : "email"}</p> */}
-                {/* {data?<SampleComponent posts={data.me.posts}/>:<br/>} */}
                 {data ? (
                     data.me.posts.map((post) => {
                         return (
@@ -163,6 +147,8 @@ const Admin = ({ client, editPost, setEditPost }) => {
                                 postId={post._id}
                                 source={'admin'}
                                 client={client}
+                                buddies={post.buddies}
+                                buddylist={post.buddylist}
                             />
                         );
                     })
@@ -177,10 +163,14 @@ const Admin = ({ client, editPost, setEditPost }) => {
           md:w-[80%] md:pr-0
           xl:max-w-[1000px]'
             >
-                <TbCalendarPlus
-                    onClick={toggleModal}
-                    className='text-6xl text-borderblue bg-navbg rounded-lg p-1  drop-shadow-lg md:right-0'
-                />
+                {/* FUTURE DEVELOPMENT */}
+                {/* <TbCalendarPlus
+                    className='text-6xl text-hotpink mr-left bg-darkblue rounded-lg p-1  drop-shadow-lg md:right-0'
+                    onClick={() => {
+                        handleCreatePost();
+                        toggleModal();
+                    }}
+                /> */}
             </div>
             {modal && (
                 <div
@@ -189,13 +179,13 @@ const Admin = ({ client, editPost, setEditPost }) => {
                 >
                     <div className='overlay'>
                         <div
-                            className='modal-content bg-card border-borderblue border-2 rounded-lg p-4 drop-shadow-xl w-[300px] 
+                            className='modal-content bg-orange border-hotred border-2 rounded-lg p-4 drop-shadow-xl w-[300px] 
                     sm:w-[400px]
                     xl:w-[800px]'
                         >
                             <div className='xl:py-8'>
                                 <h1
-                                    className='text-center font-titan text-borderblue text-2xl
+                                    className='text-center font-titan bg-orange text-maroon text-2xl
                                                 xl:text-4xl'
                                 >
                                     Create a new event!
@@ -205,20 +195,24 @@ const Admin = ({ client, editPost, setEditPost }) => {
                                         <CreateInput
                                             key={input.id}
                                             {...input}
-                                            value={values[input.name]}
+                                            value={values[input.value]}
                                             onChange={onChange}
+                                            setCreateTime={setCreateTime}
                                         />
                                     ))}
                                     <div className='flex flex-row justify-center'>
                                         <button
-                                            className='mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                                            className='mt-4 mx-auto text-center rounded-lg  bg-orange text-navnametext font-bowlby text-hotpink  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                            xl:text-2xl'
-                                            onClick={() => handleCreatePost()}
+                                            onClick={() => {
+                                                handleCreatePost();
+                                                toggleModal();
+                                            }}
                                         >
                                             Submit
                                         </button>
                                         <button
-                                            className='close-modal mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                                            className='close-modal mt-4 mx-auto text-center rounded-lg bg-hotpink text-navnametext font-bowlby text-hotpink  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                        xl:text-2xl'
                                             onClick={toggleModal}
                                         >

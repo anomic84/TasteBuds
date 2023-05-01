@@ -42,7 +42,7 @@ body {
 }
 
 .maingradient {
-    background: var(--lightblue);
+    background: #fdf7f7;
     /* ff 3.6+ */
     /* background: -moz-radial-gradient(
         circle at 50% 50%,
