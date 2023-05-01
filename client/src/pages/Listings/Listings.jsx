@@ -19,10 +19,10 @@ function Listings({ client }) {
     }
 
     return (
-        <section className=' w-full  flex flex-col justify-center'>
+        <section className='m-4 mx-auto w-full flex flex-col justify-center'>
             <h1
                 // TODO: add max width
-                className='text-center p-5 mt-5 mb-5 text-darkest font-manrope  text-lg
+                className='text-center p-5  my-4 mt-10 mb-10 text-pink font-bowlby  text-lg
                 xl:text-4xl xl:py-2 m-4 '
             >
                 Welcome {data ? userData.data.username : 'Foodie'}!
@@ -30,8 +30,6 @@ function Listings({ client }) {
             <div className='z-10'>
                 <CreateModal source={'listing'} client={client} />
             </div>
-            {/* <div>Welcome {userData.data.username} ,</div> */}
-            {/* <p className='ml-4 w-[160px] text-manrope text-xs bg-blue-100 p-1 rounded text-navtext1'>logged in as {" "} </p> */}
             <div className='sm:m-4 flex flex-col items-center'>
                 {data ? (
                     data.getAllPosts.map((post) => (
@@ -43,7 +41,6 @@ function Listings({ client }) {
                             buddylist={post.buddylist}
                             {...post}
                         />
-                        // <div>{post.username}</div>
                     ))
                 ) : (
                     <br />

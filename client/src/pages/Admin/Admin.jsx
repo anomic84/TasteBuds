@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { CREATE_POST } from '../../utils/mutations';
-import { QUERY_ME, QUERY_POSTS } from '../../utils/queries';
-// import { adminEvents } from '../../constants/constants'
+import { QUERY_ME } from '../../utils/queries';
 import EventCard from '../../components/EventCard';
-// import { useParams } from 'react-router-dom';
 import CreateModal from '../../components/CreateModal/CreateModal';
 import { useQuery } from '@apollo/client';
 import Auth from '../../utils/auth';
@@ -19,10 +17,7 @@ const Admin = ({ client }) => {
         console.log('fired');
         setModal(!modal);
     }
-    // const toggleModal = () => {
-    //     setModal(!modal);
-    //     console.log(modal);
-    // };
+
     // --------------- EVENT VALUES AND INPUTS --------------- //
     const [values, setValues] = useState({
         username: '',
@@ -114,12 +109,13 @@ const Admin = ({ client }) => {
     return (
         <section className='w-full  flex flex-col justify-center'>
             <div
-                className=' m-4  mx-auto my-4 p-10 rounded-full drop-shadow-lg max-w-[500px]  drop-shadow-lg
+                className=' mx-auto my-4 p-10 rounded-full drop-shadow-lg max-w-[500px]  drop-shadow-lg
             md:w-[80%]
             xl:max-w-[1000px] '
             >
+                {/* FIXME maybe add a background color circle to make the name pop? with some transparency maybe */}
                 <h1
-                    className=' text-center font-manrope text-2xl text-hotred
+                    className=' text-center font-bowlby text-2xl text-pink
                 xl:text-4xl xl:py-2'
                 >
                     {data ? data.me.username : <br />}'s profile
@@ -185,7 +181,7 @@ const Admin = ({ client }) => {
                         >
                             <div className='xl:py-8'>
                                 <h1
-                                    className='text-center font-titan bg-orange text-maroon text-2xl
+                                    className='text-center p-5 font-titan bg-orange text-maroon text-2xl
                                                 xl:text-4xl'
                                 >
                                     Create a new event!
@@ -225,7 +221,6 @@ const Admin = ({ client }) => {
                     </div>
                 </div>
             )}
-            {/* This is the "added event" icon button at the very bottom */}
         </section>
     );
 };

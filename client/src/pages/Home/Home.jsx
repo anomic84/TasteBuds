@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import LoginModal from '../../components/LoginModal/LoginModal';
 import SignUpModal from '../../components/SignUpInput/SignUpModal';
-// import Restaurant from '../../assets/kayleigh-harrington-yhn4okt6ci0-unsplash.jpg'
-// import SignUpInput from '../../components/SignUpInput/SignUpInput';
-// import Quote from '../../assets/quote-transparent.png';
-import Logo from '../../assets/logo-transparent.png';
+import Logo from '../../assets/logo-icon.png';
 
 const Home = () => {
     const [loginModal, setLoginModal] = useState(false);
@@ -18,9 +15,9 @@ const Home = () => {
     return (
         <div className=' flex flex-col mx-auto'>
             {/* Greetings Section <--to--> Not a Member? */}
-            <div className='flex flex-col px-4'>
+            <div className='flex flex-col m-8 px-4'>
                 <h1
-                    className=' py-5 mt-10 text-5xl font-bowlby text-maroon text-center drop-shadow-lg
+                    className=' py-5 mt-10 text-5xl font-bowlby text-hotpink text-center drop-shadow-lg
         md:text-center
         xl:text-6xl'
                 >
@@ -37,7 +34,7 @@ const Home = () => {
                     />
                 </div>
                 <p
-                    className='  py-5 text-5xl text-apricot text-center drop-shadow-lg
+                    className='  py-5 text-5xl text-hotpink text-center drop-shadow-lg
         md:text-center
         xl:text-4xl'
                 >
@@ -46,7 +43,7 @@ const Home = () => {
 
                 {/* Login */}
                 <p
-                    className='text-center font-bowlby text-maroon drop-shadow-lg text-2xl pt-5 m-2
+                    className='text-center font-bowlby text-apricot drop-shadow-lg text-2xl pt-5 m-2
         xl:text-4xl'
                 >
                     Not a member?
@@ -65,7 +62,6 @@ const Home = () => {
                         Sign Up!
                     </button>
                 </div>
-                {/* <div className='hidden md:flex justify-center'> */}
                 <div className='hidden md:flex justify-center'>
                     <button
                         onClick={toggleLoginModal}
@@ -78,7 +74,6 @@ const Home = () => {
                         Login
                     </button>
                 </div>
-                {/* QUOTE IMAGE */}
 
                 <SignUpModal
                     className=''
@@ -99,15 +94,7 @@ const Home = () => {
         sm:text-xl
         md:text-center
         xl:text-3xl'
-            >
-                {/* FIXME: image showing over the modal */}
-                {/* <img
-                    src={Quote}
-                    alt='quote'
-                    className='object-contain justify-center pt-5hover:object-scale-down md:object-scale-down h-46 w-96 m-auto'
-                /> */}
-                {/* "Where foodies become besties" */}
-            </p>
+            ></p>
         </div>
     );
 };
