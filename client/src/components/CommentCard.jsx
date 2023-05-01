@@ -29,7 +29,6 @@ const CommentCard = ({
     // };
 
     const [comment] = useMutation(DELETE_COMMENT);
-    // TODO: deleteComment
     const deleteComment = async () => {};
     return (
         <div className='flex flex-col w-full m-4 bg-blue drop-shadow-lg rounded p-4 font-manrope '>
@@ -50,15 +49,15 @@ const CommentCard = ({
                     - {username}
                 </p>
                 {/* DELETE COMMENT BUTTON */}
-
-                <button
-                    className='mt-4 text-center rounded bg-darkblue text-navnametext font-bowlby text-navtext2  w-[30%]  max-w-[180px] p-1 drop-shadow-md
+                {/* FIXME - DOES NOT WORK  */}
+                {/* <button
+                    className='mt-4 text-center rounded-lg bg-darkblue text-navnametext font-bowlby text-hotpink  w-[30%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
                        xl:text-2xl'
                     onClick={() => deleteComment()}
                 >
-                    Delete
-                </button>
+                    Delete Comment
+                </button> */}
             </div>
         </div>
     );
