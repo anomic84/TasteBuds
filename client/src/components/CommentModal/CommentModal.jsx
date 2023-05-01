@@ -56,9 +56,9 @@ const CommentModal = () => {
                      mt-4 mx-auto text-2xl rounded-2xl'
             >
                 <div className='flex flex-col items-center py-4'>
-                    <FaCommentAlt className='text-darkblue' size={27} />
+                    <FaCommentAlt className='text-orange' size={27} />
                     {/* TODO: THIS NEEDS TO SWITCH TO {comment.count} IF WE DO THIS */}
-                    <p className='text-xs text-navtext1'>3</p>
+                    <p className='text-xs text-cream'>3</p>
                 </div>
             </button>
 

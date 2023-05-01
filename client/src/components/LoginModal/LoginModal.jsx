@@ -79,13 +79,13 @@ const LoginModal = ({ loginModal, toggleLoginModal }) => {
                     <div className='overlay'>
                         {/* onClick={toggleLoginModal} */}
                         <div
-                            className='modal-content bg-lightblue border border-darkest rounded-lg p-4 drop-shadow-xl w-[300px] 
+                            className='modal-content bg-apricot bg-opacity-80 border border-darkest  rounded-lg p-4 drop-shadow-xl w-[300px] 
                         sm:w-[400px]
                         xl:w-[800px]'
                         >
                             <div className='xl:py-8'>
                                 <h1
-                                    className='text-center font-titan text-darkest text-2xl
+                                    className='text-center font-titan text-hotred text-2xl
                                                xl:text-4xl'
                                 >
                                     Login
@@ -102,7 +102,7 @@ const LoginModal = ({ loginModal, toggleLoginModal }) => {
                                     ))}
                                     <div className='flex flex-row justify-center'>
                                         <button
-                                            className='mt-4 mx-auto text-center rounded-lg bg-navbg text-navnametext font-bowlby text-hotpink  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                                            className='mt-4 mx-auto text-center rounded-lg bg-orange text-navnametext font-bowlby text-hotred  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                           xl:text-2xl'
                                             type='submit'
                                             variant='success'
@@ -110,7 +110,7 @@ const LoginModal = ({ loginModal, toggleLoginModal }) => {
                                             Submit
                                         </button>
                                         <button
-                                            className='close-modal mt-4 mx-auto text-center rounded-lg bg-navbg text-navnametext font-bowlby text-hotpink  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                                            className='close-modal mt-4 mx-auto text-center rounded-lg bg-orange text-navnametext font-bowlby text-hotred  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                        xl:text-2xl'
                                             onClick={toggleLoginModal}
                                         >

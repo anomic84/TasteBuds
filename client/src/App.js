@@ -32,22 +32,22 @@ const client = new ApolloClient({
 });
 
 function App() {
-    const [editPost, setEditPost] = React.useState({
-        edit: false,
-        postid: '',
-        title: '',
-        description: '',
-        time: '',
-        username: '',
-        location: '',
-    });
+    // const [editPost, setEditPost] = React.useState({
+    //     edit: false,
+    //     postid: '',
+    //     title: '',
+    //     description: '',
+    //     time: '',
+    //     username: '',
+    //     location: '',
+    // });
     return (
         // APP
         <ApolloProvider client={client}>
             <Router>
                 <div className='w-screen h-[100%]'>
                     {/* <div className='maingradient h-[100%]'> */}
-                    <div className='bg-platinum h-[100%]'>
+                    <div className='bg-mainbg h-[100%]'>
                         {/* <Navbar
                         currentPage={currentPage}
                         handlePageChange={handlePageChange}
@@ -60,8 +60,8 @@ function App() {
                                 element={
                                     <Admin
                                         client={client}
-                                        editPost={editPost}
-                                        setEditPost={setEditPost}
+                                        // editPost={editPost}
+                                        // setEditPost={setEditPost}
                                     />
                                 }
                             />
@@ -70,8 +70,8 @@ function App() {
                                 element={
                                     <Listings
                                         client={client}
-                                        editPost={editPost}
-                                        setEditPost={setEditPost}
+                                        // editPost={editPost}
+                                        // setEditPost={setEditPost}
                                     />
                                 }
                             />

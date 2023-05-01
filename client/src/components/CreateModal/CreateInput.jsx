@@ -14,7 +14,7 @@ const CreateInput = (props) => {
         return (
             <div className='formInput mx-auto flex flex-col'>
                 <label
-                    className='p-2 text-navtext1 font-titan
+                    className='p-2 text-hotred font-titan
                       xl:text-2xl'
                 >
                     {label}
@@ -38,7 +38,7 @@ const CreateInput = (props) => {
         return (
             <div className='formInput mx-auto flex flex-col'>
                 <label
-                    className='p-2 text-navtext1 font-titan
+                    className='p-2 text-hotred font-titan
                       xl:text-2xl'
                 >
                     {label}

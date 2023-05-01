@@ -66,6 +66,13 @@ const postsSchema = new Schema(
             type: String,
             required: true,
         },
+        buddies: {
+            type: Number,
+            required: true,
+        },
+        buddylist: {
+            type: [String],
+        },
         // nested comments created within the commentSchema
         comments: [commentSchema],
     },
