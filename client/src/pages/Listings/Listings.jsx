@@ -30,7 +30,7 @@ function Listings({ client }) {
             <div className='z-10'>
                 <CreateModal source={'listing'} client={client} />
             </div>
-            <div className='sm:m-4 flex flex-col items-center'>
+            <div className='sm:m-4 mx-auto flex flex-col items-center'>
                 {data ? (
                     data.getAllPosts.map((post) => (
                         <EventCard

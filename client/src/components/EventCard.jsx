@@ -255,7 +255,7 @@ const EventCard = ({
             if (source === 'admin') {
                 await client.refetchQueries({ include: [QUERY_ME] });
             } else if (source === 'listing') {
-                // console.log('made it');
+
                 await client.refetchQueries({ include: [QUERY_POSTS] });
             }
         } catch (err) {
@@ -298,8 +298,8 @@ const EventCard = ({
 
     return (
         <div
-            className='flex flex-row items-center drop-shadow-lg w-full bg-apricot mt-10 my-4 rounded
-        sm:flex-col
+            className='flex flex-col items-center drop-shadow-lg w-full bg-apricot mt-10 my-4 rounded 
+       
         lg:max-w-[900px]
         xl:max-w-[1100px]'
         >
@@ -378,10 +378,10 @@ const EventCard = ({
                         />
                     ))}
                     {/* ---------------ADD COMMENT BUTTON ------------ */}
-                    <div className='hidden sm:flex flex-row justify-between'>
+                    <div className='hidden sm:flex flex-row justify-between '>
                         {/* TODO: edit padding under comment text area to make button closer to text box */}
                         <button
-                            className='mt-1 text-center rounded-lg bg-pink text-navnametext font-bowlby text-cream  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                            className=' text-center rounded-lg bg-pink text-navnametext font-bowlby text-cream  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
                        xl:text-2xl'
                             onClick={() => addComment()}
@@ -415,7 +415,7 @@ const EventCard = ({
                 <div className='flex flex-row items-center justify-between'>
                     {userData.data.username === username ? (
                         <button
-                            className='mt-4 text-center rounded-lg bg-pink text-navnametext font-bowlby text-cream  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                            className='mt-4 mtext-center rounded-lg bg-pink text-navnametext font-bowlby text-cream  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
                        xl:text-2xl'
                             onClick={() => handleDelete(postId)}
@@ -452,7 +452,7 @@ const EventCard = ({
             {/* FIXME - match desktop styling */}
             <div className='flex flex-col mx-auto'>
                 {/* <div className='flex flex-row'> */}
-                <div className='w-[90%] flex sm:hidden flex-col font-manrope p-4'>
+                <div className='w-[90%] flex sm:hidden flex-col font-manrope p-4 mx-auto'>
                     <div className='bg-orange text-pink rounded-lg p-3'>
                         <h1
                             className='text-lg font-bold text-darkest 
@@ -508,7 +508,7 @@ const EventCard = ({
                         username={username}
                     />
                 </div>
-                <div className='flex sm:hidden flex-row justify-between my-2'>
+                <div className='flex mx-4 sm:hidden flex-row justify-between my-2'>
                     <button
                         className='mt-4 text-center rounded-lg bg-pink text-navnametext font-bowlby text-cream  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]

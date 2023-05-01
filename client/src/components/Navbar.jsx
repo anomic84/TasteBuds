@@ -26,14 +26,14 @@ const Navbar = ({ currentPage, handlePageChange }) => {
     return (
         <div
             className='w-full py-3 relative bg-coral
-                        lg:py-2 '
+                        lg:py-1 '
         >
             {/* // MONITORS */}
             <div className='hidden md:flex flex-row justify-between items-center px-4'>
                 <img
                     src={NavLogo}
                     alt='NavLogo'
-                    className='w-1/6 hidden lg:block  my-auto md:object-scale-down md:flex flex-row justify-between items-center px-4'
+                    className='w-1/5  hidden lg:block  md:object-scale-down md:flex flex-row justify-between items-center px-4'
                 />
                 <div className=''>
                     {/* ----------LOGO------- */}
