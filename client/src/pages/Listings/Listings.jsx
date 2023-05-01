@@ -4,14 +4,12 @@ import { useQuery } from '@apollo/client';
 import { QUERY_POSTS } from '../../utils/queries';
 import Auth from '../../utils/auth';
 import EventCard from '../../components/EventCard';
-// import { allEvents } from '../../constants/constants'
 
 function Listings({ client }) {
     const { loading, data } = useQuery(QUERY_POSTS);
     let postData = data?.getAllPosts || [];
     const userData = Auth.getProfile();
     console.log(postData, 'postData');
-    //  console.log(userData.data.username, "userData")
     if (loading) {
         return <h2>LOADING</h2>;
     }
@@ -24,8 +22,8 @@ function Listings({ client }) {
         <section className=' w-full  flex flex-col justify-center'>
             <h1
                 // TODO: add max width
-                className='text-left text-darkest font-manrope  text-lg
-                xl:text-6xl xl:py-2 m-4'
+                className='text-center p-5 mt-5 mb-5 text-darkest font-manrope  text-lg
+                xl:text-4xl xl:py-2 m-4 '
             >
                 Welcome {data ? userData.data.username : 'Foodie'}!
             </h1>

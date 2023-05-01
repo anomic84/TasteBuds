@@ -20,7 +20,7 @@ const Home = () => {
             {/* Greetings Section <--to--> Not a Member? */}
             <div className='flex flex-col px-4'>
                 <h1
-                    className=' py-5 mt-10 text-5xl font-bowlby text-white text-center drop-shadow-lg
+                    className=' py-5 mt-10 text-5xl font-bowlby text-maroon text-center drop-shadow-lg
         md:text-center
         xl:text-6xl'
                 >
@@ -37,7 +37,7 @@ const Home = () => {
                     />
                 </div>
                 <p
-                    className='  py-5 text-5xl text-blue text-center drop-shadow-lg
+                    className='  py-5 text-5xl text-apricot text-center drop-shadow-lg
         md:text-center
         xl:text-4xl'
                 >
@@ -46,7 +46,7 @@ const Home = () => {
 
                 {/* Login */}
                 <p
-                    className='text-center font-bowlby text-white drop-shadow-lg text-2xl pt-5 m-2
+                    className='text-center font-bowlby text-maroon drop-shadow-lg text-2xl pt-5 m-2
         xl:text-4xl'
                 >
                     Not a member?
@@ -57,7 +57,7 @@ const Home = () => {
                 <div className='hidden md:flex justify-center'>
                     <button
                         onClick={toggleSignUpModal}
-                        className='text-2xl py-5 font-manrope text-hotpink
+                        className='text-2xl py-5 font-manrope text-hotpink bg-orange rounded-lg
                          md:bg-blue md:font-bowlby md:text-hotpink  md:w-[180px]  md:p-2 md:drop-shadow-md
                          md:mt-4 md:mx-auto md:text-base
                          xl:text-2xl'
@@ -70,7 +70,7 @@ const Home = () => {
                     <button
                         onClick={toggleLoginModal}
                         id='loginButton'
-                        className='text-2xl py-5 font-manrope text-hotpink
+                        className='text-2xl py-5 font-manrope text-hotpink bg-orange rounded-lg
                          md:bg-blue md:font-bowlby md:text-hotpink  md:w-[180px]  md:p-2 md:drop-shadow-md
                          md:mt-4 md:mx-auto md:text-base
                          xl:text-2xl'

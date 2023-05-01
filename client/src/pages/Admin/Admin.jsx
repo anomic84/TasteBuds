@@ -114,12 +114,12 @@ const Admin = ({ client }) => {
     return (
         <section className='w-full  flex flex-col justify-center'>
             <div
-                className=' m-4  my-4 p-10 drop-shadow-lg max-w-[600px]  drop-shadow-lg
+                className=' m-4  mx-auto my-4 p-10 rounded-full drop-shadow-lg max-w-[500px]  drop-shadow-lg
             md:w-[80%]
             xl:max-w-[1000px] '
             >
                 <h1
-                    className=' font-manrope p-5 text-2xl text-darkblue
+                    className=' text-center font-manrope text-2xl text-hotred
                 xl:text-4xl xl:py-2'
                 >
                     {data ? data.me.username : <br />}'s profile
@@ -179,13 +179,13 @@ const Admin = ({ client }) => {
                 >
                     <div className='overlay'>
                         <div
-                            className='modal-content bg-darkblue border-darkblue border-2 rounded-lg p-4 drop-shadow-xl w-[300px] 
+                            className='modal-content bg-orange border-hotred border-2 rounded-lg p-4 drop-shadow-xl w-[300px] 
                     sm:w-[400px]
                     xl:w-[800px]'
                         >
                             <div className='xl:py-8'>
                                 <h1
-                                    className='text-center font-titan text-hotpink text-2xl
+                                    className='text-center font-titan bg-orange text-maroon text-2xl
                                                 xl:text-4xl'
                                 >
                                     Create a new event!
@@ -202,7 +202,7 @@ const Admin = ({ client }) => {
                                     ))}
                                     <div className='flex flex-row justify-center'>
                                         <button
-                                            className='mt-4 mx-auto text-center rounded-lg bg-darkblue text-navnametext font-bowlby text-hotpink  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                                            className='mt-4 mx-auto text-center rounded-lg  bg-orange text-navnametext font-bowlby text-hotpink  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                            xl:text-2xl'
                                             onClick={() => {
                                                 handleCreatePost();
@@ -212,7 +212,7 @@ const Admin = ({ client }) => {
                                             Submit
                                         </button>
                                         <button
-                                            className='close-modal mt-4 mx-auto text-center rounded-lg bg-darkblue text-navnametext font-bowlby text-hotpink  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                                            className='close-modal mt-4 mx-auto text-center rounded-lg bg-hotpink text-navnametext font-bowlby text-hotpink  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                        xl:text-2xl'
                                             onClick={toggleModal}
                                         >

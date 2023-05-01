@@ -137,7 +137,7 @@ const EditModal = ({
                 style={{
                     width: '150px',
                 }}
-                className='mt-4 text-center rounded-lg bg-darkblue text-navnametext font-bowlby text-hotpink    max-w-[180px] p-2 drop-shadow-md
+                className='mt-4 text-center rounded-lg bg-pink text-navnametext font-bowlby text-cream    max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
                        xl:text-2xl'
             >
@@ -152,13 +152,13 @@ const EditModal = ({
                 >
                     <div className='overlay'>
                         <div
-                            className='modal-content bg-card border-borderblue border-2 rounded-lg p-4 drop-shadow-xl w-[300px] 
+                            className='modal-content bg-apricot bg-opacity-80 border-darkest border-2 rounded-lg p-4 drop-shadow-xl w-[300px] 
                     sm:w-[400px]
                     xl:w-[800px]'
                         >
                             <div className='xl:py-8'>
                                 <h1
-                                    className='text-center font-titan text-borderblue text-2xl
+                                    className='text-center font-titan text-hotred text-2xl
                                                 xl:text-4xl'
                                 >
                                     Edit Post!
@@ -176,14 +176,14 @@ const EditModal = ({
                                     ))}
                                     <div className='flex flex-row justify-center'>
                                         <button
-                                            className='mt-4 mx-auto text-center rounded-lg bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                                            className='mt-4 mx-auto text-center rounded-lg bg-orange text-navnametext font-bowlby text-hotred  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                            xl:text-2xl'
                                             onClick={() => handleUpdatePost()}
                                         >
                                             Submit
                                         </button>
                                         <button
-                                            className='close-modal mt-4 mx-auto text-center rounded-lg bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                                            className='close-modal mt-4 mx-auto text-center rounded-lg bg-orange text-navnametext font-bowlby text-hotred  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                        xl:text-2xl'
                                             onClick={toggleModal}
                                         >

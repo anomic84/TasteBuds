@@ -12,14 +12,14 @@ const CommentInput = (props) => {
         <div className='formInput mx-auto flex  flex-col py-10 '>
             <label
                 htmlFor='comment'
-                className='text-darkblue text-sm leading-lg pb-1 font-manrope mb-2 font-bold
+                className='text-darkest text-sm leading-lg pb-1 font-manrope mb-2 font-bold 
                               lg:text-lg
                               xl:text-xl'
             >
                 {label}
             </label>
             <textarea
-                className='rounded border border-borderblue text-slate-800 font-[500] p-1
+                className='rounded border border-pink bg-white text-slate-800 font-[500] p-1
                          xl:text-xl'
                 {...inputProps}
                 onChange={onChange}
@@ -29,7 +29,7 @@ const CommentInput = (props) => {
                 }
                 focused={focused.toString()}
             />
-            <span className='text-[10px] text-aboutbg font-manrope font-semibold mt-1 error'>
+            <span className='text-[10px] text-orange font-manrope font-semibold mt-1 error'>
                 {errorMessage}
             </span>
         </div>

@@ -48,14 +48,7 @@ const CreateModal = ({ client, source }) => {
             required: true,
             value: Date(),
         },
-        // {
-        //     id: 5,
-        //     name: "createdAt",
-        //     type: "text",
-        //     placeholder: "Created At",
-        //     label: "Created At",
-        //     required: true,
-        // },
+
         {
             id: 6,
             name: 'location',
@@ -122,7 +115,7 @@ const CreateModal = ({ client, source }) => {
             <button
                 onClick={toggleModal}
                 className='
-                     bg-darkblue font-bowlby text-hotpink p-5 drop-shadow-md
+                     bg-pink  font-bowlby text-orange p-5 drop-shadow-md
                      mt-4 mx-auto text-2xl rounded-2xl'
             >
                 Create a New Event
@@ -135,13 +128,13 @@ const CreateModal = ({ client, source }) => {
                 >
                     <div className='overlay'>
                         <div
-                            className='modal-content bg-card border-borderblue border-2 rounded-lg p-4 drop-shadow-xl w-[300px] 
+                            className='modal-content bg-apricot bg-opacity-75 border-darkest border-2 rounded-lg p-4 drop-shadow-xl w-[300px] 
                     sm:w-[400px]
                     xl:w-[800px]'
                         >
                             <div className='xl:py-8'>
                                 <h1
-                                    className='text-center font-titan text-borderblue text-2xl
+                                    className='text-center font-titan text-darkest text-2xl
                                                 xl:text-4xl'
                                 >
                                     Create a new event!
@@ -158,14 +151,14 @@ const CreateModal = ({ client, source }) => {
                                     ))}
                                     <div className='flex flex-row justify-center'>
                                         <button
-                                            className='mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                                            className='mt-4 mx-auto text-center rounded bg-orange text-navnametext font-bowlby text-hotred  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                            xl:text-2xl'
                                             onClick={() => handleCreatePost()}
                                         >
                                             Submit
                                         </button>
                                         <button
-                                            className='close-modal mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                                            className='close-modal mt-4 mx-auto text-center rounded bg-orange text-navnametext font-bowlby text-hotred  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                        xl:text-2xl'
                                             onClick={toggleModal}
                                         >

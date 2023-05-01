@@ -11,9 +11,7 @@ const SignUpModal = ({ signUpModal, toggleSignUpModal }) => {
         email: '',
         password: '',
     });
-    // set state for form validation
-    // const [validated] = useState(false);
-    // set state for alert
+
     // define mutation for adding a user
     const [newUser, { error }] = useMutation(NEW_USER);
 
@@ -81,16 +79,6 @@ const SignUpModal = ({ signUpModal, toggleSignUpModal }) => {
             pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
             required: true,
         },
-        // {
-        //   id: 4,
-        //   name: "confirmPassword",
-        //   type: "password",
-        //   placeholder: "Confirm Password",
-        //   errorMessage: "Passwords need to match!",
-        //   label: "Confirm Password",
-        //   pattern:`^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
-        //   required: true,
-        // }
     ];
 
     // --------------- SIGN UP METHODS --------------- //
@@ -105,7 +93,7 @@ const SignUpModal = ({ signUpModal, toggleSignUpModal }) => {
                     <div className='overlay'>
                         {/* onClick={toggleSignUpModal} */}
                         <div
-                            className='modal-content bg-lightblue border border-darkest rounded-lg p-4 drop-shadow-xl w-[300px] 
+                            className='modal-content bg-apricot border border-darkest bg-opacity-90 rounded-lg p-4 drop-shadow-xl w-[300px] 
                         sm:w-[400px]
                         xl:w-[800px]'
                         >
@@ -127,7 +115,7 @@ const SignUpModal = ({ signUpModal, toggleSignUpModal }) => {
                                     ))}
                                     <div className='flex flex-row justify-center'>
                                         <button
-                                            className='mt-4 mx-auto text-center rounded-lg bg-navbg text-navnametext font-bowlby text-hotpink  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                                            className='mt-4 mx-auto text-center rounded-lg bg-orange text-navnametext font-bowlby text-hotred  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                           xl:text-2xl'
                                             type='submit'
                                             variant='success'
@@ -135,7 +123,7 @@ const SignUpModal = ({ signUpModal, toggleSignUpModal }) => {
                                             Submit
                                         </button>
                                         <button
-                                            className='close-modal mt-4 mx-auto text-center rounded-lg bg-navbg text-navnametext font-bowlby text-hotpink  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                                            className='close-modal mt-4 mx-auto text-center rounded-lg bg-orange text-navnametext font-bowlby text-hotred  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                        xl:text-2xl'
                                             onClick={toggleSignUpModal}
                                         >

@@ -81,8 +81,7 @@ const JoinEvent = ({
         }
     };
     let maxDisabled = false;
-    // const [joined, setJoined] = useState(buddylist);
-    // const [maxJoined, setMaxJoined] = useState(buddies);
+
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     const userData = Auth.getProfile();
     //console.log(Date(updateValues.time));
@@ -104,7 +103,7 @@ const JoinEvent = ({
             >
                 <button
                     disabled={maxDisabled}
-                    className='mt-4 text-center rounded-lg bg-darkblue text-navnametext font-bowlby text-hotpink  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                    className='mt-4 text-center rounded-full bg-orange text-navnametext font-bowlby text-cream  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
                        xl:text-2xl'
                     onClick={handleUnJoinEvent}
@@ -112,7 +111,7 @@ const JoinEvent = ({
                     Full!
                 </button>
                 {buddylist.map((icon) => (
-                    <p style={{ fontSize: '50px', color: '#F2AFA9' }}>
+                    <p style={{ fontSize: '50px', color: '#FDF7F7' }}>
                         &#9787;
                     </p>
                 ))}
@@ -127,7 +126,7 @@ const JoinEvent = ({
             >
                 <button
                     disabled={maxDisabled}
-                    className='mt-4 text-center rounded-lg bg-darkblue text-navnametext font-bowlby text-hotpink  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                    className='mt-4 text-center rounded-full bg-orange text-navnametext font-bowlby text-lightpink  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
                        xl:text-2xl'
                     onClick={handleUnJoinEvent}
@@ -135,7 +134,7 @@ const JoinEvent = ({
                     Joined!
                 </button>
                 {buddylist.map((icon) => (
-                    <p style={{ fontSize: '50px', color: '#F2AFA9' }}>
+                    <p style={{ fontSize: '50px', color: '#FDF7F7' }}>
                         &#9787;
                     </p>
                 ))}
@@ -150,7 +149,7 @@ const JoinEvent = ({
             >
                 <button
                     disabled={maxDisabled}
-                    className='mt-4 text-center rounded-lg bg-darkblue text-navnametext font-bowlby text-hotpink  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                    className='mt-4 text-center rounded-full bg-lightcoral text-navnametext font-bowlby text-cream  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
                        xl:text-2xl'
                     onClick={handleJoinEvent}
@@ -158,7 +157,7 @@ const JoinEvent = ({
                     Join!
                 </button>
                 {buddylist.map((icon) => (
-                    <p style={{ fontSize: '50px', color: '#F2AFA9' }}>
+                    <p style={{ fontSize: '50px', color: '#FDF7F7' }}>
                         &#9787;
                     </p>
                 ))}
@@ -267,7 +266,7 @@ const EventCard = ({
 
     return (
         <div
-            className='flex flex-row items-center drop-shadow-lg w-full bg-lightblue my-4 rounded
+            className='flex flex-row items-center drop-shadow-lg w-full bg-apricot mt-10 my-4 rounded
         sm:flex-col
         lg:max-w-[900px]
         xl:max-w-[1100px]'
@@ -275,49 +274,51 @@ const EventCard = ({
             {/* ------------  TABLETS AND UP ------------ */}
             <div
                 className='hidden w-[90%] sm:flex flex-col font-manrope p-4 
-            sm:w-full 
-                        md:max-w-[600px] md:rounded-3xl md:m-4
-                        lg:max-w-[800px]
-                        xl:max-w-[1000px]'
+                sm:w-full 
+                md:max-w-[600px] md:rounded-3xl md:m-4
+                lg:max-w-[800px]
+                xl:max-w-[1000px]'
             >
-                <h1
-                    className='text-lg font-bold text-darkest 
-                           lg:text-xl
-                           xl:text-2xl'
-                >
-                    {title}
-                </h1>
-                <div className='w-[90%] flex flex-col mx-auto'>
-                    <p
-                        className='text-[10px] text-darkblue
-                          lg:text-sm
-                          xl:text-base'
+                <div className='bg-cream bg-opacity-90  rounded-lg p-5 drop-shadow-lg'>
+                    <h1
+                        className='text-lg font-bold text-darkest p-5
+                        lg:text-xl
+                        xl:text-2xl'
                     >
-                        Created by {username}
-                    </p>
+                        {title}
+                    </h1>
+                    <div className='w-[90%] flex flex-col mx-auto'>
+                        <p
+                            className='text-[10px] text-maroon
+                        lg:text-sm
+                        xl:text-base'
+                        >
+                            Created by {username}
+                        </p>
+                        <p
+                            className='w-full mx-auto py-2 text-sm text-darkest 
+                        lg:text-lg lg:py-4
+                        xl:text-xl'
+                        >
+                            {description}
+                        </p>
+                        <p
+                            className='text-right text-[10px] text-maroon
+                        lg:text-sm
+                        xl:text-base'
+                        >
+                            Reservation for {buddies}
+                        </p>
+                    </div>
                     <p
-                        className='w-full mx-auto py-2 text-sm text-slate-800
-                          lg:text-lg lg:py-4
-                          xl:text-xl'
-                    >
-                        {description}
-                    </p>
-                    <p
-                        className='text-right text-[10px] text-blue
-                          lg:text-sm
-                          xl:text-base'
-                    >
-                        Reservation for {buddies}
-                    </p>
-                    <p
-                        className='text-right text-[10px] text-blue
+                        className='text-right text-[10px] text-maroon
                           lg:text-sm
                           xl:text-base'
                     >
                         {location}
                     </p>
                     <p
-                        className='text-right text-[10px] text-blue
+                        className='text-right text-[10px] text-maroon
                           lg:text-sm
                           xl:text-base'
                     >
@@ -348,7 +349,7 @@ const EventCard = ({
                     <div className='hidden sm:flex flex-row justify-between'>
                         {/* TODO: edit padding under comment text area to make button closer to text box */}
                         <button
-                            className='mt-1 text-center rounded-lg bg-navbg text-navnametext font-bowlby text-hotpink  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                            className='mt-1 text-center rounded-lg bg-pink text-navnametext font-bowlby text-cream  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
                        xl:text-2xl'
                             onClick={() => addComment()}
@@ -381,7 +382,7 @@ const EventCard = ({
                 <div className='flex flex-row items-center justify-between'>
                     {userData.data.username === username ? (
                         <button
-                            className='mt-4 text-center rounded-lg bg-darkblue text-navnametext font-bowlby text-hotpink  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                            className='mt-4 text-center rounded-lg bg-lightcoral text-navnametext font-bowlby text-cream  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
                        xl:text-2xl'
                             onClick={() => handleDelete(postId)}
@@ -414,102 +415,69 @@ const EventCard = ({
                 </div>
             </div>
 
-            {/* {modal && (
-                <div
-                    className='fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm
-            flex justify-center items-center w-full'
-                >
-                    <div className='overlay'>
-                        <div
-                            className='modal-content bg-card border-borderblue border-2 rounded-lg p-4 drop-shadow-xl w-[300px] 
-                    sm:w-[400px]
-                    xl:w-[800px]'
-                        >
-                            <div className='xl:py-8'>
-                                <h1
-                                    className='text-center font-titan text-borderblue text-2xl
-                                                xl:text-4xl'
-                                >
-                                    Create a new event!
-                                </h1>
-                                <form className='' onSubmit={handleSubmit}>
-                                    {postInputs.map((input) => (
-                                        <CreateInput
-                                            key={input.id}
-                                            {...input}
-                                            value={values[input.name]}
-                                            onChange={onChange}
-                                        />
-                                    ))}
-                                    <div className='flex flex-row justify-center'>
-                                        <button
-                                            className='mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
-                                                           xl:text-2xl'
-                                            onClick={() => updatePost()}
-                                        >
-                                            Submit
-                                        </button>
-                                        <button
-                                            className='close-modal mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
-                                                       xl:text-2xl'
-                                            onClick={toggleModal}
-                                        >
-                                            CLOSE
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )} */}
-
             {/* ------------  MOBILE ------------ */}
             {/* FIXME - match desktop styling */}
             <div className='flex flex-col mx-auto'>
                 {/* <div className='flex flex-row'> */}
                 <div className='w-[90%] flex sm:hidden flex-col font-manrope p-4'>
-                    <h1
-                        className='text-lg font-bold text-darkblue 
+                    <div className='bg-orange text-lightcoral rounded-lg p-3'>
+                        <h1
+                            className='text-lg font-bold text-darkest 
                            lg:text-xl
                            xl:text-3xl'
-                    >
-                        {title}
-                    </h1>
-                    <div className='w-[90%] flex flex-col mx-auto'>
-                        <p
-                            className='text-[10px] text-blue
+                        >
+                            {title}
+                        </h1>
+                        <div className='w-[90%] flex flex-col mx-auto'>
+                            <p
+                                className='text-[10px] text-maroon
                           lg:text-sm
                           xl:text-lg'
-                        >
-                            Created by {username}
-                        </p>
-                        <p
-                            className='w-full mx-auto py-2 text-sm text-slate-800
+                            >
+                                Created by {username}
+                            </p>
+                            <p
+                                className='w-full mx-auto py-2 text-sm text-darkest
                           lg:text-lg lg:py-4
                           xl:text-2xl'
-                        >
-                            {description}
-                        </p>
-                        <p
-                            className='text-right text-[10px] text-blue
+                            >
+                                {description}
+                            </p>
+                            <p
+                                className='text-right text-[10px] text-maroon
+                        lg:text-sm
+                        xl:text-base'
+                            >
+                                Reservation for {buddies}
+                            </p>
+                            <p
+                                className='text-right text-[10px] text-maroon
                           lg:text-sm
                           xl:text-lg'
-                        >
-                            {location}
-                        </p>
-                        <p
-                            className='text-right text-[10px] text-blue
+                            >
+                                {location}
+                            </p>
+                            <p
+                                className='text-right text-[10px] text-maroon
                           lg:text-sm
                           xl:text-lg'
-                        >
-                            {time}
-                        </p>
+                            >
+                                {time}
+                            </p>
+                        </div>
                     </div>
+                    <JoinEvent
+                        postId={postId}
+                        client={client}
+                        buddies={buddies}
+                        buddylist={buddylist}
+                        source={source}
+                        username={username}
+                    />
                 </div>
                 <div className='flex sm:hidden flex-row justify-between my-2'>
                     <button
-                        className='mt-4 text-center rounded-lg bg-darkblue text-navnametext font-bowlby text-hotpink  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                        className='mt-4 text-center rounded-lg bg-pink text-navnametext font-bowlby text-cream  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
                        xl:text-2xl'
                         onClick={() => handleDelete(postId)}
@@ -533,7 +501,7 @@ const EventCard = ({
                     ))}
                     <div className='flex flex-row justify-center'>
                         <button
-                            className='mt-4 mx-auto text-center rounded-lg bg-darkblue text-navnametext font-bowlby text-hotpink  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                            className='mt-4 mx-auto text-center rounded-lg bg-pink text-navnametext font-bowlby text-cream  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                        xl:text-2xl'
                             type='submit'
                             onClick={() => addComment()}
@@ -541,7 +509,7 @@ const EventCard = ({
                             Submit
                         </button>
                         <button
-                            className='close-modal mt-4 mx-auto text-center rounded-lg bg-navbg text-navnametext font-bowlby text-hotpink  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                            className='close-modal mt-4 mx-auto text-center rounded-lg bg-pink text-navnametext font-bowlby text-cream  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                    xl:text-2xl'
                         >
                             CLOSE
