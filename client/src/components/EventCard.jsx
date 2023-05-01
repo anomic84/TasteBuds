@@ -5,10 +5,167 @@ import CommentCard from './CommentCard';
 import EditModal from './EditModal/EditModal';
 import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
-import { CREATE_COMMENT, DELETE_POST } from '../utils/mutations';
+import { CREATE_COMMENT, DELETE_POST, UPDATE_POST } from '../utils/mutations';
 import { QUERY_ME, QUERY_POSTS } from '../utils/queries';
 // import CommentModal from './CommentModal/CommentModal'
+const JoinEvent = ({
+    client,
+    buddies,
+    buddylist,
+    postId,
+    source,
+    username,
+}) => {
+    // buddies = 1;
+    // buddylist = ['Fuck you'];
+    const [post] = useMutation(UPDATE_POST);
+    const handleJoinEvent = async () => {
+        try {
+            const token = Auth.loggedIn() ? Auth.getToken() : null;
+            const userData = Auth.getProfile();
+            //console.log(Date(updateValues.time));
+            if (!token) {
+                return false;
+            }
+            const buddylistUpdate = [...buddylist];
+            buddylistUpdate.push(userData.data.username);
+            const { data } = await post({
+                variables: {
+                    postId: postId,
+                    buddylist: buddylistUpdate,
+                },
+            });
 
+            // console.log(data);
+            if (source === 'admin') {
+                await client.refetchQueries({ include: [QUERY_ME] });
+            } else if (source === 'listing') {
+                await client.refetchQueries({ include: [QUERY_POSTS] });
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    const handleUnJoinEvent = async () => {
+        try {
+            const token = Auth.loggedIn() ? Auth.getToken() : null;
+            const userData = Auth.getProfile();
+            //console.log(Date(updateValues.time));
+            if (!token) {
+                return false;
+            }
+            let buddylistUpdate = [...buddylist];
+            let index = buddylistUpdate.indexOf(userData.data.username);
+            console.log(index);
+            console.log(buddylistUpdate);
+            // if (index === 0) {
+            //     buddylistUpdate = buddylistUpdate.shift();
+            // } else {
+            buddylistUpdate = buddylistUpdate.splice(index - 1, 1);
+            // }
+            const { data } = await post({
+                variables: {
+                    postId: postId,
+                    buddylist: buddylistUpdate,
+                },
+            });
+
+            console.log(data);
+            if (source === 'admin') {
+                await client.refetchQueries({ include: [QUERY_ME] });
+            } else if (source === 'listing') {
+                await client.refetchQueries({ include: [QUERY_POSTS] });
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    let maxDisabled = false;
+    // const [joined, setJoined] = useState(buddylist);
+    // const [maxJoined, setMaxJoined] = useState(buddies);
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+    const userData = Auth.getProfile();
+    //console.log(Date(updateValues.time));
+    if (!token) {
+        return false;
+    }
+    if (username === userData.data.username) {
+        maxDisabled = true;
+    }
+    if (buddylist.length >= buddies) {
+        if (buddylist.indexOf(userData.data.username) === -1) {
+            maxDisabled = true;
+        }
+        return (
+            <div
+                style={{
+                    display: 'flex',
+                }}
+            >
+                <button
+                    disabled={maxDisabled}
+                    className='mt-4 text-center rounded-lg bg-darkblue text-navnametext font-bowlby text-hotpink  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                       sm:w-[25%]
+                       xl:text-2xl'
+                    onClick={handleUnJoinEvent}
+                >
+                    Full!
+                </button>
+                {buddylist.map((icon) => (
+                    <p style={{ fontSize: '50px', color: '#F2AFA9' }}>
+                        &#9787;
+                    </p>
+                ))}
+            </div>
+        );
+    } else if (buddylist.indexOf(userData.data.username) !== -1) {
+        return (
+            <div
+                style={{
+                    display: 'flex',
+                }}
+            >
+                <button
+                    disabled={maxDisabled}
+                    className='mt-4 text-center rounded-lg bg-darkblue text-navnametext font-bowlby text-hotpink  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                       sm:w-[25%]
+                       xl:text-2xl'
+                    onClick={handleUnJoinEvent}
+                >
+                    Joined!
+                </button>
+                {buddylist.map((icon) => (
+                    <p style={{ fontSize: '50px', color: '#F2AFA9' }}>
+                        &#9787;
+                    </p>
+                ))}
+            </div>
+        );
+    } else if (buddylist.indexOf(userData.data.username) === -1) {
+        return (
+            <div
+                style={{
+                    display: 'flex',
+                }}
+            >
+                <button
+                    disabled={maxDisabled}
+                    className='mt-4 text-center rounded-lg bg-darkblue text-navnametext font-bowlby text-hotpink  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                       sm:w-[25%]
+                       xl:text-2xl'
+                    onClick={handleJoinEvent}
+                >
+                    Join!
+                </button>
+                {buddylist.map((icon) => (
+                    <p style={{ fontSize: '50px', color: '#F2AFA9' }}>
+                        &#9787;
+                    </p>
+                ))}
+            </div>
+        );
+    }
+};
 const EventCard = ({
     title,
     description,
@@ -19,6 +176,8 @@ const EventCard = ({
     postId,
     source,
     client,
+    buddies,
+    buddylist,
 }) => {
     // console.log(postId);
     // --------------- COMMENT VALUES AND INPUTS --------------- //
@@ -148,6 +307,13 @@ const EventCard = ({
                           lg:text-sm
                           xl:text-base'
                     >
+                        Reservation for {buddies}
+                    </p>
+                    <p
+                        className='text-right text-[10px] text-blue
+                          lg:text-sm
+                          xl:text-base'
+                    >
                         {location}
                     </p>
                     <p
@@ -158,6 +324,14 @@ const EventCard = ({
                         {toDateTime(time)}
                     </p>
                 </div>
+                <JoinEvent
+                    postId={postId}
+                    client={client}
+                    buddies={buddies}
+                    buddylist={buddylist}
+                    source={source}
+                    username={username}
+                />
 
                 {/* ------------  COMMENT INPUT  ------------ */}
 
@@ -230,6 +404,8 @@ const EventCard = ({
                                 postId={postId}
                                 client={client}
                                 source={source}
+                                buddies={buddies}
+                                buddylist={buddylist}
                             />
                         ) : (
                             <br />

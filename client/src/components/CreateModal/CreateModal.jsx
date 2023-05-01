@@ -18,6 +18,7 @@ const CreateModal = ({ client, source }) => {
         description: '',
         time: '',
         location: '',
+        buddies: 0,
     });
 
     const [postTime, setCreateTime] = useState();
@@ -63,6 +64,14 @@ const CreateModal = ({ client, source }) => {
             label: 'Location',
             required: true,
         },
+        {
+            id: 7,
+            name: 'buddies',
+            type: 'number',
+            placeholder: '2',
+            label: 'Reservation Size',
+            required: true,
+        },
     ];
 
     // --------------- CREATE EVENT METHODS --------------- //
@@ -90,6 +99,8 @@ const CreateModal = ({ client, source }) => {
                     location: values.location,
                     time: postTime,
                     username: userData.data.username,
+                    buddies: parseInt(values.buddies),
+                    buddylist: [userData.data.username],
                 },
             });
 

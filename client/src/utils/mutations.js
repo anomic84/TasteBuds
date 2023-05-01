@@ -31,6 +31,8 @@ export const CREATE_POST = gql`
         $location: String!
         $time: String
         $username: String!
+        $buddies: Int!
+        $buddylist: [String!]
     ) {
         createPost(
             title: $title
@@ -38,12 +40,16 @@ export const CREATE_POST = gql`
             location: $location
             time: $time
             username: $username
+            buddies: $buddies
+            buddylist: $buddylist
         ) {
             title
             description
             location
             time
             username
+            buddies
+            buddylist
         }
     }
 `;
@@ -74,6 +80,8 @@ export const UPDATE_POST = gql`
         $time: String
         $location: String
         $postId: ID!
+        $buddies: Int
+        $buddylist: [String]
     ) {
         updatePost(
             description: $description
@@ -81,11 +89,15 @@ export const UPDATE_POST = gql`
             time: $time
             location: $location
             postId: $postId
+            buddies: $buddies
+            buddylist: $buddylist
         ) {
             description
             location
             time
             title
+            buddies
+            buddylist
         }
     }
 `;

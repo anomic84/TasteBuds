@@ -25,6 +25,8 @@ const typeDefs = gql`
         time: String
         location: String
         comments: [Comment]
+        buddies: Int
+        buddylist: [String]
     }
 
     type Comment {
@@ -50,6 +52,8 @@ const typeDefs = gql`
             description: String!
             time: String
             location: String!
+            buddies: Int!
+            buddylist: [String!]
         ): Posts
         createComment(
             postId: ID!
@@ -62,6 +66,8 @@ const typeDefs = gql`
             description: String
             time: String
             location: String
+            buddies: Int
+            buddylist: [String]
         ): Posts
         deleteComment(postId: ID!, commentId: ID!): Posts
         deletePost(postId: ID!): Posts

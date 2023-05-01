@@ -13,6 +13,8 @@ const EditModal = ({
     time,
     location,
     postId,
+    buddies,
+    buddylist,
 }) => {
     const [modal, setModal] = useState(false);
     const [post] = useMutation(UPDATE_POST);
@@ -31,6 +33,7 @@ const EditModal = ({
         title: title,
         description: description,
         location: location,
+        buddies: buddies,
     });
     const [updateTime, setUpdateTime] = useState(toDateTime(time));
     const inputs = [
@@ -71,6 +74,14 @@ const EditModal = ({
             label: 'Location',
             value: location,
         },
+        {
+            id: 7,
+            name: 'buddies',
+            type: 'number',
+            placeholder: buddies,
+            label: 'Reservation Size',
+            value: buddies,
+        },
     ];
 
     // --------------- CREATE EVENT METHODS --------------- //
@@ -92,6 +103,7 @@ const EditModal = ({
                 return false;
             }
             //console.log('updateValues:', updateValues);
+            console.log(updateValues);
             const { data } = await post({
                 variables: {
                     postId: postId,
@@ -100,6 +112,7 @@ const EditModal = ({
                     location: updateValues.location,
                     time: updateTime,
                     username: userData.data.username,
+                    buddies: parseInt(updateValues.buddies),
                 },
             });
 
@@ -122,16 +135,11 @@ const EditModal = ({
             <button
                 onClick={toggleModal}
                 style={{
-                    backgroundColor: '#25364A',
-                    color: '#F2AFA9',
-                    borderRadius: '1rem',
-                    fontFamily: 'bowlby',
-                    padding: '1.25rem',
-                    marginTop: '1rem',
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
-                    textSize: '1.5rem',
+                    width: '150px',
                 }}
+                className='mt-4 text-center rounded-lg bg-darkblue text-navnametext font-bowlby text-hotpink    max-w-[180px] p-2 drop-shadow-md
+                       sm:w-[25%]
+                       xl:text-2xl'
             >
                 Edit Post
             </button>

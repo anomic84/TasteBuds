@@ -41,6 +41,8 @@ function Listings({ client }) {
                             postId={post._id}
                             client={client}
                             source='listing'
+                            buddies={post.buddies}
+                            buddylist={post.buddylist}
                             {...post}
                         />
                         // <div>{post.username}</div>

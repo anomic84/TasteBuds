@@ -20,6 +20,8 @@ export const QUERY_ME = gql`
                     username
                     createdAt
                 }
+                buddies
+                buddylist
             }
         }
     }
@@ -37,6 +39,8 @@ export const QUERY_SINGLE_POST = gql`
                 username
                 createdAt
             }
+            buddies
+            buddylist
         }
     }
 `;
@@ -66,6 +70,8 @@ export const QUERY_POSTS = gql`
                 username
                 createdAt
             }
+            buddies
+            buddylist
         }
     }
 `;

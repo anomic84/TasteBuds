@@ -8,10 +8,10 @@ import EventCard from '../../components/EventCard';
 import CreateModal from '../../components/CreateModal/CreateModal';
 import { useQuery } from '@apollo/client';
 import Auth from '../../utils/auth';
-import { TbCalendarPlus } from 'react-icons/tb';
+// import { TbCalendarPlus } from 'react-icons/tb';
 import CreateInput from '../../components/CreateModal/CreateInput';
 
-const Admin = ({ client, editPost, setEditPost }) => {
+const Admin = ({ client }) => {
     const [modal, setModal] = useState(false);
 
     const [post] = useMutation(CREATE_POST);
@@ -147,6 +147,8 @@ const Admin = ({ client, editPost, setEditPost }) => {
                                 postId={post._id}
                                 source={'admin'}
                                 client={client}
+                                buddies={post.buddies}
+                                buddylist={post.buddylist}
                             />
                         );
                     })
