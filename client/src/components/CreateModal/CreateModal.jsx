@@ -115,7 +115,7 @@ const CreateModal = ({ client, source }) => {
             <button
                 onClick={toggleModal}
                 className='
-                     bg-pink  font-bowlby text-orange p-5 drop-shadow-md
+                     bg-orange  font-bowlby text-pink p-5 drop-shadow-md
                      mt-4 mx-auto text-2xl rounded-2xl'
             >
                 Create a New Event

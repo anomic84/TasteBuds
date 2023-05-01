@@ -149,7 +149,7 @@ const JoinEvent = ({
             >
                 <button
                     disabled={maxDisabled}
-                    className='mt-4 text-center rounded-full bg-lightcoral text-navnametext font-bowlby text-cream  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                    className='mt-4 text-center rounded-full bg-pink text-navnametext font-bowlby text-cream  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
                        xl:text-2xl'
                     onClick={handleJoinEvent}
@@ -281,7 +281,7 @@ const EventCard = ({
             >
                 <div className='bg-cream bg-opacity-90  rounded-lg p-5 drop-shadow-lg'>
                     <h1
-                        className='text-lg font-bold text-darkest p-5
+                        className='text-lg font-bold text-hotred p-5
                         lg:text-xl
                         xl:text-2xl'
                     >
@@ -289,21 +289,21 @@ const EventCard = ({
                     </h1>
                     <div className='w-[90%] flex flex-col mx-auto'>
                         <p
-                            className='text-[10px] text-maroon
+                            className='text-[10px] text-pink
                         lg:text-sm
                         xl:text-base'
                         >
                             Created by {username}
                         </p>
                         <p
-                            className='w-full mx-auto py-2 text-sm text-darkest 
+                            className='w-full mx-auto py-2 text-sm text-hotred 
                         lg:text-lg lg:py-4
                         xl:text-xl'
                         >
                             {description}
                         </p>
                         <p
-                            className='text-right text-[10px] text-maroon
+                            className='text-right text-[10px] text-coral
                         lg:text-sm
                         xl:text-base'
                         >
@@ -311,14 +311,14 @@ const EventCard = ({
                         </p>
                     </div>
                     <p
-                        className='text-right text-[10px] text-maroon
+                        className='text-right text-[10px] text-coral
                           lg:text-sm
                           xl:text-base'
                     >
                         {location}
                     </p>
                     <p
-                        className='text-right text-[10px] text-maroon
+                        className='text-right text-[10px] text-coral
                           lg:text-sm
                           xl:text-base'
                     >
@@ -382,7 +382,7 @@ const EventCard = ({
                 <div className='flex flex-row items-center justify-between'>
                     {userData.data.username === username ? (
                         <button
-                            className='mt-4 text-center rounded-lg bg-lightcoral text-navnametext font-bowlby text-cream  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                            className='mt-4 text-center rounded-lg bg-pink text-navnametext font-bowlby text-cream  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
                        xl:text-2xl'
                             onClick={() => handleDelete(postId)}
@@ -420,7 +420,7 @@ const EventCard = ({
             <div className='flex flex-col mx-auto'>
                 {/* <div className='flex flex-row'> */}
                 <div className='w-[90%] flex sm:hidden flex-col font-manrope p-4'>
-                    <div className='bg-orange text-lightcoral rounded-lg p-3'>
+                    <div className='bg-orange text-pink rounded-lg p-3'>
                         <h1
                             className='text-lg font-bold text-darkest 
                            lg:text-xl

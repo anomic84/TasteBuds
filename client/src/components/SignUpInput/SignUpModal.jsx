@@ -91,15 +91,14 @@ const SignUpModal = ({ signUpModal, toggleSignUpModal }) => {
                 flex justify-center items-center w-full'
                 >
                     <div className='overlay'>
-                        {/* onClick={toggleSignUpModal} */}
                         <div
-                            className='modal-content bg-apricot border border-darkest bg-opacity-90 rounded-lg p-4 drop-shadow-xl w-[300px] 
+                            className='modal-content bg-orange border border-darkest bg-opacity-80 rounded-lg p-4 drop-shadow-xl w-[300px] 
                         sm:w-[400px]
                         xl:w-[800px]'
                         >
                             <div className='xl:py-8'>
                                 <h1
-                                    className='text-center font-titan text-darkest text-2xl
+                                    className='text-center font-titan text-hotpink text-2xl
                                                xl:text-4xl'
                                 >
                                     Sign Up!
@@ -115,7 +114,7 @@ const SignUpModal = ({ signUpModal, toggleSignUpModal }) => {
                                     ))}
                                     <div className='flex flex-row justify-center'>
                                         <button
-                                            className='mt-4 mx-auto text-center rounded-lg bg-orange text-navnametext font-bowlby text-hotred  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                                            className='mt-4 mx-auto text-center rounded-lg bg-hotpink text-navnametext font-bowlby text-cream  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                           xl:text-2xl'
                                             type='submit'
                                             variant='success'
@@ -123,7 +122,7 @@ const SignUpModal = ({ signUpModal, toggleSignUpModal }) => {
                                             Submit
                                         </button>
                                         <button
-                                            className='close-modal mt-4 mx-auto text-center rounded-lg bg-orange text-navnametext font-bowlby text-hotred  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                                            className='close-modal mt-4 mx-auto text-center rounded-lg bg-hotpink text-navnametext font-bowlby text-cream  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                        xl:text-2xl'
                                             onClick={toggleSignUpModal}
                                         >

@@ -4,8 +4,8 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import LoginModal from './LoginModal/LoginModal';
 import SignUpModal from './SignUpInput/SignUpModal';
 import { Link } from 'react-router-dom';
-// import Logo from '../assets/pink-logo.png';
-import Logo from '../assets/white-logo.png';
+import NavLogo from '../assets/logo-nav.png';
+import Logo from '../assets/logo-icon.png';
 import auth from '../utils/auth';
 
 const Navbar = ({ currentPage, handlePageChange }) => {
@@ -30,8 +30,8 @@ const Navbar = ({ currentPage, handlePageChange }) => {
             {/* // MONITORS */}
             <div className='hidden md:flex flex-row justify-between items-center px-4'>
                 <img
-                    src={Logo}
-                    alt='logo'
+                    src={NavLogo}
+                    alt='NavLogo'
                     className='w-1/6 hidden lg:block  my-auto md:object-scale-down md:flex flex-row justify-between items-center px-4'
                 />
                 <div className=''>

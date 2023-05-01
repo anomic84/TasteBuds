@@ -12,7 +12,7 @@ const LoginInput = (props) => {
     return (
         <div className='formInput mx-auto flex flex-col'>
             <label
-                className='p-2 text-darkest font-titan
+                className='p-2 text-hotpink font-titan
                           xl:text-2xl'
             >
                 {label}
