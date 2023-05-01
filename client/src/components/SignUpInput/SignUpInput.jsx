@@ -11,7 +11,7 @@ const SignUpInput = (props) => {
     return (
         <div className='formInput mx-auto flex flex-col '>
             <label
-                className='p-2 text-hotred font-titan
+                className='p-2 text-hotpink font-titan
                           xl:text-2xl'
             >
                 {label}

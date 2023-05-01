@@ -32,51 +32,24 @@ const client = new ApolloClient({
 });
 
 function App() {
-    // const [editPost, setEditPost] = React.useState({
-    //     edit: false,
-    //     postid: '',
-    //     title: '',
-    //     description: '',
-    //     time: '',
-    //     username: '',
-    //     location: '',
-    // });
     return (
         // APP
         <ApolloProvider client={client}>
             <Router>
                 <div className='w-screen h-[100%]'>
-                    {/* <div className='maingradient h-[100%]'> */}
-                    <div className='bg-mainbg h-[100%]'>
-                        {/* <Navbar
-                        currentPage={currentPage}
-                        handlePageChange={handlePageChange}
-                    /> */}
+                    <div className='bg-white h-[100%]'>
                         <Navbar />
                         <Routes>
                             <Route path='/' exact element={<Home />} />
                             <Route
                                 path='/admin'
-                                element={
-                                    <Admin
-                                        client={client}
-                                        // editPost={editPost}
-                                        // setEditPost={setEditPost}
-                                    />
-                                }
+                                element={<Admin client={client} />}
                             />
                             <Route
                                 path='/listings'
-                                element={
-                                    <Listings
-                                        client={client}
-                                        // editPost={editPost}
-                                        // setEditPost={setEditPost}
-                                    />
-                                }
+                                element={<Listings client={client} />}
                             />
                         </Routes>
-                        {/* <main className='flex w-full'>{renderPage()}</main> */}
                     </div>
                     <Footer />
                 </div>

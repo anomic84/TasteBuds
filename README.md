@@ -32,9 +32,10 @@
  <!-- TODO: Update -->
 ```md
 
-As A foodie
-I WANT to be able to find others to go out to eat with
-SO THAT I am not alone and make friends with similar interests.
+AS AN avid foodie, but also a recluse, 
+I WANT a website that will list people who need more people for a food reservation, 
+SO THAT that I can eat good food with fun people and not alone.
+
 ```
 
 ## Project Requirements
@@ -59,11 +60,6 @@ SO THAT I am not alone and make friends with similar interests.
 
 ### __User experience 👤__
 
- <!-- TODO: Update -->
-* The following versions are needed: 
-  - react: ^17.0.2
-  - react-dom: ^17.0.2
-  - react-scripts: 4.0.3
 
 1. Clone repo
 2. run `npm start`
@@ -75,8 +71,7 @@ SO THAT I am not alone and make friends with similar interests.
 
 ​<br>
 
- <!-- TODO: Update -->
-![]()
+![](/client/src/assets/screenshot.png)
 ​
 ​<br>
 
@@ -116,7 +111,6 @@ SO THAT I am not alone and make friends with similar interests.
 
 ## __Author ✏️__
 
- <!-- TODO: Update -->
 
 - Colton Smith: [GitHub](https://github.com/coltonsmith135)
 - Chrissy Martin: [GitHub](https://github.com/chrissy-martin)
