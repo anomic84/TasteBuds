@@ -4,7 +4,8 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import LoginModal from './LoginModal/LoginModal';
 import SignUpModal from './SignUpInput/SignUpModal';
 import { Link } from 'react-router-dom';
-
+// import Logo from '../assets/pink-logo.png';
+import Logo from '../assets/white-logo.png';
 import auth from '../utils/auth';
 
 const Navbar = ({ currentPage, handlePageChange }) => {
@@ -28,12 +29,18 @@ const Navbar = ({ currentPage, handlePageChange }) => {
         >
             {/* // MONITORS */}
             <div className='hidden md:flex flex-row justify-between items-center px-4'>
+                <img
+                    src={Logo}
+                    alt='logo'
+                    className='w-1/6 hidden lg:block  my-auto md:object-scale-down md:flex flex-row justify-between items-center px-4'
+                />
                 <div className=''>
-                    <p className='text-4xl py-5 font-anrope text-navtext1 '>
+                    {/* ----------LOGO------- */}
+                    <p className=' lg:hidden md:hidden sm:block text-4xl py-5 font-anrope text-navtext1 '>
                         TasteBuds
                     </p>
                 </div>
-                <ul className='flex items-center justify-end'>
+                <ul className='flex items-center justify-end my-auto'>
                     {auth.loggedIn() ? (
                         <>
                             <li

@@ -117,13 +117,25 @@ const EditModal = ({
     };
 
     return (
-        <div className='w-full flex'>
+        <div className='flex w-full '>
+            {/* <div className='flex sm:hidden flex-row justify-between my-2'> */}
             <button
                 onClick={toggleModal}
-                className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md sm:w-[25%] xl:text-2xl'
+                style={{
+                    backgroundColor: '#25364A',
+                    color: '#F2AFA9',
+                    borderRadius: '1rem',
+                    fontFamily: 'bowlby',
+                    padding: '1.25rem',
+                    marginTop: '1rem',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                    textSize: '1.5rem',
+                }}
             >
-                Edit
+                Edit Post
             </button>
+            {/* </div> */}
 
             {modal && (
                 <div
@@ -141,7 +153,7 @@ const EditModal = ({
                                     className='text-center font-titan text-borderblue text-2xl
                                                 xl:text-4xl'
                                 >
-                                    Edit event!
+                                    Edit Post!
                                 </h1>
                                 <form className='' onSubmit={handleSubmit}>
                                     {inputs.map((input) => (
@@ -156,14 +168,14 @@ const EditModal = ({
                                     ))}
                                     <div className='flex flex-row justify-center'>
                                         <button
-                                            className='mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                                            className='mt-4 mx-auto text-center rounded-lg bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                            xl:text-2xl'
                                             onClick={() => handleUpdatePost()}
                                         >
                                             Submit
                                         </button>
                                         <button
-                                            className='close-modal mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                                            className='close-modal mt-4 mx-auto text-center rounded-lg bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                                                        xl:text-2xl'
                                             onClick={toggleModal}
                                         >

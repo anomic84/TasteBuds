@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaCheckSquare, FaCommentAlt } from 'react-icons/fa';
+// import { FaCheckSquare, FaCommentAlt } from 'react-icons/fa';
 import CommentInput from './CommentInput/CommentInput';
 import CommentCard from './CommentCard';
 import EditModal from './EditModal/EditModal';
@@ -108,7 +108,7 @@ const EventCard = ({
 
     return (
         <div
-            className='flex flex-row items-center drop-shadow-lg w-full bg-lightblue my-4 
+            className='flex flex-row items-center drop-shadow-lg w-full bg-lightblue my-4 rounded
         sm:flex-col
         lg:max-w-[900px]
         xl:max-w-[1100px]'
@@ -174,7 +174,7 @@ const EventCard = ({
                     <div className='hidden sm:flex flex-row justify-between'>
                         {/* TODO: edit padding under comment text area to make button closer to text box */}
                         <button
-                            className='mt-1 text-center rounded bg-navbg text-navnametext font-bowlby text-hotpink  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                            className='mt-1 text-center rounded-lg bg-navbg text-navnametext font-bowlby text-hotpink  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
                        xl:text-2xl'
                             onClick={() => addComment()}
@@ -207,12 +207,12 @@ const EventCard = ({
                 <div className='flex flex-row items-center justify-between'>
                     {userData.data.username === username ? (
                         <button
-                            className='mt-4 text-center rounded bg-darkblue text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                            className='mt-4 text-center rounded-lg bg-darkblue text-navnametext font-bowlby text-hotpink  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
                        xl:text-2xl'
                             onClick={() => handleDelete(postId)}
                         >
-                            Delete
+                            Delete Post
                         </button>
                     ) : (
                         <br />
@@ -294,7 +294,7 @@ const EventCard = ({
                 {/* <div className='flex flex-row'> */}
                 <div className='w-[90%] flex sm:hidden flex-col font-manrope p-4'>
                     <h1
-                        className='text-lg font-bold text-borderblue 
+                        className='text-lg font-bold text-darkblue 
                            lg:text-xl
                            xl:text-3xl'
                     >
@@ -302,7 +302,7 @@ const EventCard = ({
                     </h1>
                     <div className='w-[90%] flex flex-col mx-auto'>
                         <p
-                            className='text-[10px] text-navtext1
+                            className='text-[10px] text-blue
                           lg:text-sm
                           xl:text-lg'
                         >
@@ -316,14 +316,14 @@ const EventCard = ({
                             {description}
                         </p>
                         <p
-                            className='text-right text-[10px] text-navtext1
+                            className='text-right text-[10px] text-blue
                           lg:text-sm
                           xl:text-lg'
                         >
                             {location}
                         </p>
                         <p
-                            className='text-right text-[10px] text-navtext1
+                            className='text-right text-[10px] text-blue
                           lg:text-sm
                           xl:text-lg'
                         >
@@ -333,12 +333,12 @@ const EventCard = ({
                 </div>
                 <div className='flex sm:hidden flex-row justify-between my-2'>
                     <button
-                        className='mt-4 text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%]  max-w-[180px] p-2 drop-shadow-md
+                        className='mt-4 text-center rounded-lg bg-darkblue text-navnametext font-bowlby text-hotpink  w-[40%]  max-w-[180px] p-2 drop-shadow-md
                        sm:w-[25%]
                        xl:text-2xl'
                         onClick={() => handleDelete(postId)}
                     >
-                        Delete
+                        Delete post
                     </button>
                 </div>
             </div>
@@ -357,7 +357,7 @@ const EventCard = ({
                     ))}
                     <div className='flex flex-row justify-center'>
                         <button
-                            className='mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                            className='mt-4 mx-auto text-center rounded-lg bg-darkblue text-navnametext font-bowlby text-hotpink  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                        xl:text-2xl'
                             type='submit'
                             onClick={() => addComment()}
@@ -365,7 +365,7 @@ const EventCard = ({
                             Submit
                         </button>
                         <button
-                            className='close-modal mt-4 mx-auto text-center rounded bg-navbg text-navnametext font-bowlby text-borderblue  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
+                            className='close-modal mt-4 mx-auto text-center rounded-lg bg-navbg text-navnametext font-bowlby text-hotpink  w-[40%] sm:w-[25%] max-w-[180px] p-2 drop-shadow-md
                    xl:text-2xl'
                         >
                             CLOSE

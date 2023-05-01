@@ -20,7 +20,7 @@ const CreateInput = (props) => {
                     {label}
                 </label>
                 <input
-                    className='p-2 rounded
+                    className='p-2 rounded-lg
                xl:text-2xl'
                     {...inputProps}
                     onChange={handler}
@@ -44,7 +44,7 @@ const CreateInput = (props) => {
                     {label}
                 </label>
                 <input
-                    className='p-2 rounded
+                    className='p-2 rounded-lg
                xl:text-2xl'
                     {...inputProps}
                     onChange={onChange}
