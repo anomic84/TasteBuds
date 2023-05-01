@@ -4,6 +4,7 @@ import SignUpModal from '../../components/SignUpInput/SignUpModal';
 import Logo from '../../assets/logo-icon.png';
 
 const Home = () => {
+    // Logic to toggle the Login and Sign Up modals
     const [loginModal, setLoginModal] = useState(false);
     const [signUpModal, setSignUpModal] = useState(false);
     const toggleLoginModal = () => {
@@ -23,7 +24,6 @@ const Home = () => {
                 >
                     WELCOME <br className='md:hidden' />
                     TO <br />
-                    {/* TASTEBUDS! */}
                 </h1>
                 {/* LOGO IMAGE */}
                 <div>
@@ -49,8 +49,11 @@ const Home = () => {
                     Not a member?
                 </p>
             </div>
+
             {/* SignUp and Login */}
             <div className='flex flex-row justify-center  mx-auto items-center gap-2'>
+
+                {/* Sign Up */}
                 <div className='hidden md:flex justify-center'>
                     <button
                         onClick={toggleSignUpModal}
@@ -62,6 +65,8 @@ const Home = () => {
                         Sign Up!
                     </button>
                 </div>
+
+                {/* Login */}
                 <div className='hidden md:flex justify-center'>
                     <button
                         onClick={toggleLoginModal}
@@ -75,6 +80,7 @@ const Home = () => {
                     </button>
                 </div>
 
+                {/* Modals at bottom because they have issues when inside the div with the button. It also passes the modal functions through to the modal file*/}
                 <SignUpModal
                     className=''
                     signUpModal={signUpModal}
@@ -88,13 +94,6 @@ const Home = () => {
                     toggleLoginModal={toggleLoginModal}
                 />
             </div>
-
-            <p
-                className='t m-auto font-manrope pt-10 h-46 w-96 right-4 w-full self-end drop-shadow-md
-        sm:text-xl
-        md:text-center
-        xl:text-3xl'
-            ></p>
         </div>
     );
 };
