@@ -6,7 +6,7 @@ mongoose.connect(
         useNewUrlParser: true,
         useUnifiedTopology: true,
         serverSelectionTimeoutMS: 5000,
-        dbName: 'tastebudsDB',
+        dbName: 'tastebudsD',
     }
 );
 
