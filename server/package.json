@@ -4,6 +4,7 @@
     "description": "",
     "main": "server.js",
     "scripts": {
+        "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
         "start": "node server.js",
         "watch": "nodemon",
         "seed": "node config/seeds.js"
@@ -25,5 +26,8 @@
     "devDependencies": {
         "nodemon": "^2.0.2",
         "concurrently": "^5.1.0"
+    },
+    "engines": {
+        "node": "14.17.5"
     }
 }
