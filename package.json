@@ -30,6 +30,9 @@
         "seed": "cd server && npm run seed",
         "build": "cd client && npm run build"
     },
+     "engines": {
+        "node": "14.17.5"
+    },
     "eslintConfig": {
         "extends": [
             "react-app",
