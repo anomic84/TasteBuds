@@ -4,4 +4,8 @@
     "routes": {
         "/**": "index.html"
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 24fcef9d9ecb33ce8875d4fe95a4ed289cc3ef56
