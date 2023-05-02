@@ -451,6 +451,7 @@ const EventCard = ({
             {/* ------------  MOBILE ------------ */}
             {/* FIXME - match desktop styling */}
             <div className='flex flex-col mx-auto min-w-[350px]
+            smr:min-w-[490px]
             sm:min-w-[630px]
             md:min-w-[758px]
             lg:min-w-[1014px]

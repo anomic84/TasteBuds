@@ -3,6 +3,9 @@ module.exports = {
     content: ['./src/**/*.{js,jsx,ts,tsx}'],
     theme: {
         extend: {
+            screens: {
+                'smr': '500px'
+            },
             fontFamily: {
                 manrope: 'Manrope, sans-serif',
                 bowlby: 'Bowlby One SC, cursive',
