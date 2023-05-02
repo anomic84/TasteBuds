@@ -33,12 +33,11 @@ if (process.env.NODE_ENV === 'production') {
 
 // work around to deploy to heroku
 app.get('*', (req, res) => {
-    let url = path.join(__dirname, '../client/build', 'index.html');
-    if (!url.startsWith('/app/'))
-        // since we're on local windows
-        url = url.substring(1);
-    res.sendFile(path.resolve(url));
-});
+    let url = path.join(__dirname, '../client/build', 'index.html')
+    if(!url.startsWith('/app/')) 
+    url = url.substring(1)
+    res.sendFile(url)
+})
 
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async (typeDefs, resolvers) => {
