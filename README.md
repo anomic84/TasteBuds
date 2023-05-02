@@ -79,8 +79,9 @@ SO THAT that I can eat good food with fun people and not alone.
 
  <!-- TODO: Update -->
 
-- Live URL: []()
-- Github Repository: []()
+- Live URL: [TasteBuds](https://taste-buds.herokuapp.com/)
+- Github Repository: [TasteBuds](https://github.com/anomic84/TasteBuds/)
+- Profile: [Spencer Carlson](https://spencerccarlson.com/)
 
 <br>
 <hr>
